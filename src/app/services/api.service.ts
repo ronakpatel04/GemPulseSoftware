@@ -9,10 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'https://example.com/api'; 
+  private apiUrl = 'https://dummyjson.com/'; 
 
   constructor(private http: HttpClient) { }
 
+   headers = new HttpHeaders({
+    'Content-Type': 'application/json',  });
+  
   post(endpoint: string, data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}${endpoint}`, data);
+    return this.http.post(`${this.apiUrl}${endpoint}`, data, { headers: this.headers });
   }}
