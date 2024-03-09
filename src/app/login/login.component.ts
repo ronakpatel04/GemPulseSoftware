@@ -19,7 +19,7 @@ export class LoginComponent {
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/employee']);
+        this.router.navigate(['/main']);
       },
       (error) => {
       }

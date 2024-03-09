@@ -19,6 +19,7 @@ function createWindow() {
 
     win.on('closed', () => {
         win = null;
+        
     });
 }
 
@@ -51,6 +52,9 @@ app.on('ready', ()=>{
     // Start watching all files in the Angular project directory
     // buildAngularProject(angularProjectDirectory);
     Menu.setApplicationMenu(null);
+    win.webContents.openDevTools();
+
+
 });
 
 app.on('window-all-closed', () => {

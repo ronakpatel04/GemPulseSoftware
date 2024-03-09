@@ -2,3 +2,74 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
+.custom-button {
+    border: 2px solid #007ad9 !important; /* Set border */
+    border-radius: 5px !important; /* Round corners */
+    background-color: #007ad9 !important; /* Set background color */
+    color: white !important; /* Set text color */
+    padding: 5px 10px !important; /* Set padding */
+    font-size: 14px  !important; /* Set font size */
+  }
+  
+  .custom-button:focus {
+    outline: none !important;
+  }
+
+
+  .header
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-size: 28px ;
+  font-weight: bolder;
+}
+
+th{ 
+  background-color: #aec1d0;
+  color: black;
+  font-weight: bolder; 
+} 
+
+
+
+.table-container {
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+.p-toolbar {
+    background: none !important;
+}
+
+.p-button
+{
+    margin: 0px !important;
+}
+
+.p-button:focus
+{
+    outline: none !important;
+}
+
+.p-datatable .p-datatable-header {
+    background: none !important;
+}
+
+.searchBar{
+    border: 2px solid black !important;
+    padding: 8px 9px !important;
+    border-radius: 8px !important;
+}
+
+.searchBar:focus{
+    outline: none !important;   
+}
+
+.search-icon{
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+

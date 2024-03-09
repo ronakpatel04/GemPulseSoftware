@@ -9,5 +9,4 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'GemPulse';
   
-  constructor(public authService:AuthService){}
 }

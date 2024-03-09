@@ -1,1 +1,53 @@
-<p>employee-list works!</p>
+<div class="table-container">
+    <div class="header">
+        Employee Management
+    </div>
+
+    <!-- <div class="p-toolbar">
+        <div class="p-toolbar-group-left">
+            
+                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"></button> -->
+             <!-- <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search"> --> 
+             
+        <!-- </div> -->
+      
+    <!-- </div> -->
+    
+    <p-table [value]="employees"  #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'position']">
+      
+        <ng-template pTemplate="caption">
+            <div class="flex toolbar">
+                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"></button>
+
+                <span class="p-input-icon-right ml-auto">
+                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
+                    <i class="pi pi-search  search-icon"></i>
+                </span>
+            </div>
+        </ng-template>
+        
+        <ng-template pTemplate="header">  
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Quantity</th>
+                <th>Quantity</th>
+                <th>Action</th> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.position}}</td>
+                <td>{{product.department}}</td>
+                <td>{{product.department}}</td>
+                <td>{{product.department}}</td>
+                <td><button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editProduct(product)"></button></td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

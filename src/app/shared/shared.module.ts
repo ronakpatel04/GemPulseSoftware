@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { MainComponent } from '../main/main.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from "primeng/button";
 
 
 
@@ -13,7 +15,9 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
   imports: [
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TableModule,
+    ButtonModule
   ],
   exports:[LoginComponent,MainComponent, EmployeeListComponent]
 })
