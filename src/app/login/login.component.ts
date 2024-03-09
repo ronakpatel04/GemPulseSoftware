@@ -8,17 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  email!: string;
+  username!: string;
   password!: string;
   passwordVisible: boolean = false;
 
-  constructor(private authService: AuthService,router:Router) { }
+  constructor(private authService: AuthService,private router: Router) { }
 
   login(): void {
-    console.log("this.email => ", this.email)
-    this.authService.login(this.email, this.password).subscribe(
+    console.log("this.email => ", this.username)
+    this.authService.login(this.username, this.password).subscribe(
       (response) => {
         localStorage.setItem('token', response.token);
+        this.router.navigate(['/main']);
       },
       (error) => {
       }
