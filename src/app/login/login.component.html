@@ -17,8 +17,14 @@
             <i class="fa" [ngClass]="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
           </button> -->
         </div>
+    
         <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Sign In</button>
+       
       </form>
     </div>
+
+  </div>
+  <div class="loader-overlay" *ngIf="loading">
+    <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
   </div>
   
