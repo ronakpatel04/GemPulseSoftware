@@ -16,6 +16,9 @@ interface Employee {
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent {
+  
+  loading : boolean =  false;
+  
   employees: Employee[] = [
     { id: 1, name: 'John Doe', position: 'Software Engineer', department: 'Engineering' },
     { id: 2, name: 'Jane Smith', position: 'Product Manager', department: 'Management' },

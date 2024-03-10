@@ -7,6 +7,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from "primeng/button";
+import { ProgressSpinnerModule } from 'primeng/progressspinner'; 
+
 
 
 
@@ -17,8 +19,12 @@ import { ButtonModule } from "primeng/button";
     FormsModule,
     AppRoutingModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    ProgressSpinnerModule,
+   
+
   ],
-  exports:[LoginComponent,MainComponent, EmployeeListComponent]
+  exports:[LoginComponent,MainComponent, EmployeeListComponent],
+  providers:[]
 })
 export class SharedModule { }

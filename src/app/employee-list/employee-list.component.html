@@ -12,8 +12,12 @@
         <!-- </div> -->
       
     <!-- </div> -->
+    <div class="loader-overlay" *ngIf="loading">
+        <!-- Loader -->
+        <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+    </div>
     
-    <p-table [value]="employees"  #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'position']">
+    <p-table [value]="employees"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'position']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
