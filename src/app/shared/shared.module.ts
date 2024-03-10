@@ -8,12 +8,14 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from "primeng/button";
 import { ProgressSpinnerModule } from 'primeng/progressspinner'; 
+import { EmployeeAddComponent } from '../employee-list/employee-add/employee-add.component';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 
 
 
 @NgModule({
-  declarations: [LoginComponent,MainComponent,EmployeeListComponent],
+  declarations: [LoginComponent,MainComponent,EmployeeListComponent,EmployeeAddComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,7 +26,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
    
 
   ],
-  exports:[LoginComponent,MainComponent, EmployeeListComponent],
-  providers:[]
+  exports:[LoginComponent,MainComponent, EmployeeListComponent,EmployeeAddComponent],
+  providers:[DialogService]
 })
 export class SharedModule { }

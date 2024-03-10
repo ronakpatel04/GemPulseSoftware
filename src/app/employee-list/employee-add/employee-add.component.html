@@ -1,0 +1,93 @@
+<form class="max-w-xlg mx-auto mt-8 border border-gray-300 p-6 rounded-md" (ngSubmit)="onSubmit()">
+    <div class="mb-8">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Upload Profile:</label>
+        <div class="relative">
+            <input type="file" class="form-input rounded-md w-full opacity-0 absolute inset-0" (change)="onFileSelected($event)" name="profilePicture">
+            <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md " style="cursor: pointer;">
+                Select File
+            </button>
+            <img *ngIf="profilePreview" [src]="profilePreview" class="rounded-md float-right" style="max-width: 100px; max-height: 80px; margin-top: -37px;">
+        </div> 
+        <!-- File Preview -->
+    </div>
+    
+    <div class="flex flex-wrap -mx-4  mt-2  mb-4">
+        <!-- First Name -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">First Name:</label>
+            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.firstName" name="firstName" required>
+        </div>
+
+     
+
+        <!-- Last Name -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Last Name:</label>
+            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.lastName" name="lastName" required>
+        </div>
+    </div>
+
+    <!-- Mobile Number and Aadhaar Number -->
+    <div class="flex flex-wrap -mx-4 mb-4">
+        <!-- Mobile Number -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Mobile Number:</label>
+            <input type="tel" class="form-input rounded-md w-full" [(ngModel)]="employee.mobileNumber" name="mobileNumber" required>
+        </div>
+
+        <!-- Aadhaar Number -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Aadhaar Number:</label>
+            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.aadhaarNumber" name="aadhaarNumber" required>
+        </div>
+    </div>
+
+    <!-- Upload Profile and Aadhaar Card Profile Pic -->
+    <div class="flex flex-wrap -mx-4 mb-4">
+        <!-- Upload Profile -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Aadhaar Card Profile Pic (Front):</label>
+            <div class="relative">
+                <input type="file" class="form-input rounded-md w-full opacity-0 absolute inset-0" (change)="onAadhaarPicSelected($event)" name="profilePicture">
+                <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md cursor-pointer">
+                    Select File
+                </button>
+            </div>            
+        </div>
+
+        <!-- Aadhaar Card Profile Pic -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Aadhaar Card Profile Pic (Back):</label>
+            <div class="relative">
+                <input type="file" class="form-input rounded-md w-full opacity-0 absolute inset-0" (change)="onAadhaarPicSelected($event)" name="profilePicture">
+                <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md cursor-pointer">
+                    Select File
+                </button>
+            </div>               
+        </div>
+    </div>
+
+    <!-- Residential Address -->
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Residential Address:</label>
+        <textarea class="form-textarea rounded-md w-full" [(ngModel)]="employee.address" name="address" rows="3" required></textarea>
+    </div>
+
+    <!-- Reference Name -->
+    <div class="flex flex-wrap -mx-4 mb-4">
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Reference Name:</label>
+            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.referenceName" name="referenceName" required>
+        </div>
+
+        <!-- Reference Mobile Number -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Reference Mobile Number:</label>
+            <input type="tel" class="form-input rounded-md w-full" [(ngModel)]="employee.referenceMobileNumber" name="referenceMobileNumber" required>
+        </div>
+    </div>
+
+    <div class="flex justify-end">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+    </div>
+</form>

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { DialogService } from 'primeng/dynamicdialog';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
 
 interface Employee {
   id: number;
@@ -44,7 +46,7 @@ export class EmployeeListComponent {
   
   globalFilter!: string;
 
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(private primengConfig: PrimeNGConfig,private dialogService: DialogService) {}
 
   ngOnInit() {
     // Enable gridlines
@@ -63,5 +65,10 @@ export class EmployeeListComponent {
   clear(table: Table) {
     table.clear();
 }
-  
+openAddEmployeeDialog() {
+  const ref = this.dialogService.open(EmployeeAddComponent, {
+    header: 'Add Employee', // Set header for the dialog
+    width: '80%' // Set width of the dialog
+  });
+}
 }

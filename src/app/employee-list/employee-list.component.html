@@ -21,7 +21,7 @@
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
-                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"></button>
+                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"  (click)="openAddEmployeeDialog()"></button>
 
                 <span class="p-input-icon-right ml-auto">
                     <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
