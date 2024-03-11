@@ -1,4 +1,4 @@
-<form class="max-w-xlg mx-auto mt-8 border border-gray-300 p-6 rounded-md" (ngSubmit)="onSubmit()">
+<form class="max-w-xlg mx-auto mt-8 border border-gray-300 p-6 rounded-md" (ngSubmit)="onSubmit()" [formGroup]="employeeForm">
     <div class="mb-8">
         <label class="block text-gray-700 text-sm font-bold mb-2">Upload Profile:</label>
         <div class="relative">
@@ -15,7 +15,9 @@
         <!-- First Name -->
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">First Name:</label>
-            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.firstName" name="firstName" required>
+            <input type="text" class="form-input rounded-md w-full"  formControlName="firstName">
+            <div *ngIf="employeeForm.get('firstName')?.touched && hasError('firstName', 'required')" class="text-red-500 text-xs font-bold">First Name is required !</div>
+
         </div>
 
      
@@ -23,7 +25,9 @@
         <!-- Last Name -->
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Last Name:</label>
-            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.lastName" name="lastName" required>
+            <input type="text" class="form-input rounded-md w-full" formControlName="lastName">
+            <div *ngIf="employeeForm.get('lastName')?.touched && hasError('lastName', 'required')" class="text-red-500 text-xs font-bold">First Name is required !</div>
+
         </div>
     </div>
 
@@ -32,13 +36,18 @@
         <!-- Mobile Number -->
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Mobile Number:</label>
-            <input type="tel" class="form-input rounded-md w-full" [(ngModel)]="employee.mobileNumber" name="mobileNumber" required>
+            <input type="tel" class="form-input rounded-md w-full" formControlName="mobileNumber">
+            <div *ngIf="employeeForm.get('mobileNumber')?.touched && hasError('mobileNumber', 'required')" class="text-red-500 text-xs font-bold">Mobile Number is required !</div>
+            <div *ngIf="employeeForm.get('mobileNumber')?.touched && hasError('mobileNumber', 'pattern')" class="text-red-500 text-xs font-bold">Invalid Mobile Number !</div>
+
         </div>
 
         <!-- Aadhaar Number -->
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Aadhaar Number:</label>
-            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.aadhaarNumber" name="aadhaarNumber" required>
+            <input type="text" class="form-input rounded-md w-full" formControlName="aadhaarNumber">
+            <div *ngIf="employeeForm.get('aadhaarNumber')?.touched && hasError('aadhaarNumber', 'pattern')" class="text-red-500 text-xs font-bold">Aadhaar Number must be 12 digits !</div>
+
         </div>
     </div>
 
@@ -70,24 +79,26 @@
     <!-- Residential Address -->
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2">Residential Address:</label>
-        <textarea class="form-textarea rounded-md w-full" [(ngModel)]="employee.address" name="address" rows="3" required></textarea>
+        <textarea class="form-textarea rounded-md w-full" formControlName="address"></textarea>
+        <div *ngIf="employeeForm.get('address')?.touched && hasError('address', 'required')" class="text-red-500 text-xs font-bold">Address is required !</div>
+
     </div>
 
     <!-- Reference Name -->
     <div class="flex flex-wrap -mx-4 mb-4">
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Reference Name:</label>
-            <input type="text" class="form-input rounded-md w-full" [(ngModel)]="employee.referenceName" name="referenceName" required>
+            <input type="text" class="form-input rounded-md w-full" formControlName="referenceName">
         </div>
 
         <!-- Reference Mobile Number -->
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Reference Mobile Number:</label>
-            <input type="tel" class="form-input rounded-md w-full" [(ngModel)]="employee.referenceMobileNumber" name="referenceMobileNumber" required>
+            <input type="tel" class="form-input rounded-md w-full" formControlName="referenceMobileNumber">
         </div>
     </div>
 
     <div class="flex justify-end">
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+        <button type="submit"  [disabled]="employeeForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
     </div>
 </form>
