@@ -10,6 +10,8 @@ import { ButtonModule } from "primeng/button";
 import { ProgressSpinnerModule } from 'primeng/progressspinner'; 
 import { EmployeeAddComponent } from '../employee-list/employee-add/employee-add.component';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwttokenInterceptor } from '../Interceptors/jwttoken.interceptor';
 
 
 
@@ -28,6 +30,11 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
   ],
   exports:[LoginComponent,MainComponent, EmployeeListComponent,EmployeeAddComponent],
-  providers:[DialogService]
+  providers:[DialogService,    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwttokenInterceptor,
+    multi: true
+  }
+]
 })
 export class SharedModule { }
