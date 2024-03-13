@@ -12,12 +12,15 @@ import { EmployeeAddComponent } from '../employee-list/employee-add/employee-add
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwttokenInterceptor } from '../Interceptors/jwttoken.interceptor';
+import { PacketListComponent } from '../packet-list/packet-list.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgxPrintModule } from 'ngx-print';
 
 
 
 
 @NgModule({
-  declarations: [LoginComponent,MainComponent,EmployeeListComponent,EmployeeAddComponent],
+  declarations: [LoginComponent,MainComponent,EmployeeListComponent,EmployeeAddComponent,PacketListComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,11 +28,11 @@ import { JwttokenInterceptor } from '../Interceptors/jwttoken.interceptor';
     TableModule,
     ButtonModule,
     ProgressSpinnerModule,
-    ReactiveFormsModule
-   
-
+    ReactiveFormsModule,
+    QRCodeModule,
+    NgxPrintModule
   ],
-  exports:[LoginComponent,MainComponent, EmployeeListComponent,EmployeeAddComponent],
+  exports:[LoginComponent,MainComponent, EmployeeListComponent,EmployeeAddComponent,PacketListComponent],
   providers:[DialogService,    {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,
