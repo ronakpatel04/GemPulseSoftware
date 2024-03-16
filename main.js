@@ -8,19 +8,33 @@ let win;
 
 function createWindow() {
     win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1717,
+        height: 817,
         webPreferences: {
             nodeIntegration: true
         }
     });
 
-    win.loadURL(`file://${path.join(__dirname, 'dist', 'gem-pulse', 'index.html')}`);
+
+    win.setResizable(true);
+
+
+
+    win.on('maximize', () => {
+        win.setSize(1717, 817); 
+    });
+
+
+    win.loadURL(`file://${path.join(__dirname, 'dist', 'gem-pulse', 'index.html')}`);4
+
 
     win.on('closed', () => {
         win = null;
         
     });
+    
+    
+
 }
 
 function buildAngularProject(angularProjectDirectory) {
@@ -47,10 +61,7 @@ function buildAngularProject(angularProjectDirectory) {
 
 app.on('ready', ()=>{
     createWindow();
-    // const angularProjectDirectory = path.join(__dirname, 'dist', 'my-electron-app');
-    
-    // Start watching all files in the Angular project directory
-    // buildAngularProject(angularProjectDirectory);
+
     Menu.setApplicationMenu(null);
     win.webContents.openDevTools();
 

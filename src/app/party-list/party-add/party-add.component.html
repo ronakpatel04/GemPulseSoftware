@@ -1,0 +1,70 @@
+<form class="max-w-xlg mx-auto mt-8 border border-gray-300 p-6 rounded-md" (ngSubmit)="onSubmit()" [formGroup]="partyForm">
+    
+    <div class="flex flex-wrap -mx-4  mt-2  mb-4">
+        <!-- First Name -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Company Name:</label>
+            <input type="text" class="form-input rounded-md w-full"  formControlName="name">
+            <div *ngIf="partyForm.get('name')?.touched && hasError('name', 'required')" class="text-red-500 text-xs font-bold">Company Name is required !</div>
+
+        </div>
+
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Mobile Number:</label>
+            <input type="tel" class="form-input rounded-md w-full" formControlName="mobileNo">
+            <div *ngIf="partyForm.get('mobileNo')?.touched && hasError('mobileNo', 'required')" class="text-red-500 text-xs font-bold">Mobile Number is required !</div>
+            <div *ngIf="partyForm.get('mobileNo')?.touched && hasError('mobileNo', 'pattern')" class="text-red-500 text-xs font-bold">Invalid Mobile Number !</div>
+
+        </div>
+
+     
+
+
+    </div>
+
+    <!-- Mobile Number and Aadhaar Number -->
+    <div class="flex flex-wrap -mx-4 mb-4">
+        <!-- Mobile Number -->
+
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+            <input type="text" class="form-input rounded-md w-full" formControlName="email">
+            <div *ngIf="partyForm.get('email')?.touched && hasError('email', 'email')" class="text-red-500 text-xs font-bold ">Invalid email format!</div>
+
+        </div>
+        <!-- Aadhaar Number -->
+        <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">GST Number:</label>
+            <input type="text" class="form-input rounded-md w-full" formControlName="gstNo">
+            <div *ngIf="partyForm.get('gstNo')?.touched && hasError('gstNo', 'pattern')" class="text-red-500 text-xs font-bold">Gst is required !</div>
+
+        </div>
+    </div>
+
+
+    <!-- Residential Address -->
+    <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Residential Address:</label>
+        <textarea class="form-textarea rounded-md w-full" formControlName="address"></textarea>
+        <div *ngIf="partyForm.get('address')?.touched && hasError('address', 'required')" class="text-red-500 text-xs font-bold">Address is required !</div>
+
+    </div>
+
+    <!-- Reference Name -->
+    <div class="flex flex-wrap -mx-4 mb-4">
+        <!-- <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Reference Name:</label>
+            <input type="text" class="form-input rounded-md w-full" formControlName="referenceName">
+        </div> -->
+
+        <!-- Reference Mobile Number -->
+        <!-- <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Reference Mobile Number:</label>
+            <input type="tel" class="form-input rounded-md w-full" formControlName="referenceMobileNo">
+        </div> -->
+    </div>
+
+    <div class="flex justify-end">
+        <button type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+    </div>
+</form>

@@ -3,6 +3,8 @@ import { PartyService } from '../services/party.service';
 import { PrimeNGConfig } from 'primeng/api';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 import { Table } from 'primeng/table';
+import { PartyAddComponent } from './party-add/party-add.component';
+import { PartyViewComponent } from './party-view/party-view.component';
 
 @Component({
   selector: 'app-party-list',
@@ -34,10 +36,10 @@ export class PartyListComponent implements OnInit {
     // Enable gridlines
     this.primengConfig.ripple = true;
     this.loading = true;
-    this.getEmployees()
+    this.getPalties()
   }
 
-  getEmployees() {
+  getPalties() {
     this.partyService.getParty().subscribe(response => {
       if (response && response.statusCode == 200 && response.status) {
         this.loading = false;
@@ -58,8 +60,8 @@ export class PartyListComponent implements OnInit {
     this.globalFilter = value;
   }
 
-  editEmployee(employee: any) {
-    // this.openAddEmployeeDialog(employee);
+  editEmployee(Palty: any) {
+    this.openAddpartyDialog(Palty);
   }
 
   clear(table: Table) {
@@ -67,34 +69,32 @@ export class PartyListComponent implements OnInit {
   }
 
 
-  // openAddEmployeeDialog(employee?: any) {
-  //   this.dialogRef = this.dialogService.open(, {
-  //     header: employee ? 'Edit Employee' : 'Add Employee',
-  //     width: '80%',
-  //     data: {
-  //       employee: employee
-  //     }
-  //   });
-
-  //   this.dialogRef.onClose.subscribe(() => {
-  //     this.getEmployees();
-  //   });
-
-  // }
-
-  // viewEmployee(employee?: any) {
-  //   this.dialogRef = this.dialogService.open(, {
-  //     header: 'Employee Details',
-  //     width: '40%',
-  //     data: {
-  //       employee: employee
-  //     }
-  //   });
-  // }
 
 
   openAddpartyDialog(party?: any) {
 
+    this.dialogRef = this.dialogService.open(PartyAddComponent, {
+      header: party ? 'Edit Palty' : 'Add Palty',
+      width: '80%',
+      data: {
+        party: party
+      }
+    });
+
+    this.dialogRef.onClose.subscribe(() => {
+      this.getPalties();
+    });
+
+  }
+
+  viewParty(party?: any) {
+    this.dialogRef = this.dialogService.open(PartyViewComponent, {
+      header: 'Party Details',
+      width: '40%',
+      data: {
+        party: party
+      }
+    });
   }
 
 }

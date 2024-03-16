@@ -98,7 +98,43 @@ th{
     height: 50px; 
 }
 
+.employee-view{
+    background-color: rgba(241, 237, 232, 0.765);
+}
+
 
 .p-dialog .p-dialog-title {
    
 }
+
+svg.p-icon.p-sortable-column-icon
+{
+    display: inline-block !important;
+}
+
+// **formcss **//
+
+input[type="text"]{
+    border: 1px solid black;
+    padding: 6px 8px;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+label{
+    font-size: 16px;
+    color: grey;
+}
+input[type="tel"]{
+    border: 1px solid black;
+    padding: 6px 8px;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+textarea{
+    border: 1px solid black;
+    padding: 6px 8px;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+

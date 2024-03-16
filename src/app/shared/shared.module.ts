@@ -14,12 +14,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwttokenInterceptor } from '../Interceptors/jwttoken.interceptor';
 import { EmployeeViewComponent } from '../employee-list/employee-view/employee-view.component';
 import { PartyListComponent } from '../party-list/party-list.component';
+import { PartyAddComponent } from '../party-list/party-add/party-add.component';
+import { PartyViewComponent } from '../party-list/party-view/party-view.component';
 
 
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,7 +33,7 @@ import { PartyListComponent } from '../party-list/party-list.component';
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,

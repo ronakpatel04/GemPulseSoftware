@@ -17,7 +17,6 @@ export class EmployeeViewComponent implements OnInit {
 
     this.employee = this.config.data.employee;
 
-    console.log("Employee View Data : =>", this.employee)
   }
 
 

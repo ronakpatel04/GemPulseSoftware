@@ -32,11 +32,12 @@
         
         <ng-template pTemplate="header">  
             <tr>
-                <th>Code</th>
-                <th>Party Name</th>
-                <th>Email</th>
-                <th>Mobile Number</th>
-                <th>GST Number</th>
+                <th pSortableColumn="id" >Code <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Party Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="mobileNo">Mobile Number <p-sortIcon field="mobileNo"></p-sortIcon></th>
+                <th pSortableColumn="gstNo">GST Number <p-sortIcon field="gstNo"></p-sortIcon></th>
+    
                 <th>Action</th> 
             </tr>
         </ng-template>
@@ -49,9 +50,9 @@
                 <td>{{party.gstNo}}</td>
             
                 <td>
-                    <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" ></button>
+                    <button pButton icon="pi pi-eye" class="p-button-rounded view-icon"  (click)="viewParty(party)"></button>
 
-                    <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon"></button>
+                    <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="openAddpartyDialog(party)"></button>
                 </td>
 
             </tr>
