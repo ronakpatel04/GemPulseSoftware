@@ -15,26 +15,25 @@ export class LoginComponent {
   passwordVisible: boolean = false;
   loading: boolean = false; // Added loading state variable
 
-  constructor(private authService: AuthService,private router: Router,private toastr: ToastrService) { }
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) { }
 
   login(): void {
     this.loading = true;
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        console.info("Response =>" , response)
-        if(response && response.access_token){
-        localStorage.setItem('token', response.access_token);
-        this.toastr.success('Login Successfull !', 'Success');
+        if (response && response.access_token) {
+          localStorage.setItem('token', response.access_token);
+          this.toastr.success('Login Successfull !', 'Success');
         }
         this.router.navigate(['/main']);
+        console.log("Response =>", response)
       },
       (error) => {
-        console.log("Error =>" , error)
         this.loading = false;
-        this.toastr.error(error.statusText , 'Error')
+        this.toastr.error(error.error.message, 'Error')
       },
       () => {
-        this.loading =false
+        this.loading = false
       }
     );
   }
