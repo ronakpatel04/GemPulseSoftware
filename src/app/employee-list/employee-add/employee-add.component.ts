@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-employee-add',
@@ -7,43 +10,87 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./employee-add.component.scss']
 })
 export class EmployeeAddComponent {
-  employee: any = {}; // Object to store form data
-  profilePreview!: string | ArrayBuffer | null ; // Property for profile picture preview
-  aadhaarPreview!: string | ArrayBuffer | null ;
+  employee: any = {};
+  profilePreview!: string | ArrayBuffer | null;
+  aadhaarPreview!: string | ArrayBuffer | null;
 
   employeeForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService, private ref: DynamicDialogRef, private config: DynamicDialogConfig, private toastrservice: ToastrService) {
+  }
+
+
+  hasError(controlName: string, errorName: string) {
+    return this.employeeForm.controls[controlName].hasError(errorName);
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+    const employeeData = this.config.data.employee;
+
+    if (employeeData) {
+      this.populateForm(employeeData);
+    }
+  }
+
+  initForm() {
     this.employeeForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      mobileNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
-      aadhaarNumber: ['', [Validators.required, Validators.pattern('[0-9]{12}')]],
+      mobileNo: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+      aadhaarNumber: ['', [Validators.pattern('[0-9]{12}')]],
       address: ['', Validators.required],
+      referenceName: ['', Validators.required],
+      referenceMobileNo: ['', [Validators.pattern('[0-9]{10}')]],
       // aadhaarFront: ['', Validators.required],
       // aadhaarBack: ['', Validators.required],
-      referenceName: ['', Validators.required],
-      referenceMobileNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+    });
+  }
+  populateForm(employee: any) {
+    this.employeeForm.patchValue({
+      firstName: employee.firstName,
+      lastName: employee.lastName,
+      mobileNo: employee.mobileNo,
+      aadhaarNumber: employee.aadhaarNumber,
+      address: employee.address,
+      referenceName: employee.referenceName,
+      referenceMobileNo: employee.referenceMobileNumber,
     });
   }
 
 
-  // Helper function to check if a form control has an error
-  hasError(controlName: string, errorName: string) {
-    return this.employeeForm.controls[controlName].hasError(errorName);
-  }
-  
-  
-  
   onSubmit() {
 
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
-      console.log("Form data:", formData); // Debugging message
-      // Further processing of form data
-    }else {
-      console.log("Form is invalid. Cannot submit."); // Debugging message
-      // Handle invalid form
+      if (this.config.data.employee) {
+        const id = this.config.data.employee.id;
+        delete this.config.data.employee['mobileNo']
+        this.employeeService.editEmployee(id, formData).subscribe(response => {
+          if (response && response.status) {
+            this.toastrservice.success('User updated successfully', 'Success');
+            this.ref.close();
+          }
+        }, (error) => {
+          this.toastrservice.error(error.message, 'Error');
+          this.ref.close();
+        });
+      } else {
+
+        this.employeeService.addEmployee(formData).subscribe(response => {
+
+          if (response && response.status) {
+            this.toastrservice.success(response.message, 'Success');
+            this.ref.close();
+
+          }
+
+        }, (error) => {
+          this.toastrservice.error(error.message, 'Error');
+          this.ref.close();
+        })
+
+      }
     }
   }
 
@@ -51,7 +98,6 @@ export class EmployeeAddComponent {
 
 
   onFileSelected(event: any) {
-    // Handle file upload logic for profile picture
     const file = event.target.files[0];
     console.log(file);
     if (file) {
@@ -68,7 +114,6 @@ export class EmployeeAddComponent {
 
 
   onAadhaarPicSelected(event: any) {
-    // Handle file upload logic for Aadhaar card profile picture
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -78,5 +123,6 @@ export class EmployeeAddComponent {
         }
       };
       reader.readAsDataURL(file);
-    }  }
+    }
+  }
 }

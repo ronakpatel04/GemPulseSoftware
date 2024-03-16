@@ -8,8 +8,8 @@ import { ApiService } from './api.service';
 export class AuthService {
   constructor(private apiService: ApiService) { }
 
-  login(username: string, password: string): Observable<any> {
-    return this.apiService.post('auth/login', { username, password });
+  login(mobileNo: string, password: string): Observable<any> {
+    return this.apiService.post('auth/login', { mobileNo, password });
   }
 
   logout(): void {

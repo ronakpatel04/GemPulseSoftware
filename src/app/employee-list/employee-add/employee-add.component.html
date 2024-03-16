@@ -26,7 +26,7 @@
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Last Name:</label>
             <input type="text" class="form-input rounded-md w-full" formControlName="lastName">
-            <div *ngIf="employeeForm.get('lastName')?.touched && hasError('lastName', 'required')" class="text-red-500 text-xs font-bold">First Name is required !</div>
+            <div *ngIf="employeeForm.get('lastName')?.touched && hasError('lastName', 'required')" class="text-red-500 text-xs font-bold">Last Name is required !</div>
 
         </div>
     </div>
@@ -36,9 +36,9 @@
         <!-- Mobile Number -->
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Mobile Number:</label>
-            <input type="tel" class="form-input rounded-md w-full" formControlName="mobileNumber">
-            <div *ngIf="employeeForm.get('mobileNumber')?.touched && hasError('mobileNumber', 'required')" class="text-red-500 text-xs font-bold">Mobile Number is required !</div>
-            <div *ngIf="employeeForm.get('mobileNumber')?.touched && hasError('mobileNumber', 'pattern')" class="text-red-500 text-xs font-bold">Invalid Mobile Number !</div>
+            <input type="tel" class="form-input rounded-md w-full" formControlName="mobileNo">
+            <div *ngIf="employeeForm.get('mobileNo')?.touched && hasError('mobileNo', 'required')" class="text-red-500 text-xs font-bold">Mobile Number is required !</div>
+            <div *ngIf="employeeForm.get('mobileNo')?.touched && hasError('mobileNo', 'pattern')" class="text-red-500 text-xs font-bold">Invalid Mobile Number !</div>
 
         </div>
 
@@ -94,11 +94,11 @@
         <!-- Reference Mobile Number -->
         <div class="w-full md:w-1/2 px-4 mb-4 md:mb-0">
             <label class="block text-gray-700 text-sm font-bold mb-2">Reference Mobile Number:</label>
-            <input type="tel" class="form-input rounded-md w-full" formControlName="referenceMobileNumber">
+            <input type="tel" class="form-input rounded-md w-full" formControlName="referenceMobileNo">
         </div>
     </div>
 
     <div class="flex justify-end">
-        <button type="submit"  [disabled]="employeeForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+        <button type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
     </div>
 </form>
