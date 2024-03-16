@@ -17,7 +17,7 @@
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
     
-    <p-table [value]="employees"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'position']">
+    <p-table [value]="employees"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'id','mobileNo','referenceName']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
@@ -33,23 +33,24 @@
         <ng-template pTemplate="header">  
             <tr>
                 <th>Code</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Quantity</th>
-                <th>Quantity</th>
-                <th>Quantity</th>
+                <th>Full Name</th>
+                <th>Reference Name</th>
+                <th>Mobile Number</th>
                 <th>Action</th> 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-product>
+        <ng-template pTemplate="body" let-employee>
             <tr>
-                <td>{{product.id}}</td>
-                <td>{{product.name}}</td>
-                <td>{{product.position}}</td>
-                <td>{{product.department}}</td>
-                <td>{{product.department}}</td>
-                <td>{{product.department}}</td>
-                <td><button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editProduct(product)"></button></td>
+                <td>{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.referenceName}}</td>
+                <td>{{employee.mobileNo}}</td>
+            
+                <td>
+                    <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewEmployee(employee)"></button>
+
+                    <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editEmployee(employee)"></button>
+                </td>
 
             </tr>
         </ng-template>

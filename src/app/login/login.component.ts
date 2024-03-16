@@ -21,13 +21,17 @@ export class LoginComponent {
     this.loading = true;
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        localStorage.setItem('token', response.token);
+        console.info("Response =>" , response)
+        if(response && response.access_token){
+        localStorage.setItem('token', response.access_token);
         this.toastr.success('Login Successfull !', 'Success');
-
+        }
         this.router.navigate(['/main']);
       },
       (error) => {
+        console.log("Error =>" , error)
         this.loading = false;
+        this.toastr.error(error.statusText , 'Error')
       },
       () => {
         this.loading =false

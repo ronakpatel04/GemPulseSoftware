@@ -13,15 +13,16 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getEmployees() {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(this.apiUrl + 'users');
   }
 
   addEmployee(employee: any) {
-    return this.http.post<any>(this.apiUrl, employee);
+    const url = this.apiUrl + 'auth/register'
+    return this.http.post<any>(url, employee);
   }
 
-  editEmployee(employee: any) {
-    const url = `${this.apiUrl}/${employee.id}`;
+  editEmployee(id: any, employee: any) {
+    const url = `${this.apiUrl}users/${id}`;
     return this.http.put<any>(url, employee);
   }
 
