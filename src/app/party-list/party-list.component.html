@@ -1,6 +1,6 @@
 <div class="table-container">
     <div class="header">
-        Employee Management
+        Party Management
     </div>
 
     <!-- <div class="p-toolbar">
@@ -17,11 +17,11 @@
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
     
-    <p-table [value]="employees"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'id','mobileNo','referenceName']">
+    <p-table [value]="parties"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'id','mobileNo','referenceName']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
-                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"  (click)="openAddEmployeeDialog()"></button>
+                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"  (click)="openAddpartyDialog()"></button>
 
                 <span class="p-input-icon-right ml-auto">
                     <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
@@ -32,24 +32,27 @@
         
         <ng-template pTemplate="header">  
             <tr>
-                <th>Code</th>
-                <th>Full Name</th>
-                <th>Reference Name</th>
-                <th>Mobile Number</th>
+                <th pSortableColumn="id" >Code <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Party Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="mobileNo">Mobile Number <p-sortIcon field="mobileNo"></p-sortIcon></th>
+                <th pSortableColumn="gstNo">GST Number <p-sortIcon field="gstNo"></p-sortIcon></th>
+    
                 <th>Action</th> 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-employee>
+        <ng-template pTemplate="body" let-party>
             <tr>
-                <td>{{employee.id}}</td>
-                <td>{{employee.name}}</td>
-                <td>{{employee.referenceName}}</td>
-                <td>{{employee.mobileNo}}</td>
+                <td>{{party.id}}</td>
+                <td>{{party.name}}</td>
+                <td>{{party.email}}</td>
+                <td>{{party.mobileNo}}</td>
+                <td>{{party.gstNo}}</td>
             
                 <td>
-                    <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewEmployee(employee)"></button>
+                    <button pButton icon="pi pi-eye" class="p-button-rounded view-icon"  (click)="viewParty(party)"></button>
 
-                    <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editEmployee(employee)"></button>
+                    <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="openAddpartyDialog(party)"></button>
                 </td>
 
             </tr>

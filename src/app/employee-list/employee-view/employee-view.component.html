@@ -1,0 +1,35 @@
+<div class="employee-view shadow-lg rounded-lg p-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <div class="mb-4">
+                <p class="text-gray-700 font-semibold mb-2">ID:</p>
+                <p class="text-gray-900">{{ employee.id }}</p>
+            </div>
+            <div class="mb-4">
+                <p class="text-gray-700 font-semibold mb-2">Name:</p>
+                <p class="text-gray-900">{{ employee.firstName }} {{ employee.lastName }}</p>
+            </div>
+            <div class="mb-4">
+                <p class="text-gray-700 font-semibold mb-2">Mobile Number:</p>
+                <p class="text-gray-900">{{ employee.mobileNo }}</p>
+            </div>
+            <!-- Add more fields as needed -->
+        </div>
+        <div>
+            <div class="mb-4">
+                <p class="text-gray-700 font-semibold mb-2">Address:</p>
+                <p class="text-gray-900">{{ employee.address }}</p>
+            </div>
+            <div class="mb-4">
+                <p class="text-gray-700 font-semibold mb-2">Reference Name:</p>
+                <p class="text-gray-900">{{ employee.referenceName?employee.referenceName:'--' }}</p>
+            </div>
+            <div class="mb-4">
+                <p class="text-gray-700 font-semibold mb-2">Reference Mobile Number:</p>
+                <p class="text-gray-900">{{ employee.referenceMobileNo ?employee.referenceMobileNo:'--'  }}</p>
+            </div>
+            <!-- Add more fields as needed -->
+        </div>
+    </div>
+</div>

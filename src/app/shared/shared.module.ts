@@ -7,7 +7,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { EmployeeListComponent } from '../employee-list/employee-list.component';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from "primeng/button";
-import { ProgressSpinnerModule } from 'primeng/progressspinner'; 
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { EmployeeAddComponent } from '../employee-list/employee-add/employee-add.component';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -15,12 +15,16 @@ import { JwttokenInterceptor } from '../Interceptors/jwttoken.interceptor';
 import { PacketListComponent } from '../packet-list/packet-list.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { NgxPrintModule } from 'ngx-print';
+import { EmployeeViewComponent } from '../employee-list/employee-view/employee-view.component';
+import { PartyListComponent } from '../party-list/party-list.component';
+import { PartyAddComponent } from '../party-list/party-add/party-add.component';
+import { PartyViewComponent } from '../party-list/party-view/party-view.component';
 
 
 
 
 @NgModule({
-  declarations: [LoginComponent,MainComponent,EmployeeListComponent,EmployeeAddComponent,PacketListComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -32,12 +36,12 @@ import { NgxPrintModule } from 'ngx-print';
     QRCodeModule,
     NgxPrintModule
   ],
-  exports:[LoginComponent,MainComponent, EmployeeListComponent,EmployeeAddComponent,PacketListComponent],
-  providers:[DialogService,    {
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent],
+  providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,
     multi: true
   }
-]
+  ]
 })
 export class SharedModule { }
