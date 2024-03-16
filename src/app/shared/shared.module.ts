@@ -13,12 +13,13 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwttokenInterceptor } from '../Interceptors/jwttoken.interceptor';
 import { EmployeeViewComponent } from '../employee-list/employee-view/employee-view.component';
+import { PartyListComponent } from '../party-list/party-list.component';
 
 
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -30,7 +31,7 @@ import { EmployeeViewComponent } from '../employee-list/employee-view/employee-v
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,
