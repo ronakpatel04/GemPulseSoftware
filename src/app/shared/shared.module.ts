@@ -16,12 +16,14 @@ import { EmployeeViewComponent } from '../employee-list/employee-view/employee-v
 import { PartyListComponent } from '../party-list/party-list.component';
 import { PartyAddComponent } from '../party-list/party-add/party-add.component';
 import { PartyViewComponent } from '../party-list/party-view/party-view.component';
-
+import { PacketListComponent } from '../packet-list/packet-list.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { PacketAddComponent } from '../packet-list/packet-add/packet-add.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -29,11 +31,12 @@ import { PartyViewComponent } from '../party-list/party-view/party-view.componen
     TableModule,
     ButtonModule,
     ProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,
