@@ -1,0 +1,83 @@
+<div class="table-container">
+    
+
+    <!-- <div class="p-toolbar">
+        <div class="p-toolbar-group-left">
+            
+                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"></button> -->
+             <!-- <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search"> --> 
+             
+        <!-- </div> -->
+      
+    <!-- </div> -->
+    <div class="loader-overlay" *ngIf="loading">
+        <!-- Loader -->
+        <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+    </div>
+    
+    <p-table [value]="packets"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['number']">
+      
+        <ng-template pTemplate="caption">
+            <div class="flex toolbar">
+                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"  (click)="openAddPacketDialg()"></button>
+                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" class="custom-button clear"  (click)="clear(dt)"></button>
+
+                <span class="p-input-icon-right ml-auto">
+                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
+                    <i class="pi pi-search  search-icon"></i>
+                </span>
+
+            </div>
+        </ng-template>
+        
+        <ng-template pTemplate="header">  
+            <tr>
+                <th>QR Code</th>
+                <th>KAPN Number <p-columnFilter type="text" field="number" display="menu"></p-columnFilter></th>
+                <th>Shape</th>
+                <th>raw weight</th>
+                <th>Markable weight</th>
+                <th>Expacted weight</th>
+                <th>Final weight</th>
+                <th>LAB</th>
+                <th>Color</th>
+                <th>Purity</th>
+                <th>Cut</th>
+                <th>Polish </th>
+                <th>Smy</th>
+                <th>Diamond Type</th>
+                <th>Action</th> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-packet>
+            <tr>
+                <td>
+
+                    <qrcode [qrdata]="packet.id.toString()" [width]="56" ></qrcode>
+
+                </td>
+                <td>{{packet?.number}}</td>
+                <td>{{packet?.shape}}</td>
+                <td>{{packet?.weight?.rawWeight}}</td>
+                <td>{{packet?.weight?.markableWeight}}</td>
+                <td>{{packet?.weight?.expectedWeight}}</td>
+                <td>{{packet?.weight?.finalWeight}}</td>
+                <td>{{"LAB"}}</td>
+                <td>{{packet?.color}}</td>
+                <td>{{packet?.purity}}</td>
+                <td>{{packet?.cut_type}}</td>
+                <td>{{packet?.polish_type}}</td>
+                <td>{{packet?.Smy}}</td>
+                <td>{{packet?.diamond_type}}</td>
+            
+            
+                <td>
+                    <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewEmployee(packet)"></button>
+
+                    <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editPacket(packet)"></button>
+                </td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
