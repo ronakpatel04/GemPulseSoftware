@@ -1,6 +1,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
 
 body, html {
     margin: 0;
@@ -21,6 +23,12 @@ body, html {
     outline: none !important;
   }
 
+
+  .logo-text{
+    color: black;
+    font-weight: bolder;
+    font-size: 18px;
+  }
 
   .header
 {
