@@ -64,7 +64,7 @@ export class EmployeeAddComponent {
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
       if (this.config.data.employee) {
-        const id = this.config.data.employee.id;
+        const id = this.config.data.employee._id;
         delete this.config.data.employee['mobileNo']
         this.employeeService.editEmployee(id, formData).subscribe(response => {
           if (response && response.status) {

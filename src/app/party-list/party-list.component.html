@@ -1,8 +1,4 @@
 <div class="table-container">
-    <div class="header">
-        Party Management
-    </div>
-
     <!-- <div class="p-toolbar">
         <div class="p-toolbar-group-left">
             
@@ -32,7 +28,6 @@
         
         <ng-template pTemplate="header">  
             <tr>
-                <th pSortableColumn="id" >Code <p-sortIcon field="id"></p-sortIcon></th>
                 <th pSortableColumn="name">Party Name <p-sortIcon field="name"></p-sortIcon></th>
                 <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
                 <th pSortableColumn="mobileNo">Mobile Number <p-sortIcon field="mobileNo"></p-sortIcon></th>
@@ -43,7 +38,6 @@
         </ng-template>
         <ng-template pTemplate="body" let-party>
             <tr>
-                <td>{{party.id}}</td>
                 <td>{{party.name}}</td>
                 <td>{{party.email}}</td>
                 <td>{{party.mobileNo}}</td>
@@ -55,6 +49,13 @@
                     <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="openAddpartyDialog(party)"></button>
                 </td>
 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="15" class="nodataimg" style="position: relative; height: 500px; width: 100%; text-align: center;">
+                    <img src="../../assets/No data.jpg" alt="No Data Found Image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
+                </td>
             </tr>
         </ng-template>
     </p-table>

@@ -15,7 +15,7 @@
         <label class="block text-gray-700 text-sm font-bold mb-2">Palty:</label>
         <select class="form-select rounded-md w-full" formControlName="paltyId">
             <option value="" disabled selected>Select Palty</option>
-            <option *ngFor="let option of paltyOptions" [value]="option.id">{{ option.name }}</option>
+            <option *ngFor="let option of paltyOptions" [value]="option._id">{{ option.name }}</option>
         </select>
         <div *ngIf="diamondForm.get('partyId')?.invalid && diamondForm.get('partyId')?.touched" class="text-red-500 text-xs font-bold">Please select a Party!</div>
 

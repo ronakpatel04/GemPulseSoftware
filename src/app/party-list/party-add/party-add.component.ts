@@ -68,10 +68,10 @@ export class PartyAddComponent implements OnInit {
     if (this.partyForm.valid) {
       const formData = this.partyForm.value;
       if (this.config.data.party) {
-        const id = this.config.data.party.id;
+        const id = this.config.data.party._id;
         this.partyService.editParty(id, formData).subscribe(response => {
           if (response && response.status) {
-            this.toastrservice.success('User updated successfully', 'Success');
+            this.toastrservice.success('Palty updated successfully', 'Success');
             this.ref.close();
           }
         }, (error) => {

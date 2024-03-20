@@ -24,7 +24,9 @@ export class PacketAddComponent {
     { label: 'Cut Type', controlName: 'cut_type', options: ['Good Cut', 'Very Good Cut', 'Excellent Cut'] },
     { label: 'Polish Type', controlName: 'polish_type', options: ['Good Polish', 'Very Good Polish', 'Excellent Polish'] },
     { label: 'Smy', controlName: 'Smy', options: ['Good Smy', 'Very Good Smy', 'Excellent Smy'] },
-    { label: 'Polish Status', controlName: 'polish_status', options: ['Started', 'Completed', 'Pending'] }
+    { label: 'Polish Status', controlName: 'polish_status', options: ['Not Started', 'Started', 'Issue', 'Ended', 'Submitted'] },
+    { label: 'LAB', controlName: 'lab', options: ['GIA', 'IGA', 'HRD'] }
+
   ];
 
   textFields = [
@@ -39,8 +41,8 @@ export class PacketAddComponent {
   constructor(private formBuilder: FormBuilder, private paltyService: PartyService, private ref: DynamicDialogRef, private config: DynamicDialogConfig, private toastrservice: ToastrService, private packetService: PacketService) { }
 
   ngOnInit(): void {
-    this.initForm();
     this.getPaltyOptions();
+    this.initForm();
     this.packetData = this.config.data.packet;
 
     if (this.packetData) {
@@ -57,6 +59,7 @@ export class PacketAddComponent {
       cut_type: ['', Validators.required],
       polish_type: ['', Validators.required],
       Smy: ['', Validators.required],
+      lab: ['', Validators.required],
       polish_status: ['', Validators.required],
       number: ['', Validators.required],
       carat: ['', Validators.required],
@@ -82,11 +85,12 @@ export class PacketAddComponent {
       polish_status: packet.polish_status,
       number: packet.number,
       carat: packet.carat,
+      lab: packet.lab,
       rawWeight: packet?.weight?.rawWeight,
       expectedWeight: packet?.weight?.expectedWeight,
-      finalWeight: packet.finalWeight,
-      markableWeight: packet.markableWeight,
-      paltyId: packet?.palty?.id
+      finalWeight: packet?.weight?.finalWeight,
+      markableWeight: packet?.weight?.markableWeight,
+      paltyId: packet?.palty
 
     })
   }
@@ -107,30 +111,32 @@ export class PacketAddComponent {
       const formValue = this.diamondForm.value;
 
       if (this.packetData) {
-
         const formData = {
-          number: this.packetData.number,
-          shape: this.packetData.shape,
-          color: this.packetData.color,
-          purity: this.packetData.purity,
-          diamond_type: this.packetData.diamond_type,
-          cut_type: this.packetData.cut_type,
-          polish_type: this.packetData.polish_type,
-          Smy: this.packetData.Smy,
-          carat: this.packetData.carat,
-          polish_status: this.packetData.polish_status,
+          number: formValue.number,
+          shape: formValue.shape,
+          color: formValue.color,
+          purity: formValue.purity,
+          diamond_type: formValue.diamond_type,
+          cut_type: formValue.cut_type,
+          polish_type: formValue.polish_type,
+          Smy: formValue.Smy,
+          carat: formValue.carat,
+          lab: formValue.lab,
+          polish_status: formValue.polish_status,
           weight: {
-            rawWeight: this.packetData?.weight?.rawWeight,
-            expectedWeight: this.packetData?.weight?.expectedWeight
+            rawWeight: formValue?.rawWeight,
+            expectedWeight: formValue?.expectedWeight,
+            finalWeight: formValue?.finalWeight,
+            markableWeight: formValue?.markableWeight,
+            _id: this.packetData.weight._id
           },
-          userId: this.packetData.userId,
-          paltyId: this.packetData?.palty?.paltyId,
-          priceId: this.packetData.priceId
+          employee: formValue.employee,
+          paltyId: formValue?.paltyId,
+          priceId: formValue.price
         };
 
-        console.log("formdata =>", formData);
 
-        this.packetService.editPacket(this.packetData.id, formData).subscribe(response => {
+        this.packetService.editPacket(this.packetData._id, formData).subscribe(response => {
           if (response && response.status) {
             this.toastrservice.success('User updated successfully', 'Success');
             this.ref.close();
@@ -152,14 +158,18 @@ export class PacketAddComponent {
           polish_type: formValue.polish_type,
           Smy: formValue.Smy,
           carat: formValue.carat,
+          lab: formValue.lab,
           polish_status: formValue.polish_status,
           weight: {
             rawWeight: formValue.rawWeight,
-            expectedWeight: formValue.expectedWeight
+            expectedWeight: formValue.expectedWeight,
+            finalWeight: formValue?.finalWeight,
+            markableWeight: formValue?.markableWeight,
+
           },
-          userId: 1,
+          employeeId: "65f9ae740c890a41aea838bc",
           paltyId: formValue.paltyId,
-          priceId: 1 //FOR REFERENCE  NOW 
+          priceId: "65f9cad543136d6fb2cc6e1e" //FOR REFERENCE  NOW 
         };
         this.packetService.addPacket(formData).subscribe(response => {
 

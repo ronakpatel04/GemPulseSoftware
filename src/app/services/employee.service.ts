@@ -13,7 +13,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getEmployees() {
-    return this.http.get<any>(this.apiUrl + 'users');
+    return this.http.get<any>(this.apiUrl + 'employees');
   }
 
   addEmployee(employee: any) {
@@ -21,8 +21,8 @@ export class EmployeeService {
     return this.http.post<any>(url, employee);
   }
 
-  editEmployee(id: any, employee: any) {
-    const url = `${this.apiUrl}users/${id}`;
+  editEmployee(_id: any, employee: any) {
+    const url = `${this.apiUrl}employees/${_id}`;
     return this.http.put<any>(url, employee);
   }
 
