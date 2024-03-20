@@ -169,3 +169,20 @@ select{
 .layout-news-active :host ::ng-deep .p-datatable tr > th {
     top: 7rem;
 }
+
+//scrollbar
+
+::-webkit-scrollbar {
+    width: 8px; 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #9d9c9c; 
+    border-radius: 4px; 
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 3px; 
+  }
+

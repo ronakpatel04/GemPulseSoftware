@@ -22,13 +22,6 @@ export class PacketListComponent {
 
   packets: any[] = [];
 
-  // Define columns
-  cols: any[] = [
-    { field: 'id', header: 'ID' },
-    { field: 'name', header: 'Full Name' },
-    { field: 'referenceName', header: 'Reference Name' },
-    { field: 'mobileNo', header: 'Mobile Number' }
-  ];
 
 
   globalFilter!: string;

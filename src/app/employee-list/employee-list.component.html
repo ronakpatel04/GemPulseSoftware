@@ -1,7 +1,5 @@
 <div class="table-container">
-    <div class="header">
-        Employee Management
-    </div>
+
 
     <!-- <div class="p-toolbar">
         <div class="p-toolbar-group-left">
@@ -16,8 +14,7 @@
         <!-- Loader -->
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
-    
-    <p-table [value]="employees"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'id','mobileNo','referenceName']">
+    <p-table [value]="employees"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'employeeId','referenceName']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
@@ -41,7 +38,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-employee>
             <tr>
-                <td>{{employee.id}}</td>
+                <td>{{employee.employeeId}}</td>
                 <td>{{employee.name}}</td>
                 <td>{{employee.referenceName}}</td>
                 <td>{{employee.mobileNo}}</td>
@@ -52,6 +49,13 @@
                     <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editEmployee(employee)"></button>
                 </td>
 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="15" class="nodataimg" style="position: relative; height: 500px; width: 100%; text-align: center;">
+                    <img src="../../assets/No data.jpg" alt="No Data Found Image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
+                </td>
             </tr>
         </ng-template>
     </p-table>

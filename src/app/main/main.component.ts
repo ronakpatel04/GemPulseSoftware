@@ -7,15 +7,17 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
-  
-  activeLink: string = ''; 
-  
-  
+
+  activeLink: string = '';
+
+
   navigateTo(link: string) {
     this.activeLink = link;
   }
-  
-  
 
-  
+  logout() {
+    localStorage.removeItem('token')
+  }
+
+
 }
