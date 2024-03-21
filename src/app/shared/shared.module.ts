@@ -19,11 +19,11 @@ import { PartyViewComponent } from '../party-list/party-view/party-view.componen
 import { PacketListComponent } from '../packet-list/packet-list.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { PacketAddComponent } from '../packet-list/packet-add/packet-add.component';
-
+import { PriceRangeComponent } from '../price-range/price-range.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -32,11 +32,11 @@ import { PacketAddComponent } from '../packet-list/packet-add/packet-add.compone
     ButtonModule,
     ProgressSpinnerModule,
     ReactiveFormsModule,
-    QRCodeModule
+    QRCodeModule,
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,

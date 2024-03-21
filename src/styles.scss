@@ -186,3 +186,13 @@ select{
     border-radius: 3px; 
   }
 
+
+  //Data table grid lines
+  .p-datatable .p-datatable-tbody > tr  {
+      border: 1px solid #dee2e6; 
+      padding: 8px;
+  }
+  
+  .p-datatable .p-datatable-thead > tr  {
+      background-color: #f8f9fa; 
+    }

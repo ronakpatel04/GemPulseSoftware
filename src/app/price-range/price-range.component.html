@@ -1,0 +1,88 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-wrap justify-center py-8 mx-auto max-w-xlg shadow-md">
+    <div class="flex flex-wrap items-center space-x-4 mb-4">
+      <div>
+        <label for="dropdown" class="block text-gray-700">Party              <i class="fa-regular fa-handshake"></i>              
+        </label>
+        <select id="dropdown" formControlName="paltyId" class="form-select mt-1 p-2 block w-48 border-gray-300 rounded-md shadow-sm" style="border: 1px solid black;">
+        <option value="" selected disabled>Select Party</option>
+            <option *ngFor="let option of dropdownOptions" [value]="option._id">{{ option.name }}</option>
+          </select>
+          
+      </div>
+  
+      <div>
+        <label for="carat1" class="block text-gray-700">Min Carat                <i class="fa-regular fa-gem"></i>
+        </label>
+        <input id="carat1" type="text" placeholder="Enter min carat" formControlName="carat1" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        <div *ngIf="isInvalidCaratRange()" class="text-red-500 text-xs font-bold" style="position: absolute;">
+            <div style="width: 80%;">Min Carat cannot be greater than Max Carat !</div>
+        </div>
+
+    </div>
+  
+      <div>
+        <label for="carat2" class="block text-gray-700">Max Carat                <i class="fa-regular fa-gem"></i>
+        </label>
+        <input id="carat2" type="text" placeholder="Enter max carat" formControlName="carat2" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+      </div>
+  
+      <div>
+        <label for="workerPrice" class="block text-gray-700">Worker Price             <i class="fa-solid fa-dollar-sign"></i></label>
+        <input id="workerPrice" type="text" formControlName="workerPrice" placeholder="Enter worker price" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+      </div>
+  
+      <div>
+        <label for="penaltyPrice" class="block text-gray-700">Party Price              <i class="fa-solid fa-dollar-sign"></i>        </label>
+        <input id="penaltyPrice" type="text" formControlName="partyPrice"   placeholder="Enter Party price" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+      </div>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded">Add</button>
+
+    </div>
+  
+
+  </form>
+  
+  <div class="table-container">
+    <p-table [value]="prices" [paginator]="true" #dt [rows]="10" styleClass="p-datatable-gridlines" [rowsPerPageOptions]="[10, 20, 50, 100]" [globalFilterFields]="['paltyId.name']">
+        <ng-template pTemplate="caption">
+            <div class="flex toolbar">
+
+                <span class="p-input-icon-right ml-auto">
+                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Search Palty Name...">
+                    <i class="pi pi-search  search-icon"></i>
+                </span>
+            </div>
+        </ng-template>
+        
+        
+        <ng-template pTemplate="header">
+            <tr>
+                <th>index</th>
+                <th>Party Name</th>
+                <th>Carat Range</th>
+                <th>Worker Price</th>
+                <th>Party Price</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-price let-i="rowIndex">
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ price.paltyId.name }}</td>
+                <td>{{ price.caratRange[0] }} -  {{ price.caratRange[1] }}</td>
+                <td>{{ price.workerPrice }}</td>
+                <td>{{ price.partyPrice }}</td>
+                <td>
+                    <button pButton icon="pi pi-pencil" class="p-button-rounded edit-icon" (click)="editPrice(price)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="15" class="nodataimg" style="position: relative; height: 500px; width: 100%; text-align: center;">
+                    <img src="../../assets/No data.jpg" alt="No Data Found Image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

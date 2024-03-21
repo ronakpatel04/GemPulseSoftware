@@ -54,7 +54,7 @@ export class EmployeeAddComponent {
       aadhaarNumber: employee.aadhaarNumber,
       address: employee.address,
       referenceName: employee.referenceName,
-      referenceMobileNo: employee.referenceMobileNumber,
+      referenceMobileNo: employee.referenceMobileNo,
     });
   }
 

@@ -31,8 +31,9 @@
             <tr>
                 <th>Code</th>
                 <th>Full Name</th>
-                <th>Reference Name</th>
                 <th>Mobile Number</th>
+                <th>Reference Name</th>
+                <th>Reference Moblie Number</th>
                 <th>Action</th> 
             </tr>
         </ng-template>
@@ -40,8 +41,9 @@
             <tr>
                 <td>{{employee.employeeId}}</td>
                 <td>{{employee.name}}</td>
-                <td>{{employee.referenceName}}</td>
                 <td>{{employee.mobileNo}}</td>
+                <td>{{employee.referenceName}}</td>
+                <td>{{employee.referenceMobileNo}}</td>
             
                 <td>
                     <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewEmployee(employee)"></button>
