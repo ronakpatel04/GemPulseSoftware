@@ -7,6 +7,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { AlreadyAuthGuard } from './guards/already-exist.guard';
 import { PartyListComponent } from './party-list/party-list.component';
 import { PacketListComponent } from './packet-list/packet-list.component';
+import { PriceRangeComponent } from './price-range/price-range.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,7 +16,7 @@ const routes: Routes = [
       { path: 'employee', component: EmployeeListComponent },
       { path: 'party', component: PartyListComponent },
       { path: 'packet', component: PacketListComponent },
-
+      { path: 'price', component: PriceRangeComponent }
 
     ]
   }, { path: '', redirectTo: '/login', pathMatch: 'full' },
