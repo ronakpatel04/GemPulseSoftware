@@ -20,6 +20,7 @@ import { PacketListComponent } from '../packet-list/packet-list.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { PacketAddComponent } from '../packet-list/packet-add/packet-add.component';
 import { PriceRangeComponent } from '../price-range/price-range.component';
+import { NgxPrintModule } from 'ngx-print';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { PriceRangeComponent } from '../price-range/price-range.component';
     ProgressSpinnerModule,
     ReactiveFormsModule,
     QRCodeModule,
-
+    NgxPrintModule
 
   ],
   exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent],

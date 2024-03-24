@@ -49,11 +49,16 @@
                 <th>Action</th> 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-packet>
-            <tr>
-                <td>
+        <ng-template pTemplate="body" let-packet let-i="rowIndex">
+                <tr>
+                    <td>
+                    <div [id]="'row_' + i">
 
-                    <qrcode [qrdata]="packet._id" [width]="56" ></qrcode>
+                        <qrcode [qrdata]="packet.number" [elementType]="'svg'" [width]="56" ></qrcode>
+                        <p style="font-size: 7px;" class="ml-3 mt-0">{{packet.number}}</p>
+                    </div>
+                    <button pButton  icon="pi pi-print" class="print-icon"   [useExistingCss]="true"
+                    [printSectionId]="'row_'+ i" ngxPrint></button>
 
                 </td>
                 <td>{{packet?.number}}</td>
