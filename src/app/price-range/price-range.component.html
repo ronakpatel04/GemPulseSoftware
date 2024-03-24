@@ -1,14 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-wrap justify-center py-8 mx-auto max-w-xlg shadow-md">
-    <div class="flex flex-wrap items-center space-x-4 mb-4">
-      <div>
-        <label for="dropdown" class="block text-gray-700">Party              <i class="fa-regular fa-handshake"></i>              
-        </label>
-        <select id="dropdown" formControlName="paltyId" class="form-select mt-1 p-2 block w-48 border-gray-300 rounded-md shadow-sm" style="border: 1px solid black;">
-        <option value="" selected disabled>Select Party</option>
-            <option *ngFor="let option of dropdownOptions" [value]="option._id">{{ option.name }}</option>
-          </select>
-          
-      </div>
+        <div class="flex flex-wrap items-center space-x-4 mb-4">
+        <div>
+            <label for="dropdown" class="block text-gray-700">Party              <i class="fa-regular fa-handshake"></i>              
+            </label>
+            <select id="dropdown" formControlName="paltyId" class="form-select mt-1 p-2 block w-48 border-gray-300 rounded-md shadow-sm" style="border: 1px solid black;">
+            <option value="" selected disabled>Select Party</option>
+                <option *ngFor="let option of dropdownOptions" [value]="option._id">{{ option.name }}</option>
+            </select>
+            
+        </div>
   
       <div>
         <label for="carat1" class="block text-gray-700">Min Carat                <i class="fa-regular fa-gem"></i>

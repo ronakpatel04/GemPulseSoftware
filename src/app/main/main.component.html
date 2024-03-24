@@ -1,16 +1,16 @@
 <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800">
   <div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r mr-4">
     <div class="flex items-center justify-start logo  h-14 border-b">
-      <img src="assets/logo1.png" alt="" class="h-10 ml-4">
+      <img src="assets/gem pulse logo.png" alt="" class="h-10 ml-4">
       
-      <div class="logo-text">BNB Diamonds</div>
+      <div class="logo-text">GemPluse</div>
     </div>
     <div class="overflow-y-auto overflow-x-hidden flex-grow">
       <ul class="flex flex-col py-4 space-y-1">
         <li>
           <a  [routerLink]="['/main/employee']" routerLinkActive="router-link-active"  class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
-              <i class="fa-solid fa-user"></i> <!-- Font Awesome icon -->
+              <i class="fa-solid fa-user w-5"></i> <!-- Font Awesome icon -->
             </span>
                       <span class="ml-2 text-sm tracking-wide truncate">Employee Mangement</span>
           </a>
@@ -18,7 +18,7 @@
         <li>
           <a [routerLink]="['/main/packet']"  routerLinkActive="router-link-active"       class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
-              <i class="fa-regular fa-gem"></i>
+              <i class="fa-regular fa-gem w-5"></i>
             </span>
             <span class="ml-2 text-sm tracking-wide truncate">Diamond Mangement</span>
             <!-- <span class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">New</span> -->
@@ -28,7 +28,7 @@
         <li>
           <a [routerLink]="['/main/party']"   routerLinkActive="router-link-active"  class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
-             <i class="fa-regular fa-handshake"></i>              
+             <i class="fa-regular fa-handshake w-5"></i>              
               </span>
             <span class="ml-2 text-sm tracking-wide truncate">Party Mangement</span>
             <!-- <span class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-indigo-500 bg-indigo-50 rounded-full">New</span> -->
@@ -39,8 +39,17 @@
           <a [routerLink]="['/main/price']"
           routerLinkActive="router-link-active" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
-              <i class="fa-solid fa-hand-holding-dollar"></i>            </span>
+              <i class="fa-solid fa-hand-holding-dollar w-5" ></i></span>
             <span class="ml-2 text-sm tracking-wide truncate">Price Range</span>
+          </a>
+        </li>
+
+        <li>
+          <a [routerLink]="['/main/issueForm']" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+            <span class="inline-flex justify-center items-center ml-4">
+              <i class="fa-brands fa-wpforms w-5"></i>                      </span>
+            <span class="ml-2 text-sm tracking-wide truncate">Assign Diamonds</span>
+            <span class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">Check</span>
           </a>
         </li>
 
@@ -52,6 +61,9 @@
             <span class="ml-2 text-sm tracking-wide truncate">Messages</span>
           </a>
         </li>
+
+        
+
         <li>
           <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">

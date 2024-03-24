@@ -52,9 +52,8 @@
         <ng-template pTemplate="body" let-packet>
             <tr>
                 <td>
-
-                    <qrcode [qrdata]="packet._id" [width]="56" ></qrcode>
-
+                    <qrcode [qrdata]="packet.number" [title]="packet.number" [width]="56" ></qrcode>
+                    <p style="font-size: 15px;">{{packet?.number}}</p>
                 </td>
                 <td>{{packet?.number}}</td>
                 <td>{{packet?.shape}}</td>

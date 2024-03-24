@@ -1,0 +1,36 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.staging';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AssignDiamondService {
+
+  private apiUrl = environment.apiUrl;
+
+  constructor(private http: HttpClient) { }
+
+
+  getDiamondsByPalty(id: any) {
+    const url = `${this.apiUrl}diamonds/palty/${id}`;
+    return this.http.get(url);
+  }
+
+  polishingJob(data: any) {
+    const url = `${this.apiUrl}polishing-jobs/start`;
+    return this.http.post(url, data);
+  }
+
+  polishingJobByEmployee(id?: string) {
+    if (id) {
+      const url = `${this.apiUrl}polishing-jobs/?employeeId=${id}`;
+      return this.http.get(url);
+    } else {
+      const url = `${this.apiUrl}polishing-jobs`;
+      return this.http.get(url);
+    }
+  }
+
+
+}
