@@ -5,6 +5,10 @@ import { PacketService } from '../services/packet.service';
 import { AssignDiamondService } from '../services/assign-diamond.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PrimeNGConfig } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { PacketAddComponent } from '../packet-list/packet-add/packet-add.component';
+import { IssueReturnComponent } from './issue-return/issue-return.component';
 
 @Component({
   selector: 'app-issue-form',
@@ -24,10 +28,12 @@ export class IssueFormComponent implements OnInit {
   diamonds: any[] = [];
   loading: boolean = false;
   globalFilter!: string;
+  dialogRef!: DynamicDialogRef;
 
 
 
-  constructor(private employeeService: EmployeeService, private paltyService: PartyService, private assignDiamondService: AssignDiamondService, private packetService: PacketService, private toastrService: ToastrService) { }
+
+  constructor(private employeeService: EmployeeService, private paltyService: PartyService, private assignDiamondService: AssignDiamondService, private packetService: PacketService, private toastrService: ToastrService, private primengConfig: PrimeNGConfig, private dialogService: DialogService) { }
 
 
   ngOnInit(): void {
@@ -178,6 +184,7 @@ export class IssueFormComponent implements OnInit {
         if (response && response.status) {
           this.toastrService.success(response.data, 'Success');
           this.formGroup.get('values')?.reset();
+          this.polishingJobs(this.selectEmployee._id);
         }
       }, (error) => {
         this.toastrService.error(error.error.message);
@@ -189,7 +196,22 @@ export class IssueFormComponent implements OnInit {
 
 
 
-  handleReturnDiamond(event: any) {
-    console.log("event =>", event)
+  handleReturnDiamond(diamond: any) {
+    this.dialogRef = this.dialogService.open(IssueReturnComponent, {
+      header: 'Diamond Return',
+      width: '40%',
+      height: '80%',
+      data: {
+        diamond: diamond
+      }
+    });
+    this.dialogRef.onClose.subscribe(() => {
+
+      if (this.selectEmployee) {
+        this.polishingJobs(this.selectEmployee._id);
+      } else {
+        this.polishingJobs();
+      }
+    });
   }
 }

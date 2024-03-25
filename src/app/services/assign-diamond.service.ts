@@ -27,10 +27,14 @@ export class AssignDiamondService {
       const url = `${this.apiUrl}polishing-jobs/?employeeId=${id}`;
       return this.http.get(url);
     } else {
-      const url = `${this.apiUrl}polishing-jobs`;
+      const url = `${this.apiUrl}polishing-jobs/?status=started`;
       return this.http.get(url);
     }
   }
 
+  polishingJobIssue(data: any, id: string) {
+    const url = `${this.apiUrl}polishing-jobs/update/${id}`;
+    return this.http.put(url, data);
+  }
 
 }

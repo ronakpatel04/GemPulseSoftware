@@ -24,7 +24,7 @@ export class PacketAddComponent {
     { label: 'Cut Type', controlName: 'cut_type', options: ['Good Cut', 'Very Good Cut', 'Excellent Cut'] },
     { label: 'Polish Type', controlName: 'polish_type', options: ['Good Polish', 'Very Good Polish', 'Excellent Polish'] },
     { label: 'Smy', controlName: 'Smy', options: ['Good Smy', 'Very Good Smy', 'Excellent Smy'] },
-    { label: 'Polish Status', controlName: 'polish_status', options: ['Not Started', 'Started', 'Issue', 'Ended', 'Submitted'] },
+    // { label: 'Polish Status', controlName: 'polish_status', options: ['Not Started', 'Started', 'Issue', 'Ended', 'Submitted'] },
     { label: 'LAB', controlName: 'lab', options: ['GIA', 'IGA', 'HRD'] }
 
   ];
@@ -122,7 +122,7 @@ export class PacketAddComponent {
           Smy: formValue.Smy,
           carat: formValue.carat,
           lab: formValue.lab,
-          polish_status: formValue.polish_status,
+          polish_status: 'Not Started',
           weight: {
             rawWeight: formValue?.rawWeight,
             expectedWeight: formValue?.expectedWeight,
@@ -159,7 +159,7 @@ export class PacketAddComponent {
           Smy: formValue.Smy,
           carat: formValue.carat,
           lab: formValue.lab,
-          polish_status: formValue.polish_status,
+          polish_status: 'Not Started',
           weight: {
             rawWeight: formValue.rawWeight,
             expectedWeight: formValue.expectedWeight,

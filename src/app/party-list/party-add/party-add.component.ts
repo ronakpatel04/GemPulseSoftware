@@ -25,8 +25,6 @@ export class PartyAddComponent implements OnInit {
 
     this.InitForm();
     const partyData = this.config.data.party;
-
-    console.log("partyData => ", partyData)
     if (partyData) {
       this.populateForm(partyData);
     }

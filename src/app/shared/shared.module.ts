@@ -24,10 +24,14 @@ import { IssueFormComponent } from '../issue-form/issue-form.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ChipsModule } from 'primeng/chips';
+import { IssueReturnComponent } from '../issue-form/issue-return/issue-return.component';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -39,11 +43,13 @@ import { ChipsModule } from 'primeng/chips';
     QRCodeModule,
     DropdownModule,
     MultiSelectModule,
-    ChipsModule
+    ChipsModule,
+    DialogModule,
+    ConfirmDialogModule
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,

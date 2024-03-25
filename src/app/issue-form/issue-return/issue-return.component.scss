@@ -1,0 +1,53 @@
+.diamond-details {
+    height: 90%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin: 20px;
+    padding: 20px;
+}
+
+.diamond-number, .employee-details {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    font-weight: bolder;
+    font-size: 26px;
+}
+.dropdown-container {
+    display: flex;
+    margin-left: 10px;
+}
+
+.custom-label {
+    font-weight: bold;
+    font-size: 21px;
+    margin-right: 7px; 
+
+}
+
+
+
+
+.reason-for-return {
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.description-box textarea {
+    width: 100%;
+    resize: vertical; /* Allowing vertical resizing */
+}
+
+
+.description-box {
+    margin-bottom: 20px;
+}
+
+
+textarea
+{
+    margin-top: 7px !important;
+    font-size: 18px;
+}
+

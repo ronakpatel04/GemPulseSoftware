@@ -72,12 +72,11 @@
         
         <ng-template pTemplate="header">  
             <tr>
+                
                 <th>index</th>
                 <th >Employee Name</th>
-                <th >Email </th>
-                <th >Mobile Number </th>
-                <th >GST Number </th>
-    
+                <th >Diamond Number </th>
+                <th >Status</th>
                 <th>Action</th> 
             </tr>
         </ng-template>
@@ -85,9 +84,9 @@
             <tr>
                 <td>{{ i + 1 }}</td>
                 <td>{{diamonds.employeeId.firstName}} {{diamonds.employeeId.lastName}}</td>
-                <td>{{diamonds.email}}</td>
-                <td>{{diamonds.mobileNo}}</td>
-                <td>{{diamonds.gstNo}}</td>
+                <td>{{diamonds.diamondId.number}}</td>
+                <td class="px-2 py-0.5 ml-auto">
+                    <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.status}}</span>
             
                 <td>
                     <i pButton  class="fa fa-undo rounded" aria-hidden="true"  (click)="handleReturnDiamond(diamonds)"></i>
