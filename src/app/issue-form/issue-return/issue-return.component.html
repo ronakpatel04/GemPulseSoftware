@@ -1,0 +1,62 @@
+<!-- <div class="diamond-details"> -->
+    <!-- Display Diamond Number -->
+    <!-- <p class="diamond-number">Diamond Number: {{diamondData.diamondId.number}}</p> -->
+
+    <!-- Display Employee Details -->
+    <!-- <p class="employee-details">Employee: {{diamondData.employeeId.firstName}} {{diamondData.employeeId.lastName}}</p> -->
+
+    <!-- Dropdown for Employee Selection -->
+    <!-- <div class="flex flex-wrap  flex justify-end ml-9 items-center space-x-4 mb-4">
+        <div class="dropdown-container">
+          <label for="Employee" class="custom-label"> Employee <i class="fa fa-user"></i></label>
+          <p-dropdown [options]="employeeOptions" [(ngModel)]="selectedEmployee" optionLabel="name"  placeholder="Select Employee"  [style]="{'width': '350px'}" [panelStyle]="{'width': '350px'}" (onChange)="onEmployeeSelect($event)"  [virtualScroll]="true" [virtualScrollItemSize]="38"  [showClear]="true"></p-dropdown>
+        </div> -->
+    <!-- <div class="comment">
+
+        <input type="text">
+    </div> -->
+<!-- </div> -->
+
+<div class="diamond-details">
+    <div class="flex flex-col mb-4">
+        <label for="diamondnum" class="custom-label">Diamond Number :</label>
+        <p class="border border-gray-300 p-2" style="color: red ; font-weight: 600;">{{diamondData.diamondId.number}}</p>
+    </div>
+
+    <div class="flex flex-col mb-4">
+        <label for="employee" class="custom-label"> Employee Name :</label>
+        <p class="border border-gray-300 p-2" style="color: red; font-weight: 600;">{{diamondData.employeeId.firstName}} {{diamondData.employeeId.lastName}}</p>
+    </div>
+
+    <div class="reason-for-return mb-4">
+        <div class="mt-5 mb-5">
+            <label for="ReasonForReturn" class="custom-label">Reason for Return:</label>
+            <p-dropdown  [style]="{'width': '350px'}" [panelStyle]="{'width': '350px'}"   [options]="reasonOptions" [(ngModel)]="selectedReason" placeholder="Select Reason"
+                        class="w-200" [showClear]="true">
+            </p-dropdown>
+        </div>
+    
+        <div class="description-box mt-2">
+            <label for="Description" class="custom-label mb-1">Please describe:</label>
+            <textarea [(ngModel)]="returnDescription" rows="4" placeholder="Describe the reason for return..."
+                      class="border border-gray-300 p-2 w-96"></textarea>
+        </div>
+    </div>
+
+    
+</div>
+
+<div class="assign-button flex justify-end mr-5 mt-4">
+    <p-confirmDialog [styleClass]="'custom-confirm-dialog'"></p-confirmDialog>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded" (click)="assignDiamond()">Assign</button>
+</div>
+
+
+ <!-- for reference  -->
+<!-- <div>
+    <label for="Employee" class="custom-label mt-2"> Assign Employee :</label>
+    <p-dropdown [style]="{'width': '350px'}" [panelStyle]="{'width': '350px'}"
+    [options]="employeeOptions" [(ngModel)]="selectedEmployee" optionLabel="name"  
+                placeholder="Select Employee" class="w-200 border-black-300" (onChange)="onEmployeeSelect($event)"
+                [virtualScroll]="true" [virtualScrollItemSize]="38" [showClear]="true" ></p-dropdown>
+</div> -->

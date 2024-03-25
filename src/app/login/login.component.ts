@@ -26,7 +26,6 @@ export class LoginComponent {
           this.toastr.success('Login Successfull !', 'Success');
         }
         this.router.navigate(['/main']);
-        console.log("Response =>", response)
       },
       (error) => {
         this.loading = false;

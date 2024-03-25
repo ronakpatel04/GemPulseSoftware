@@ -20,10 +20,18 @@ import { PacketListComponent } from '../packet-list/packet-list.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { PacketAddComponent } from '../packet-list/packet-add/packet-add.component';
 import { PriceRangeComponent } from '../price-range/price-range.component';
+import { IssueFormComponent } from '../issue-form/issue-form.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ChipsModule } from 'primeng/chips';
+import { IssueReturnComponent } from '../issue-form/issue-return/issue-return.component';
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -33,10 +41,15 @@ import { PriceRangeComponent } from '../price-range/price-range.component';
     ProgressSpinnerModule,
     ReactiveFormsModule,
     QRCodeModule,
+    DropdownModule,
+    MultiSelectModule,
+    ChipsModule,
+    DialogModule,
+    ConfirmDialogModule
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,

@@ -44,7 +44,6 @@ export class PartyListComponent implements OnInit {
       if (response && response.statusCode == 200 && response.status) {
         this.loading = false;
         this.parties = response.data
-        console.log("this.parties =>", this.parties)
       }
     }, (error) => {
       this.loading = false;

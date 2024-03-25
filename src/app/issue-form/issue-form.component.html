@@ -1,0 +1,107 @@
+<!-- <div class="flex flex-wrap   justify-center flex-start mx-auto max-w-xlg">
+    <div class="flex flex-wrap  ml-9 items-center space-x-4 mb-4">
+      <div class="dropdown-container">
+        <label for="Employee" class="custom-label"> Employee <i class="fa fa-user"></i></label>
+        <p-dropdown [options]="employeeDropdown" [(ngModel)]="selectEmployee" optionLabel="name"  placeholder="Select Employee"  [style]="{'width': '350px'}" [panelStyle]="{'width': '350px'}" (onChange)="onEmployeeSelect($event)"  [virtualScroll]="true" [virtualScrollItemSize]="38"  [showClear]="true"></p-dropdown>
+      </div>
+    </div>
+    <div class="flex flex-wrap  ml-9 items-center space-x-4 mb-4">
+        <div class="dropdown-container">
+          <label for="party" class="custom-label"> Party <i class="fa fa-handshake"></i></label>
+          <p-dropdown [options]="partyDropdown" [(ngModel)]="selectParty" optionLabel="name"  placeholder="Select Party" [style]="{'width': '350px'}" [panelStyle]="{'width': '350px'}"   [virtualScroll]="true" [virtualScrollItemSize]="38"  [showClear]="true"(onChange)="onPartySelect($event)"  [virtualScroll]="true" [virtualScrollItemSize]="38"  [showClear]="true"></p-dropdown>
+        </div>
+      </div>
+      <div class="flex flex-wrap  ml-9 items-center space-x-4 mb-4">
+        <div class="dropdown-container">
+            <label for="diamondSelect" class="custom-label"> Diamond <i class="fa fa-gem"></i></label>
+            <p-multiSelect [options]="diamondDropdown" [showToggleAll]="true"  [(ngModel)]="selectDiamond" optionLabel="number" display="chip" placeholder="Select Diamonds" [style]="{'width': '350px'}" [panelStyle]="{'width': '350px'}" [showClear]="true"   (onChange)="onDiamondSelect($event)"     (onSelectAllChange)="onSelectAllChange($event)"
+            ></p-multiSelect>
+        </div>
+      
+      </div>
+      
+    </div>
+     -->
+    <div class="custom-card p-fluid ml-12 mr-12 mt-10 ">
+        <div class="card">    
+        <label for="Diamonds" style="margin-bottom: 20px;"><i class="fa fa-gem"></i> Diamonds Assign:</label>
+            <form [formGroup]="formGroup">
+                <p-chips 
+                    formControlName="values" placeholder="Scan Diamonds....">                
+                </p-chips>
+            </form>
+        </div>
+
+        <div class="flex flex-wrap  flex justify-end ml-9 items-center space-x-4 mb-4">
+            <div class="dropdown-container">
+              <label for="Employee" class="custom-label"> Employee <i class="fa fa-user"></i></label>
+              <p-dropdown [options]="employeeDropdown" [(ngModel)]="selectEmployee" optionLabel="name"  placeholder="Select Employee"  [style]="{'width': '350px'}" [panelStyle]="{'width': '350px'}" (onChange)="onEmployeeSelect($event)"  [virtualScroll]="true" [virtualScrollItemSize]="38"  [showClear]="true"></p-dropdown>
+            </div>
+            <div class="flex justify-end ml-9 mt-12">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-5 rounded mt-4" (click)="assignChips()">Assign  <i class="ml-2 fa fa-check"></i></button>
+            </div>    
+        </div>
+</div>
+  
+<div class="table-container">
+    <!-- <div class="p-toolbar">
+        <div class="p-toolbar-group-left">
+            
+                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"></button> -->
+             <!-- <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search"> --> 
+             
+        <!-- </div> -->
+      
+    <!-- </div> -->
+    <div class="loader-overlay" *ngIf="loading">
+        <!-- Loader -->
+        <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+    </div>
+    
+    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'id','mobileNo','referenceName']">
+      
+        <ng-template pTemplate="caption">
+            <div class="flex toolbar">
+
+                <span class="p-input-icon-right ml-auto">
+                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
+                    <i class="pi pi-search  search-icon"></i>
+                </span>
+            </div>
+        </ng-template>
+        
+        <ng-template pTemplate="header">  
+            <tr>
+                
+                <th>index</th>
+                <th >Employee Name</th>
+                <th >Diamond Number </th>
+                <th >Status</th>
+                <th>Action</th> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{diamonds.employeeId.firstName}} {{diamonds.employeeId.lastName}}</td>
+                <td>{{diamonds.diamondId.number}}</td>
+                <td class="px-2 py-0.5 ml-auto">
+                    <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.status}}</span>
+            
+                <td>
+                    <i pButton  class="fa fa-undo rounded" aria-hidden="true"  (click)="handleReturnDiamond(diamonds)"></i>
+                </td>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="15" class="nodataimg" style="position: relative; height: 500px; width: 100%; text-align: center;">
+                    <img src="../../assets/No data.jpg" alt="No Data Found Image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
