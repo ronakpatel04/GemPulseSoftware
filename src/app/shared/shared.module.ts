@@ -29,6 +29,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { IssueResolveListComponent } from '../issue-form/issue-resolve-list/issue-resolve-list.component';
 import { IssueResolveFormComponent } from '../issue-form/issue-resolve-list/issue-resolve-form/issue-resolve-form.component';
+import { NgxPrintModule } from 'ngx-print';
 
 
 
@@ -47,6 +48,7 @@ import { IssueResolveFormComponent } from '../issue-form/issue-resolve-list/issu
     MultiSelectModule,
     ChipsModule,
     DialogModule,
+    NgxPrintModule,
     ConfirmDialogModule
 
 

@@ -49,12 +49,18 @@
                 <th>Action</th> 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-packet>
+        <ng-template pTemplate="body" let-packet let-i="rowIndex">
             <tr>
                 <td>
-                    <qrcode [qrdata]="packet.number" [title]="packet.number" [width]="56" ></qrcode>
-                    <p style="font-size: 15px;">{{packet?.number}}</p>
-                </td>
+                <div [id]="'row_' + i">
+
+                    <qrcode [qrdata]="packet.number" [elementType]="'svg'" [width]="56" ></qrcode>
+                    <p style="font-size: 9px;letter-spacing: 1px; font-weight: 900;" class="ml-2 mt-0">{{packet.number}}</p>
+                </div>
+                <button pButton  icon="pi pi-print" class="print-icon"   [useExistingCss]="true"
+                [printSectionId]="'row_'+ i" ngxPrint></button>
+
+            </td>
                 <td>{{packet?.number}}</td>
                 <td>{{packet?.shape}}</td>
                 <td>{{packet?.weight?.rawWeight}}</td>
