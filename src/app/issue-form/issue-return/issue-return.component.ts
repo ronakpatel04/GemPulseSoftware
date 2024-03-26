@@ -72,9 +72,8 @@ export class IssueReturnComponent implements OnInit {
       accept: () => {
 
         const payload = {
-          Status: "issue",
-          diamondsId: this.config.data.diamond.diamondId._id,
-          employeeId: this.selectedEmployee._id
+          status: "issue",
+          comment: this.returnDescription,
         }
         this.issueReturnService.polishingJobIssue(payload, this.config.data.diamond._id).subscribe((response: any) => {
           if (response && response.status) {

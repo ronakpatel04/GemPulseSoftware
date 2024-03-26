@@ -54,17 +54,11 @@ export class IssueFormComponent implements OnInit {
     } else {
       this.polishingJobs();
     }
-
-
   }
-
 
 
   onDiamondSelect(event: any) {
     this.selectDiamond = event.value;
-
-
-
   }
 
 
