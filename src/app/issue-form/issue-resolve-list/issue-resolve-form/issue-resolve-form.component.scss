@@ -1,0 +1,78 @@
+.confirmation-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Required for absolute positioning of buttons */
+}
+
+.icon-and-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Optional: Adjust as needed */
+    font-size: 18px;
+    justify-content: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.confirm-text {
+    margin-left: 10px; /* Adjust this value as needed for spacing */
+}
+
+.buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+
+
+
+i.pi.pi-exclamation-triangle
+{
+    font-size: larger;
+}
+
+
+.confirmation-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: none; /* Remove box shadow */
+}
+
+.dropdown {
+    position: relative;
+    overflow: hidden; /* Hide scrollbar */
+}
+
+.dropdown select {
+    position: relative;
+    z-index: 10; /* Ensure dropdown is above dialog */
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none; /* Remove default dropdown arrow for Safari */
+    -moz-appearance: none; /* Remove default dropdown arrow for Firefox */
+}
+
+.dropdown::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Adjust this value for spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    border-style: solid;
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent white transparent;
+    z-index: 20; /* Ensure arrow is above dropdown */
+}
+
+/* Hide vertical scrollbar */
+.confirmation-dialog-container {
+    overflow-y: hidden;
+}
+
+
+

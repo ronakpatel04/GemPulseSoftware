@@ -37,4 +37,11 @@ export class AssignDiamondService {
     return this.http.put(url, data);
   }
 
+
+  polishingJobByissue() {
+    const url = `${this.apiUrl}polishing-jobs/?status=issue`;
+    return this.http.get(url);
+  }
+
+
 }

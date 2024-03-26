@@ -27,11 +27,13 @@ import { ChipsModule } from 'primeng/chips';
 import { IssueReturnComponent } from '../issue-form/issue-return/issue-return.component';
 import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { IssueResolveListComponent } from '../issue-form/issue-resolve-list/issue-resolve-list.component';
+import { IssueResolveFormComponent } from '../issue-form/issue-resolve-list/issue-resolve-form/issue-resolve-form.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -49,7 +51,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,

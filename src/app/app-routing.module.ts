@@ -9,6 +9,7 @@ import { PartyListComponent } from './party-list/party-list.component';
 import { PacketListComponent } from './packet-list/packet-list.component';
 import { PriceRangeComponent } from './price-range/price-range.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
+import { IssueResolveListComponent } from './issue-form/issue-resolve-list/issue-resolve-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'party', component: PartyListComponent },
       { path: 'packet', component: PacketListComponent },
       { path: 'price', component: PriceRangeComponent },
-      { path: 'issueForm', component: IssueFormComponent }
+      { path: 'issueForm', component: IssueFormComponent },
+      { path: 'issueResolve', component: IssueResolveListComponent }
 
     ]
   }, { path: '', redirectTo: '/login', pathMatch: 'full' },
