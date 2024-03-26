@@ -60,7 +60,7 @@ export class PacketAddComponent {
       polish_type: ['', Validators.required],
       Smy: ['', Validators.required],
       lab: ['', Validators.required],
-      polish_status: ['', Validators.required],
+      polish_status: ['Not Started'],
       number: ['', Validators.required],
       carat: ['', Validators.required],
       rawWeight: ['', Validators.required],

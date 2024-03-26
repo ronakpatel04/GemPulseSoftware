@@ -16,7 +16,7 @@ function createWindow() {
     });
 
 
-    win.loadURL(`file://${path.join(__dirname, 'dist', 'gem-pulse', 'index.html')}`);4
+    win.loadURL(`file://${path.join(__dirname, 'dist', 'gem-pulse', 'index.html')}`);
 
 
     win.on('closed', () => {
@@ -41,7 +41,9 @@ app.on('ready', ()=>{
     
 
     Menu.setApplicationMenu(null);
-    win.webContents.openDevTools();
+    win.on('resize', () => {
+        win.webContents.setZoomFactor(0.7);
+    });
 
 
 });
