@@ -13,7 +13,7 @@
       <div>
         <label for="carat1" class="block text-gray-700">Min Carat                <i class="fa-regular fa-gem"></i>
         </label>
-        <input id="carat1" type="text" placeholder="Enter min carat" formControlName="carat1" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        <input id="carat1" type="text" placeholder="Enter min carat" formControlName="carat1" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
         <div *ngIf="isInvalidCaratRange()" class="text-red-500 text-xs font-bold" style="position: absolute;">
             <div style="width: 80%;">Min Carat cannot be greater than Max Carat !</div>
         </div>
@@ -23,7 +23,7 @@
       <div>
         <label for="carat2" class="block text-gray-700">Max Carat                <i class="fa-regular fa-gem"></i>
         </label>
-        <input id="carat2" type="text" placeholder="Enter max carat" formControlName="carat2" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        <input id="carat2" type="text" placeholder="Enter max carat" formControlName="carat2" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
       </div>
   
       <div>
