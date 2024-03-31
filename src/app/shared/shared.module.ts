@@ -30,11 +30,12 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { IssueResolveListComponent } from '../issue-form/issue-resolve-list/issue-resolve-list.component';
 import { IssueResolveFormComponent } from '../issue-form/issue-resolve-list/issue-resolve-form/issue-resolve-form.component';
 import { NgxPrintModule } from 'ngx-print';
+import { DiamondAssignFormComponent } from '../issue-form/diamond-assign-form/diamond-assign-form.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -53,7 +54,7 @@ import { NgxPrintModule } from 'ngx-print';
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,

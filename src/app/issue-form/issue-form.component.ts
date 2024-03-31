@@ -9,6 +9,7 @@ import { PrimeNGConfig } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PacketAddComponent } from '../packet-list/packet-add/packet-add.component';
 import { IssueReturnComponent } from './issue-return/issue-return.component';
+import { DiamondAssignFormComponent } from './diamond-assign-form/diamond-assign-form.component';
 
 @Component({
   selector: 'app-issue-form',
@@ -207,5 +208,17 @@ export class IssueFormComponent implements OnInit {
         this.polishingJobs();
       }
     });
+  }
+
+
+  // New changes 
+
+
+  openAssignDiamondDialog() {
+    this.dialogRef = this.dialogService.open(DiamondAssignFormComponent, {
+      width: '50%',
+      height: '60%',
+      header: 'Issue Diamonds'
+    })
   }
 }

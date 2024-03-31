@@ -22,7 +22,7 @@
       
     </div>
      -->
-    <div class="custom-card p-fluid ml-12 mr-12 mt-10 ">
+    <!-- <div class="custom-card p-fluid ml-12 mr-12 mt-10 ">
         <div class="card">    
         <label for="Diamonds" style="margin-bottom: 20px;"><i class="fa fa-gem"></i> Diamonds Assign:</label>
             <form [formGroup]="formGroup">
@@ -41,8 +41,9 @@
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-5 rounded mt-4" (click)="assignChips()">Assign  <i class="ml-2 fa fa-check"></i></button>
             </div>    
         </div>
-</div>
+</div> -->
   
+
 <div class="table-container">
     <!-- <div class="p-toolbar">
         <div class="p-toolbar-group-left">
@@ -62,12 +63,13 @@
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
-
+                <button pButton type="button" label="Issue Diamond" icon="pi pi-plus" class="custom-button"  (click)="openAssignDiamondDialog()"></button>
                 <span class="p-input-icon-right ml-auto">
                     <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
                     <i class="pi pi-search  search-icon"></i>
                 </span>
             </div>
+
         </ng-template>
         
         <ng-template pTemplate="header">  
