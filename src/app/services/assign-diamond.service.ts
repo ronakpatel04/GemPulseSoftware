@@ -43,5 +43,10 @@ export class AssignDiamondService {
     return this.http.get(url);
   }
 
+  getDiamondById(number:string)
+  {
+    const url = `${this.apiUrl}diamonds?kapannumber=${number}`
+    return this.http.get(url);
+  }
 
 }
