@@ -74,12 +74,18 @@ export class IssueFormComponent implements OnInit {
       this.loading = true;
       this.assignDiamondService.polishingJobByEmployee(id).subscribe((response: any) => {
         this.loading = false;
-        this.diamonds = response.data
+        this.diamonds = response.data.map.map((employee: any) => {
+          employee.name = `${employee.employeeId.firstName} ${employee.employeeId.lastName}`;
+          return employee;
+        })
       })
     } else {
       this.loading = true;
       this.assignDiamondService.polishingJobByEmployee().subscribe((response: any) => {
-        this.diamonds = response.data;
+        this.diamonds = response.data.map((employee: any) => {
+          employee.name = `${employee.employeeId.firstName} ${employee.employeeId.lastName}`;
+          return employee;
+        });
         this.loading = false
       })
     }

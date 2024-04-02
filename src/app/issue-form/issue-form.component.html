@@ -59,7 +59,7 @@
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
     
-    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name', 'id','mobileNo','referenceName']">
+    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
@@ -78,6 +78,7 @@
                 <th>index</th>
                 <th >Employee Name</th>
                 <th >Diamond Number </th>
+                <th >Date</th>
                 <th >Status</th>
                 <th>Action</th> 
             </tr>
@@ -85,14 +86,17 @@
         <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
             <tr>
                 <td>{{ i + 1 }}</td>
-                <td>{{diamonds.employeeId.firstName}} {{diamonds.employeeId.lastName}}</td>
+                <td>{{diamonds.name}} </td>
                 <td>{{diamonds.diamondId.number}}</td>
+                <td>{{diamonds.startTime | date}}</td>
                 <td class="px-2 py-0.5 ml-auto">
                     <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.status}}</span>
-            
                 <td>
+
+                    
                     <i pButton  class="fa fa-undo rounded" aria-hidden="true"  (click)="handleReturnDiamond(diamonds)"></i>
                 </td>
+                
 
             </tr>
         </ng-template>
