@@ -18,13 +18,10 @@ function createWindow() {
 
     win.loadURL(`file://${path.join(__dirname, 'dist', 'gem-pulse', 'index.html')}`);
 
-
-
     
     win.on('closed', () => {
         win = null;
     });
-    
     
 
 }
