@@ -22,6 +22,12 @@ export class AssignDiamondService {
     return this.http.post(url, data);
   }
 
+  polishingJobUpdate(id:any , data:any) 
+  {
+      const url = `${this.apiUrl}polishing-jobs/update/${id}`;
+      return this.http.put(url,data)
+  }
+
   polishingJobByEmployee(id?: string) {
     if (id) {
       const url = `${this.apiUrl}polishing-jobs/?employeeId=${id}`;

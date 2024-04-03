@@ -29,7 +29,8 @@ export class IssueResolveListComponent implements OnInit {
     this.dialogRef = this.dialogService.open(IssueResolveFormComponent, {
       width: '30%',
       height: '40%',
-      showHeader: false,
+      showHeader: true,
+      header:'Issue Disscussion',
       data: {
         diamond: diamond
       }

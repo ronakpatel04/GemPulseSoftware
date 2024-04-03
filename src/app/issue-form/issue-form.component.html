@@ -78,8 +78,9 @@
                 <th>index</th>
                 <th >Employee Name</th>
                 <th >Diamond Number </th>
-                <th >Date</th>
+                <th >Comment</th>
                 <th >Status</th>
+                <th >Date</th>
                 <th>Action</th> 
             </tr>
         </ng-template>
@@ -88,11 +89,12 @@
                 <td>{{ i + 1 }}</td>
                 <td>{{diamonds.name}} </td>
                 <td>{{diamonds.diamondId.number}}</td>
-                <td>{{diamonds.startTime | date}}</td>
+                <td>{{diamonds.diamondId.comment ?diamonds.diamondId.comment:'--' }}</td>
                 <td class="px-2 py-0.5 ml-auto">
                     <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.status}}</span>
-                <td>
-
+                    <td>{{diamonds.startTime | date}}</td>
+                    <td>
+                        
                     
                     <i pButton  class="fa fa-undo rounded" aria-hidden="true"  (click)="handleReturnDiamond(diamonds)"></i>
                 </td>
