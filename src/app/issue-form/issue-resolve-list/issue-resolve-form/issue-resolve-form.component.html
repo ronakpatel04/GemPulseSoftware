@@ -8,12 +8,20 @@
         <p class="text-gray-700">Are you sure you want to change the employee for this diamond? If yes, please choose an employee.</p>
     </div>
 
-    <div>
-        <select [(ngModel)]="selectedEmployee" (change)="onEmployeeSelect($event)">
+    <div class="mb-4">
+        <label for="blockingWeight" class="block text-sm font-medium text-gray-700">Employee:</label>
+
+        <select [(ngModel)]="selectedEmployee" (ngModelChange)="onEmployeeChange($event)" class="mt-1 p-2 border border-gray-300  rounded-md focus:outline-none block w-full shadow-sm sm:text-sm">
             <option value="" disabled selected>Select Employee</option>
             <option *ngFor="let employee of employeeOptions" [value]="employee._id">{{ employee.name }}</option>
         </select>
     </div>
+
+    <div class="mb-4">
+        <label for="blockingWeight" class="block text-sm font-medium text-gray-700">Markable Weight:</label>
+        <input type="text" id="blockingWeight" name="blockingWeight" [(ngModel)]="blockingWeight" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" >
+      </div>
+    
     <div class="buttons flex justify-end">
         <button class="custom-button btn bg-blue-500 hover:bg-blue-600 text-white font-semibold  rounded focus:outline-none focus:shadow-outline" (click)="handleResolve()">OK</button>
     </div>
