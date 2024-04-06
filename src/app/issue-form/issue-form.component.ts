@@ -201,7 +201,6 @@ export class IssueFormComponent implements OnInit {
     this.dialogRef = this.dialogService.open(IssueReturnComponent, {
       header: 'Diamond Return',
       width: '40%',
-      height: '80%',
       data: {
         diamond: diamond
       }
@@ -223,8 +222,10 @@ export class IssueFormComponent implements OnInit {
   openAssignDiamondDialog() {
     this.dialogRef = this.dialogService.open(DiamondAssignFormComponent, {
       width: '50%',
-      height: '60%',
       header: 'Issue Diamonds'
+    })
+    this.dialogRef.onClose.subscribe(() => {
+      this.polishingJobs()
     })
   }
 }

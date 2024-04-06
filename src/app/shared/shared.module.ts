@@ -31,11 +31,13 @@ import { IssueResolveListComponent } from '../issue-form/issue-resolve-list/issu
 import { IssueResolveFormComponent } from '../issue-form/issue-resolve-list/issue-resolve-form/issue-resolve-form.component';
 import { NgxPrintModule } from 'ngx-print';
 import { DiamondAssignFormComponent } from '../issue-form/diamond-assign-form/diamond-assign-form.component';
+import { DiamondCompletedListComponent } from '../diamond-completed-list/diamond-completed-list.component';
+import { DiamondCompletedFormComponent } from '../diamond-completed-list/diamond-completed-form/diamond-completed-form.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent , DiamondCompletedListComponent,DiamondCompletedFormComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -54,7 +56,7 @@ import { DiamondAssignFormComponent } from '../issue-form/diamond-assign-form/di
 
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent,DiamondCompletedListComponent,DiamondCompletedFormComponent],
   providers: [DialogService, {
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,

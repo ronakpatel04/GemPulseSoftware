@@ -55,4 +55,23 @@ export class AssignDiamondService {
     return this.http.get(url);
   }
 
+    getCompletedDiamond()
+    {
+      const url = `${this.apiUrl}polishing-jobs/?status=completed`;
+      return this.http.get(url);
+    }
+
+    polishingJobEnd(id:string, data:any)
+    {
+      const url = `${this.apiUrl}polishing-jobs/end/${id}`;
+      return this.http.put(url,data)
+
+    }
+
+    polishingJobByDiamondId(id:string)
+    {
+      const url = `${this.apiUrl}polishing-jobs/?diamondId=${id}&status=started`;
+      return this.http.get(url);
+    }
+
 }

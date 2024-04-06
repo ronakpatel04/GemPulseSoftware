@@ -18,7 +18,7 @@ export class DiamondAssignFormComponent implements OnInit, AfterViewInit {
   kapnNumber!: string;
   diamondType !: string;
   carat : number =0.00;
-  blockingWeight!: number
+  blockingWeight!: number | null
   selectEmployee: any;
   employeeDropdown: any[] = [];
   diamondDropdown: any[] = [];
@@ -88,12 +88,19 @@ export class DiamondAssignFormComponent implements OnInit, AfterViewInit {
           {
             this.loading = false ;
             this.carat = response.data[0].carat;
-             this.kapnNumber = response.data[0].number;
+            this.kapnNumber = response.data[0].number;
             this.diamondType = response.data[0].diamond_type;
             this.rawWeight = response.data[0].weight.rawWeight
-      
+            this.matchingId =  response.data[0]._id
+            
           }else{
             this.loading = false
+            this.carat = 0.00
+            this.kapnNumber =''
+            this.diamondType=''
+            this.rawWeight =0.00
+            this.diamondValue = null
+  
           }
 
         }),(error)=>{
@@ -134,30 +141,41 @@ export class DiamondAssignFormComponent implements OnInit, AfterViewInit {
     }
   }
 
-  polishingJob()
-  {
+  polishingJob() {
     const payload = {
       diamondId: this.matchingId,
       employeeId: this.selectEmployee,
-      markableWeight:this.blockingWeight,
+      markableWeight: this.blockingWeight,
       status: "Started"
-    }
-
+    };
+  
     this.loading = true;
-    this.assignDiamondService.polishingJob(payload).subscribe((response: any) => {
-    if(response && response.status)
-    {
-         this.loading =false;
-        this.toastrService.success(response.data, 'Success');
-    }       
-
-    else{
-          this.loading = false
+  
+    this.assignDiamondService.polishingJob(payload).subscribe(
+      (response: any) => {
+        this.loading = false;
+        if (response && response.status) {
+          this.toastrService.success(response.data, 'Success');
+        } else {
+          this.toastrService.error("Failed to start polishing job.");
         }
-    },(error) => {
-      this.toastrService.error(error.error.message);
-      this.loading = false
-    })
-
+        this.resetFields();
+      },
+      (error) => {
+        this.loading = false;
+        this.toastrService.error(error.error.message);
+        this.resetFields();
+      }
+    );
+  }
+  
+  resetFields() {
+    this.carat = 0.00;
+    this.kapnNumber = '';
+    this.diamondType = '';
+    this.rawWeight = 0.00;
+    this.selectEmployee = '';
+    this.blockingWeight = null;
+    this.diamondValue = null;
   }
 }

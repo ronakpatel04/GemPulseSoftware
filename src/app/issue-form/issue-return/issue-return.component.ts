@@ -35,6 +35,7 @@ export class IssueReturnComponent implements OnInit {
 
   ngOnInit(): void {
     this.diamondData = this.config.data.diamond;
+    console.log("this.diamondId =>" , this.diamondData)
     this.getAllEmployee();
   }
 
@@ -72,8 +73,9 @@ export class IssueReturnComponent implements OnInit {
       accept: () => {
 
         const payload = {
-          status: "issue",
+          status: "Issue",
           comment: this.returnDescription,
+          diamondId:this.diamondData.diamondId._id,
         }
         this.issueReturnService.polishingJobIssue(payload, this.config.data.diamond._id).subscribe((response: any) => {
           if (response && response.status) {
