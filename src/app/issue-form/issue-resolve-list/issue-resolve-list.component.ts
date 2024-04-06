@@ -28,12 +28,13 @@ export class IssueResolveListComponent implements OnInit {
 
     this.dialogRef = this.dialogService.open(IssueResolveFormComponent, {
       width: '30%',
-      height: '40%',
       showHeader: true,
       header:'Issue Disscussion',
+      contentStyle: {"border-bottom": "1px solid #ccc"} ,
+      styleClass:'testDialog',
       data: {
         diamond: diamond
-      }
+      },
     });
 
     this.dialogRef.onClose.subscribe(() => {

@@ -10,6 +10,7 @@ import { PacketListComponent } from './packet-list/packet-list.component';
 import { PriceRangeComponent } from './price-range/price-range.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
 import { IssueResolveListComponent } from './issue-form/issue-resolve-list/issue-resolve-list.component';
+import { DiamondCompletedListComponent } from './diamond-completed-list/diamond-completed-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'packet', component: PacketListComponent },
       { path: 'price', component: PriceRangeComponent },
       { path: 'issueForm', component: IssueFormComponent },
-      { path: 'issueResolve', component: IssueResolveListComponent }
+      { path: 'issueResolve', component: IssueResolveListComponent },
+      { path: 'diamondComplted', component: DiamondCompletedListComponent }
 
     ]
   }, { path: '', redirectTo: '/login', pathMatch: 'full' },

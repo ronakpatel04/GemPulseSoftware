@@ -1,0 +1,98 @@
+<div class="loader-overlay" *ngIf="loading">
+    <!-- Loader -->
+    <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+  </div>
+  <!-- diamond-form.component.html -->
+  <div class="container mx-auto mt-6">
+    <div class="grid grid-cols-2 gap-8">
+      <!-- First column for diamond form -->
+      <div class="bg-white rounded-lg overflow-hidden ">
+        <div class="p-6">
+          <div class="mb-4">
+            <label for="diamondInput" class="block text-sm font-medium text-gray-700">Scan Diamond:</label>
+            <input type="text" id="diamondInput" name="diamondInput" [(ngModel)]="diamondValue" (ngModelChange)="onInputChange($event)" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm" autofocus>
+          </div>
+  
+          <div class="mb-4">
+            <label for="kapnNumberInput" class="block text-sm font-medium text-gray-700">KAPN Number:</label>
+            <input type="text" id="kapnNumberInput" name="kapnNumberInput" [(ngModel)]="kapnNumber" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm text-red-700 font-bold" disabled>
+          </div>
+  
+          <div class="mb-4">
+            <label for="diamondTypeInput" class="block text-sm font-medium text-gray-700">Diamond Type:</label>
+            <input type="text" id="diamondTypeInput" name="diamondTypeInput" [(ngModel)]="diamondType" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm font-bold" disabled>
+          </div>
+  
+          <div class="mb-4">
+            <label for="blockingWeight" class="block text-sm font-medium text-gray-700">Final Weight:</label>
+            <input type="text" id="blockingWeight" name="blockingWeight" [(ngModel)]="finalWeight" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm">
+          </div>
+
+          
+          <div class="mb-4">
+            <label for="givenPolishType" class="block text-sm font-medium text-gray-700">Given Polish:</label>
+            <select id="givenPolishType" name="givenPolishType" [(ngModel)]="givenPolishType" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none w-full shadow-sm sm:text-sm ">
+              <option value="" disabled selected>Select</option>
+              <option *ngFor="let option of polishTypeOptions" [value]="option">{{ option }}</option>
+            </select>
+          </div>
+
+          
+    <div class="mb-4">
+        <label for="givenCutType" class="block text-sm font-medium text-gray-700">Given Cut:</label>
+        <select id="givenCutType" name="givenCutType" [(ngModel)]="givenCutType" class="mt-0 p-2 border border-gray-300 rounded-md focus:outline-none w-full shadow-sm sm:text-sm ">
+          <option value="" disabled selected>select</option>
+          <option *ngFor="let option of cutTypeOptins" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+
+        </div>
+      </div>
+      <!-- Second column for employee dropdown -->
+      <div class="bg-white rounded-lg overflow-hidden">
+        <div class="p-6">
+          <div class="mb-4">
+            <label for="employeeSelect" class="block text-sm font-medium text-gray-700">Polish By Employee:</label>
+            <input type="text" id="employeeSelect" name="employeeSelect" [(ngModel)]="selectEmployee" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm text-red-700 font-bold"  disabled>
+
+          </div>
+  
+  
+          <div class="mb-4">
+            <label for="rawWeightInput" class="block text-sm font-medium text-gray-700">Raw Weight:</label>
+            <input type="text" id="rawWeightInput" name="rawWeightInput" [(ngModel)]="rawWeight" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm text-red-700 font-bold"  disabled>
+          </div>
+  
+          <div class="mb-4">
+            <label for="caratInput" class="block text-sm font-medium text-gray-700">Carat:</label>
+            <input type="text" id="caratInput" name="caratInput" [(ngModel)]="carat" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm font-bold" disabled>
+          </div>
+  
+          
+
+
+    <div class="mb-2">
+      <label for="smyDropdown" class="block text-sm font-medium text-gray-700">Smy:</label>
+      <select id="smyDropdown" name="smyDropdown" [(ngModel)]="givenSmy" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none w-full shadow-sm sm:text-sm ">
+        <option value="" disabled selected>select</option>
+        <option *ngFor="let option of smyOptions" [value]="option">{{ option }}</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+        <label for="givenPurity" class="block text-sm font-medium text-gray-700">Given Purity:</label>
+        <select id="givenPurity" name="givenPurity" [(ngModel)]="givenPurity" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none w-full shadow-sm sm:text-sm ">
+          <option value="" disabled selected>select</option>
+          <option *ngFor="let option of purityOptions" [value]="option">{{ option }}</option>
+        </select>
+      </div>
+
+
+          <button class="mt-8 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 float-right rounded inline-flex items-center" (click)="assign()">
+            Completed <i class="fa fa-check ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </div>  
+  </div>
+  
