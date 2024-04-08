@@ -1,0 +1,130 @@
+<div class="custom-card p-fluid ml-12 mr-12 mt-10 ">
+    <div class="card">    
+    <label for="Diamonds" style="margin-bottom: 20px;"><i class="fa fa-gem"></i> Diamonds Scan:</label>
+        <form [formGroup]="formGroup">
+            <p-chips 
+                formControlName="values" placeholder="Scan Diamonds....">                
+            </p-chips>
+        </form>
+    </div>
+    </div>
+
+
+    <div class="table-container flex flex-wrap mt-5">
+        <!-- Left Table -->
+        <div class="w-full md:w-1/2 px-4">
+            <div class="loader-overlay" *ngIf="loading1">
+                <!-- Loader -->
+                <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+            </div>
+    
+            <div class="overflow-x-auto">
+                <p-table [value]="diamonds1" *ngIf="!loading1" #dt1 [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20, 50, 100]" [globalFilterFields]="['code','kapanNumber']">
+                    <!-- Left table content goes here -->
+                    <ng-template pTemplate="caption">
+                        <div class="flex toolbar">
+                            <span class="p-input-icon-right ml-auto">
+                                <input #searchInput pInputText   class="searchBar" type="text" (input)="dt1?.filterGlobal(searchInput.value, 'contains')" placeholder="Search Code..">
+                                <i class="pi pi-search  search-icon"></i>
+                            </span>
+                        </div>
+            
+                    </ng-template>
+                    
+                    <ng-template pTemplate="header">  
+                        <tr>
+                            
+                            <th>code</th>
+                            <th >Employee Name</th>
+                            <th >Diamond Number </th>
+                            <th >Status</th>
+                            <th >Date</th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
+                        <tr>
+                            <td>{{diamonds.employeeId.employeeId }}</td>
+                            <td>{{diamonds.name}} </td>
+                            <td>{{diamonds.kapanNumber}}</td>
+                            <td class="px-2 py-0.5 ml-auto">
+                                <span class="text-md font-medium tracking-wide text-orange-500 bg-orange-50 rounded-full px-2 py-1">{{diamonds.polish_status}}</span>
+                                <td>{{diamonds.createdAt | date}}</td> 
+            
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="15" class="nodataimg" style="position: relative; height: 500px; width: 100%; text-align: center;">
+                                <img src="../../assets/No data.jpg" alt="No Data Found Image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center justify-content-between">
+                            In total there are <span class="font-bold text-red-500 text-md"> &nbsp;{{diamonds1 ? diamonds2.length : 0 }} </span>&nbsp; diamonds.
+                        </div>
+                    </ng-template>
+                   
+                </p-table>
+            </div>
+        </div>
+    
+        <!-- Right Table -->
+        <div class="w-full md:w-1/2 px-4">
+            <div class="loader-overlay" *ngIf="loading2">
+                <!-- Loader -->
+                <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+            </div>
+    
+            <div class="overflow-x-auto">
+                <p-table [value]="diamonds2" *ngIf="!loading2" #dt2 [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20, 50, 100]" [globalFilterFields]="['code','kapanNumber']">
+
+                    <ng-template pTemplate="caption">
+                        <div class="flex toolbar">
+                            <span class="p-input-icon-right ml-auto">
+                                <input #searchInput pInputText   class="searchBar" type="text" (input)="dt2?.filterGlobal(searchInput.value, 'contains')" placeholder="search code..">
+                                <i class="pi pi-search  search-icon"></i>
+                            </span>
+                        </div>
+            
+                    </ng-template>
+                    
+                    <ng-template pTemplate="header">  
+                        <tr>
+                            
+                            <th>code</th>
+                            <th >Employee Name</th>
+                            <th >Diamond Number </th>
+                            <th >Date</th>
+                        </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
+                        <tr>
+                            <td>{{diamonds.employeeId.employeeId }}</td>
+                            <td>{{diamonds.name}} </td>
+                            <td>{{diamonds.kapanNumber}}</td>
+                            <td>{{diamonds.createdAt | date}}</td>
+            
+                        </tr>
+                    </ng-template>
+                   
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="15" class="nodataimg" style="position: relative; height: 500px; width: 100%; text-align: center;">
+                                <img src="../../assets/No data.jpg" alt="No Data Found Image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center justify-content-between">
+                            In total there are <span class="font-bold text-red-500 text-md"> &nbsp;{{diamonds2 ? diamonds2.length : 0 }} </span>&nbsp; diamonds.
+                        </div>
+                    </ng-template>
+                   
+                </p-table>
+            </div>
+        </div>
+    </div>
+    

@@ -38,11 +38,17 @@ export class AssignDiamondService {
     }
   }
 
+  polishingJobCompleted()
+  {
+    const url = `${this.apiUrl}polishing-jobs/?status=completed`;
+    return this.http.get(url);
+
+  }
+
   polishingJobIssue(data: any, id: string) {
     const url = `${this.apiUrl}polishing-jobs/update/${id}`;
     return this.http.put(url, data);
   }
-
 
   polishingJobByissue() {
     const url = `${this.apiUrl}polishing-jobs/?status=issue`;
@@ -73,5 +79,21 @@ export class AssignDiamondService {
       const url = `${this.apiUrl}polishing-jobs/?diamondId=${id}&status=started`;
       return this.http.get(url);
     }
+
+    polishingJobByDiamondEnd()
+    {
+      return this.http.get<any>(this.apiUrl + 'diamonds?polish_status=ended');
+    }
+    
+    polishingJobByDiamondEndAndReturnManager()
+    {
+      return this.http.get<any>(this.apiUrl + 'diamonds?polish_status=returntomanager');
+    }
+        
+    diamondPolishStatusUpdate(id:string, data:any)
+    {
+        const url = `${this.apiUrl}diamonds/polish-status/${id}`
+        return this.http.put(url, data)
+      }
 
 }
