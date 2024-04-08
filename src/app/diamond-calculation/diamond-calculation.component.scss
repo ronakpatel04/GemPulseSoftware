@@ -1,0 +1,33 @@
+
+.custom-label{
+
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    
+  }
+
+  .custom-card {
+    border: 1px solid #dcd4d4;
+    // background: rgb(34,193,195);
+    // background: linear-gradient(0deg, rgba(34,193,195,0.2087088794243045) 0%, rgba(253,187,45,0.3946844891804021) 100%);
+    background-color: rgb(241, 241, 221);
+    border-radius: 5px;
+    padding: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(213, 120, 120, 0.08);
+    height: auto; 
+}
+
+
+label{
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+
+}
+
+p-dropdown, p-multiselect{
+  border-radius: 5px !important;
+}
+  
