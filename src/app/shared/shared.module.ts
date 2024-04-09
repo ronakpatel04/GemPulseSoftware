@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { LoginComponent } from '../login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from '../main/main.component';
@@ -34,11 +34,13 @@ import { DiamondAssignFormComponent } from '../issue-form/diamond-assign-form/di
 import { DiamondCompletedListComponent } from '../diamond-completed-list/diamond-completed-list.component';
 import { DiamondCompletedFormComponent } from '../diamond-completed-list/diamond-completed-form/diamond-completed-form.component';
 import { DiamondCalculationComponent } from '../diamond-calculation/diamond-calculation.component';
+import { JangadListComponent } from '../jangad-list/jangad-list.component';
+import { PrintJangadComponent } from '../print-jangad/print-jangad.component';
 
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent , DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent , DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent,JangadListComponent, PrintJangadComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -55,10 +57,9 @@ import { DiamondCalculationComponent } from '../diamond-calculation/diamond-calc
     NgxPrintModule,
     ConfirmDialogModule
 
-
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent,DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent],
-  providers: [DialogService, {
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent,DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent,JangadListComponent, PrintJangadComponent],
+  providers: [DialogService, DatePipe,{
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,
     multi: true

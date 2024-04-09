@@ -1,0 +1,71 @@
+/* For responsiveness */
+@media (min-width: 768px) {
+    .md\:w-1\/3 {
+        width: 33.333333%;
+    }
+    .md\:px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .md\:mb-0 {
+        margin-bottom: 0;
+    }
+    .md\:mb-4 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Dropdown styling */
+.form-select {
+    appearance: none;
+    background-color: #ffffff;
+    border: 1px solid #252526;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.375rem;
+    width: 100%;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Arrow icon styling */
+.form-select::-ms-expand {
+    display: none;
+}
+.pointer-events-none {
+    pointer-events: none;
+}
+
+
+
+.checkbox-header {
+    cursor: pointer; /* Add pointer cursor */
+}
+
+.checkbox-input {
+    /* Styles for checkbox design */
+    width: 20px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+    appearance: none; /* Remove default browser styling */
+    border: 2px solid #000; /* Border color */
+    border-radius: 3px; /* Border radius */
+    background-color: #fff; /* Background color */
+    cursor: pointer; /* Add pointer cursor */
+}
+
+/* Custom styling for checked state */
+.checkbox-input:checked {
+    background-color: #000; /* Change background color when checked */
+}
+
+/* Custom styling for hover state */
+.checkbox-input:hover {
+    border-color: #666; /* Change border color on hover */
+}
+
+
+.prnt-btn
+{
+    font-size: 14px  !important; 
+
+}

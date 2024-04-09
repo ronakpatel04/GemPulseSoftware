@@ -12,6 +12,7 @@ import { IssueFormComponent } from './issue-form/issue-form.component';
 import { IssueResolveListComponent } from './issue-form/issue-resolve-list/issue-resolve-list.component';
 import { DiamondCompletedListComponent } from './diamond-completed-list/diamond-completed-list.component';
 import { DiamondCalculationComponent } from './diamond-calculation/diamond-calculation.component';
+import { JangadListComponent } from './jangad-list/jangad-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: 'issueForm', component: IssueFormComponent },
       { path: 'issueResolve', component: IssueResolveListComponent },
       { path: 'diamondComplted', component: DiamondCompletedListComponent },
-      {path:'diamondCalculation' , component : DiamondCalculationComponent}
+      {path:'diamondCalculation' , component : DiamondCalculationComponent},
+      {path:'jangadList', component:JangadListComponent}
 
     ]
   }, { path: '', redirectTo: '/login', pathMatch: 'full' },
