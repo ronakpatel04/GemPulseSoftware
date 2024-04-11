@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 import { Table } from 'primeng/table';
@@ -23,7 +23,7 @@ export class PacketListComponent {
   packets: any[] = [];
 
 
-
+  @ViewChild('dt') table!: Table; 
   globalFilter!: string;
 
   constructor(private primengConfig: PrimeNGConfig, private dialogService: DialogService, private packetService: PacketService) { }
@@ -88,5 +88,51 @@ export class PacketListComponent {
       }
     });
   }
+
+  printSelectedQRs() {
+    
+    const selectedPackets = this.table.selection; // Get selected packets
+    console.log("selected", selectedPackets)
+    const qrCodesToPrint = selectedPackets.map((packet:any) => packet.kapanNumber); // Assuming 'kapanNumber' holds QR code data
+
+    // Print the QR codes using ngx-print
+    this.printQRs(qrCodesToPrint);
+}
+
+printQRs(qrCodes: any[]) {
+
+  const qrImages:any[] = []
+
+  for (let qr of qrCodes) {
+    qrImages.push(document.querySelector(`.${qr}`)?.children[0].children[0].children[0])
+  }
+
+  console.log("qr", qrImages)
+
+  let qrNo = 0
+  
+  const printableContent = qrImages.map(qrImage => {
+    qrImage.children[1].setAttribute('transform', 'translate(200, 0)');
+    qrImage.children[1].setAttribute('transform', 'scale(5)');
+
+    return `<div>
+      <svg>${qrImage.innerHTML}</svg> </div>
+      <br/>
+      <div style="margin: -35px 0 100px 20px; font-size: 27px; font-weight: bold">${qrCodes[qrNo++]}</div>`
+  }).join('')
+
+  const printableArea = document.getElementById('printableArea');
+  if (printableArea) {
+     console.log("PRINT", printableContent)
+    printableArea.innerHTML = printableContent;
+    window.print();
+
+    qrImages.map(qrImage => qrImage.children[1].removeAttribute('transform'))
+    
+    printableArea.innerHTML = ""
+    printableArea.remove();
+  }
+}
+
 
 }
