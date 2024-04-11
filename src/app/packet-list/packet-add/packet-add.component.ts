@@ -19,7 +19,7 @@ export class PacketAddComponent {
   dropdowns = [
     { label: 'Shape', controlName: 'shape', options: ['Round', 'Princess', 'Emerald', 'Oval', 'Marquise', 'Pear', 'Heart', 'Radiant'] },
     { label: 'Color', controlName: 'color', options: ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'] },
-    { label: 'Purity', controlName: 'purity', options: ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'SI3', 'I1', 'I2', 'I3', 'I4', 'I5'] },
+    { label: 'Purity', controlName: 'expected_purity', options: ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'SI3', 'I1', 'I2', 'I3', 'I4', 'I5'] },
     { label: 'Diamond Type', controlName: 'diamond_type', options: ['CVD', 'REAL', 'HPHT'] },
     { label: 'Cut Type', controlName: 'expected_cut_type', options: ['Good Cut', 'Very Good Cut', 'Excellent Cut'] },
     { label: 'Polish Type', controlName: 'expected_polish_type', options: ['Good Polish', 'Very Good Polish', 'Excellent Polish'] },
@@ -30,7 +30,7 @@ export class PacketAddComponent {
   ];
 
   textFields = [
-    { label: 'Number', controlName: 'number', type: 'text' },
+    { label: 'kapanNumber', controlName: 'kapanNumber', type: 'text' },
     { label: 'Carat', controlName: 'carat', type: 'number' },
     { label: 'Raw Weight', controlName: 'rawWeight', type: 'number' },
     { label: 'Expected Weight', controlName: 'expectedWeight', type: 'number' },
@@ -54,14 +54,14 @@ export class PacketAddComponent {
     this.diamondForm = this.formBuilder.group({
       shape: ['', Validators.required],
       color: ['', Validators.required],
-      purity: ['', Validators.required],
+      expected_purity: ['', Validators.required],
       diamond_type: ['', Validators.required],
       expected_cut_type: ['', Validators.required],
       expected_polish_type: ['', Validators.required],
       expected_smy_type: ['', Validators.required],
       lab: ['', Validators.required],
       polish_status: ['Not Started'],
-      number: ['', Validators.required],
+      kapanNumber: ['', Validators.required],
       carat: ['', Validators.required],
       rawWeight: ['', Validators.required],
       expectedWeight: ['', Validators.required],
@@ -77,13 +77,13 @@ export class PacketAddComponent {
 
       shape: packet.shape,
       color: packet.color,
-      purity: packet.purity,
+      expected_purity: packet.purity,
       diamond_type: packet.diamond_type,
       expected_cut_type: packet.expected_cut_type,
       expected_polish_type: packet.expected_polish_type,
       expected_smy_type: packet.expected_smy_type,
       polish_status: packet.polish_status,
-      number: packet.number,
+      kapanNumber: packet.kapanNumber,
       carat: packet.carat,
       lab: packet.lab,
       rawWeight: packet?.weight?.rawWeight,
@@ -112,10 +112,10 @@ export class PacketAddComponent {
 
       if (this.packetData) {
         const formData = {
-          number: formValue.number,
+          kapanNumber: formValue.kapanNumber,
           shape: formValue.shape,
           color: formValue.color,
-          purity: formValue.purity,
+          expected_purity: formValue.purity,
           diamond_type: formValue.diamond_type,
           expected_cut_type: formValue.expected_cut_type,
           expected_polish_type: formValue.expected_polish_type,
@@ -138,7 +138,7 @@ export class PacketAddComponent {
 
         this.packetService.editPacket(this.packetData._id, formData).subscribe(response => {
           if (response && response.status) {
-            this.toastrservice.success('User updated successfully', 'Success');
+            this.toastrservice.success('Diamond updated successfully', 'Success');
             this.ref.close();
           }
         }, (error) => {
@@ -149,10 +149,10 @@ export class PacketAddComponent {
       }
       else {
         const formData = {
-          number: formValue.number,
+          kapanNumber: formValue.kapanNumber,
           shape: formValue.shape,
           color: formValue.color,
-          purity: formValue.purity,
+          expected_purity: formValue.purity,
           diamond_type: formValue.diamond_type,
           expected_cut_type: formValue.expected_cut_type,
           expected_polish_type: formValue.expected_polish_type,

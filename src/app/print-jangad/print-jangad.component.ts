@@ -51,4 +51,9 @@ export class PrintJangadComponent  implements OnInit{
       this.totalFinalWeight = this.diamonds.diamonds.reduce((total:any, diamond:any) => total + (diamond.weight?.finalWeight || 0), 0);
     }
 
+    onCance()
+    {
+        this.ref.close();
+    }
+
 }
