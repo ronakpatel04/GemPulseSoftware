@@ -250,3 +250,18 @@ select{
          margin-left: 26px !important;
     }
     
+.p-checkbox-box.p-component {
+    box-shadow: 0px 0px 3px 1px grey;
+}
+    
+    @media print {
+        body {
+          visibility: hidden;
+        }
+        #printableArea {
+          visibility: visible;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+    }

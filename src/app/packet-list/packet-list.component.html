@@ -15,12 +15,13 @@
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
     
-    <p-table [value]="packets"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['number']">
+    <p-table [value]="packets" [selectionPageOnly]="true"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['number']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
                 <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"  (click)="openAddPacketDialg()"></button>
                 <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" class="custom-button clear"  (click)="clear(dt)"></button>
+                <button pButton type="button" label="Print Selected QR Codes" class="custom-button" (click)="printSelectedQRs()"></button>
 
                 <span class="p-input-icon-right ml-auto">
                     <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
@@ -32,6 +33,9 @@
         
         <ng-template pTemplate="header">  
             <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
                 <th>QR Code</th>
                 <th>KAPN Number <p-columnFilter type="text" field="number" display="menu"></p-columnFilter></th>
                 <th>Shape</th>
@@ -41,27 +45,32 @@
                 <th>Final weight</th>
                 <th>LAB</th>
                 <th>Color</th>
-                <th>Purity</th>
-                <th>Cut</th>
+                <!-- <th>Purity</th> -->
+                <!-- <th>Cut</th>
                 <th>Polish </th>
-                <th>Smy</th>
+                <th>Smy</th> -->
                 <th>Diamond Type</th>
                 <th>Action</th> 
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-packet let-i="rowIndex">
+            
             <tr>
                 <td>
-                <div [id]="'row_' + i">
+                    <p-tableCheckbox [value]="packet"></p-tableCheckbox>
+                </td>
+               
+                <td>
+                <div [id]="'row_' + i" [class]="packet.kapanNumber">
 
-                    <qrcode [qrdata]="packet.number" [elementType]="'svg'" [width]="56" ></qrcode>
-                    <p style="font-size: 9px;letter-spacing: 1px; font-weight: 900;" class="ml-2 mt-0">{{packet.number}}</p>
+                    <qrcode [qrdata]="packet.kapanNumber" [elementType]="'svg'" [width]="56" ></qrcode>
+                    <p style="font-size: 9px;letter-spacing: 1px; font-weight: 900;" class="ml-2 mt-0">{{packet.kapanNumber}}</p>
                 </div>
-                <button pButton  icon="pi pi-print" class="print-icon"   [useExistingCss]="true"
-                [printSectionId]="'row_'+ i" ngxPrint></button>
+                <!-- <button pButton  icon="pi pi-print" class="print-icon" [useExistingCss]="true"
+                [printSectionId]="'row_'+ i" ngxPrint></button> -->
 
             </td>
-                <td>{{packet?.number}}</td>
+                <td>{{packet?.kapanNumber}}</td>
                 <td>{{packet?.shape}}</td>
                 <td>{{packet?.weight?.rawWeight}}</td>
                 <td>{{packet?.weight?.markableWeight}}</td>
@@ -69,10 +78,10 @@
                 <td>{{packet?.weight?.finalWeight}}</td>
                 <td>{{packet?.lab}}</td>
                 <td>{{packet?.color}}</td>
-                <td>{{packet?.purity}}</td>
+                <!-- <td>{{packet?.purity}}</td>
                 <td>{{packet?.cut_type}}</td>
-                <td>{{packet?.polish_type}}</td>
-                <td>{{packet?.Smy}}</td>
+                <td>{{packet?.polish_type}}</td> -->
+                <!-- <td>{{packet?.Smy}}</td> -->
                 <td>{{packet?.diamond_type}}</td>
             
             
@@ -83,6 +92,8 @@
                 </td>
 
             </tr>
+
+            <div id="printableArea"></div>
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
