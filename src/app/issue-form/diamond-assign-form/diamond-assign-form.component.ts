@@ -88,7 +88,7 @@ export class DiamondAssignFormComponent implements OnInit, AfterViewInit {
           {
             this.loading = false ;
             this.carat = response.data[0].carat;
-            this.kapnNumber = response.data[0].number;
+            this.kapnNumber = response.data[0].kapanNumber;
             this.diamondType = response.data[0].diamond_type;
             this.rawWeight = response.data[0].weight.rawWeight
             this.matchingId =  response.data[0]._id
@@ -100,7 +100,8 @@ export class DiamondAssignFormComponent implements OnInit, AfterViewInit {
             this.diamondType=''
             this.rawWeight =0.00
             this.diamondValue = null
-  
+            this.toastrService.error('Kapan number is Wrong !' , 'Error');
+
           }
 
         }),(error)=>{

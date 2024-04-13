@@ -35,6 +35,13 @@
         <label for="penaltyPrice" class="block text-gray-700">Party Price              <i class="fa-solid fa-dollar-sign"></i>        </label>
         <input id="penaltyPrice" type="text" formControlName="partyPrice"   placeholder="Enter Party price" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
       </div>
+
+      <div>
+        <label for="penaltyPrice" class="block text-gray-700">Price Code               </label>
+        <input id="penaltyPrice" type="text" formControlName="code"   placeholder="Enter Price Code" class="form-input mt-1 block w-42 border-gray-300 rounded-md shadow-sm focus:border-blue-500">
+      </div>
+
+
       <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-5 rounded">Add</button>
 
     </div>
@@ -58,6 +65,7 @@
         <ng-template pTemplate="header">
             <tr>
                 <th>index</th>
+                <th>Price code </th>
                 <th>Party Name</th>
                 <th>Carat Range</th>
                 <th>Worker Price</th>
@@ -68,6 +76,7 @@
         <ng-template pTemplate="body" let-price let-i="rowIndex">
             <tr>
                 <td>{{ i + 1 }}</td>
+                <td>{{price.code}}</td>
                 <td>{{ price.paltyId.name }}</td>
                 <td>{{ price.caratRange[0] }} -  {{ price.caratRange[1] }}</td>
                 <td>{{ price.workerPrice }}</td>

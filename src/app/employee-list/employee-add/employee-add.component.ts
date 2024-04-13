@@ -40,7 +40,7 @@ export class EmployeeAddComponent {
       mobileNo: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
       aadhaarNumber: ['', [Validators.pattern('[0-9]{12}')]],
       address: ['', Validators.required],
-      referenceName: ['', Validators.required],
+      referenceName: [''  ],
       referenceMobileNo: ['', [Validators.pattern('[0-9]{10}')]],
       // aadhaarFront: ['', Validators.required],
       // aadhaarBack: ['', Validators.required],
@@ -61,6 +61,7 @@ export class EmployeeAddComponent {
 
   onSubmit() {
 
+    this.employeeForm.markAllAsTouched()
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
       if (this.config.data.employee) {

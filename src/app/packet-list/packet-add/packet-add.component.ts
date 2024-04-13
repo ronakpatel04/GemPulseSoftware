@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { PacketService } from 'src/app/services/packet.service';
 import { PartyService } from 'src/app/services/party.service';
+import { PriceService } from 'src/app/services/price.service';
 
 @Component({
   selector: 'app-packet-add',
@@ -14,6 +15,7 @@ export class PacketAddComponent {
 
   diamondForm!: FormGroup;
   paltyOptions: any[] = [];
+  priceOptions:any[]=[];
   packetData: any
 
   dropdowns = [
@@ -24,7 +26,6 @@ export class PacketAddComponent {
     { label: 'Cut Type', controlName: 'expected_cut_type', options: ['Good Cut', 'Very Good Cut', 'Excellent Cut'] },
     { label: 'Polish Type', controlName: 'expected_polish_type', options: ['Good Polish', 'Very Good Polish', 'Excellent Polish'] },
     { label: 'Smy Type', controlName: 'expected_smy_type', options: ['Good Smy', 'Very Good Smy', 'Excellent Smy'] },
-    // { label: 'Polish Status', controlName: 'polish_status', options: ['Not Started', 'Started', 'Issue', 'Ended', 'Submitted'] },
     { label: 'LAB', controlName: 'lab', options: ['GIA', 'IGA', 'HRD'] }
 
   ];
@@ -38,15 +39,16 @@ export class PacketAddComponent {
     { label: 'Markable Weight', controlName: 'markableWeight', type: 'number' }
   ];
 
-  constructor(private formBuilder: FormBuilder, private paltyService: PartyService, private ref: DynamicDialogRef, private config: DynamicDialogConfig, private toastrservice: ToastrService, private packetService: PacketService) { }
+  constructor(private formBuilder: FormBuilder, private paltyService: PartyService, private ref: DynamicDialogRef, private config: DynamicDialogConfig, private toastrservice: ToastrService, private packetService: PacketService,private priceService: PriceService) { }
 
   ngOnInit(): void {
-    this.getPaltyOptions();
     this.initForm();
     this.packetData = this.config.data.packet;
-
+    
+    this.getPaltyOptions();
     if (this.packetData) {
       this.populateForm(this.packetData);
+      this.getPriceOptions(this.packetData.paltyId)
     }
   }
 
@@ -67,17 +69,17 @@ export class PacketAddComponent {
       expectedWeight: ['', Validators.required],
       finalWeight: [''],
       markableWeight: [''],
-      paltyId: ['']
+      paltyId: [''],
+      priceId:['']
     });
   }
 
 
   populateForm(packet: any) {
     this.diamondForm.patchValue({
-
       shape: packet.shape,
       color: packet.color,
-      expected_purity: packet.purity,
+      expected_purity: packet.expected_purity,
       diamond_type: packet.diamond_type,
       expected_cut_type: packet.expected_cut_type,
       expected_polish_type: packet.expected_polish_type,
@@ -90,8 +92,8 @@ export class PacketAddComponent {
       expectedWeight: packet?.weight?.expectedWeight,
       finalWeight: packet?.weight?.finalWeight,
       markableWeight: packet?.weight?.markableWeight,
-      paltyId: packet?.palty
-
+      paltyId: packet?.paltyId,
+      priceId:packet?.priceId    
     })
   }
 
@@ -102,6 +104,7 @@ export class PacketAddComponent {
       this.paltyOptions = options.data;
     });
   }
+
 
   onSubmit(): void {
 
@@ -115,7 +118,7 @@ export class PacketAddComponent {
           kapanNumber: formValue.kapanNumber,
           shape: formValue.shape,
           color: formValue.color,
-          expected_purity: formValue.purity,
+          expected_purity: formValue.expected_purity,
           diamond_type: formValue.diamond_type,
           expected_cut_type: formValue.expected_cut_type,
           expected_polish_type: formValue.expected_polish_type,
@@ -132,7 +135,7 @@ export class PacketAddComponent {
           },
           employee: formValue.employee,
           paltyId: formValue?.paltyId,
-          priceId: formValue.price
+          priceId: formValue.priceId
         };
 
 
@@ -152,7 +155,7 @@ export class PacketAddComponent {
           kapanNumber: formValue.kapanNumber,
           shape: formValue.shape,
           color: formValue.color,
-          expected_purity: formValue.purity,
+          expected_purity: formValue.expected_purity,
           diamond_type: formValue.diamond_type,
           expected_cut_type: formValue.expected_cut_type,
           expected_polish_type: formValue.expected_polish_type,
@@ -167,18 +170,15 @@ export class PacketAddComponent {
             markableWeight: formValue?.markableWeight,
 
           },
-          employeeId: "65f9ae740c890a41aea838bc",
           paltyId: formValue.paltyId,
-          priceId: "65f9cad543136d6fb2cc6e1e" //FOR REFERENCE  NOW 
+          priceId: formValue.priceId  
         };
         this.packetService.addPacket(formData).subscribe(response => {
 
           if (response && response.status) {
             this.toastrservice.success(response.message, 'Success');
             this.ref.close();
-
           }
-
         }, (error) => {
           this.toastrservice.error(error.message, 'Error');
           this.ref.close();
@@ -187,6 +187,30 @@ export class PacketAddComponent {
     }
 
   }
+
+  onPartyChange(event:any)
+  {
+    const id =  event.target.value;
+    if(id)
+    {
+      this.getPriceOptions(id);
+    }
+      console.log("event=>" , event.target.value)
+  }
+  
+  getPriceOptions(id:string):void
+  {
+    this.priceService.getPriceByParty(id).subscribe((response:any) =>{
+      this.priceOptions = response.data.map((price:any)=>{
+        price.fullPrice = `PCode-${price.code} Carat-(${price.caratRange[0]},${price.caratRange[1]}) Price-${price.partyPrice}`
+        return price;
+      })
+      console.log("this.priceOptions =>" , this.priceOptions)
+    })
+  }
+
+
+ 
 
 
 }

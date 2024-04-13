@@ -36,7 +36,7 @@ export class JangadListComponent implements OnInit {
             this.jangadData = response.data.map((data: any) => {
               data.name = `${data.employeeId.firstName} ${data.employeeId.lastName}`;
               data.code = `${data.employeeId.employeeId}`;
-              data.isSelected = false; // Initialize isSelected property
+              data.isSelected = false; 
               return data;
             });
           }
@@ -48,7 +48,7 @@ export class JangadListComponent implements OnInit {
             this.jangadData = response.data.map((data: any) => {
               data.name = `${data.employeeId.firstName} ${data.employeeId.lastName}`;
               data.code = `${data.employeeId.employeeId}`;
-              data.isSelected = false; // Initialize isSelected property
+              data.isSelected = false; 
               return data;
             });
           }
@@ -68,12 +68,10 @@ export class JangadListComponent implements OnInit {
 
   getSelectedDiamonds()
   {
-    console.log("selectedDiamonds" , this.selectedDiamonds)
 
   }
   print()
   {
-      console.log("this.selctedDiamond =>" , this.selectedDiamonds)
     
     if(this.selectedDiamonds.length>0)
     {

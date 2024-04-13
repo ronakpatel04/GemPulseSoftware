@@ -12,12 +12,22 @@
     <div class="flex flex-wrap -mx-4 mb-4">
 
     <div class="w-full md:w-1/3 px-4 mb-4 md:mb-0">
-        <label class="block text-gray-700 text-sm font-bold mb-2">Palty:</label>
-        <select class="form-select rounded-md w-full" formControlName="paltyId">
-            <option value="" disabled selected>Select Palty</option>
+        <label class="block text-gray-700 text-sm font-bold mb-2">Party:</label>
+        <select class="form-select rounded-md w-full" formControlName="paltyId" (change)="onPartyChange($event)">
+            <option value="" disabled selected >Select Palty</option>
             <option *ngFor="let option of paltyOptions" [value]="option._id">{{ option.name }}</option>
         </select>
-        <div *ngIf="diamondForm.get('partyId')?.invalid && diamondForm.get('partyId')?.touched" class="text-red-500 text-xs font-bold">Please select a Party!</div>
+        <div *ngIf="diamondForm.get('paltyId')?.invalid && diamondForm.get('paltyId')?.touched" class="text-red-500 text-xs font-bold">Please select a Party!</div>
+
+    </div>
+
+    <div class="w-full md:w-1/3 px-4 mb-4 md:mb-0">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Party Price:</label>
+        <select class="form-select rounded-md w-full" formControlName="priceId">
+            <option value="" disabled selected >Select Palty Price</option>
+            <option *ngFor="let option of priceOptions" [value]="option._id">{{ option.fullPrice }}</option>
+        </select>
+        <div *ngIf="diamondForm.get('priceId')?.invalid && diamondForm.get('priceId')?.touched" class="text-red-500 text-xs font-bold">Please select a Party Price!</div>
 
     </div>
     </div>

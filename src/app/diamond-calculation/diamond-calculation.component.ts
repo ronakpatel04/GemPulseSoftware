@@ -64,7 +64,6 @@ export class DiamondCalculationComponent implements OnInit {
   { 
     if(kapannumber){
     const kapn = kapannumber[0];
-    console.log("kapn => " , kapn)
     if(kapn !== null){
     this.diamondAssignService.getDiamondById(kapn).subscribe((response : any) =>{
       if(response && response.status)
@@ -73,7 +72,7 @@ export class DiamondCalculationComponent implements OnInit {
             if(id)
             {
               const payload ={
-                status:'returntomanager'
+                polish_status:'Return To Manager'
               }
 
               this.diamondAssignService.diamondPolishStatusUpdate(id,payload).subscribe((response:any)=>{

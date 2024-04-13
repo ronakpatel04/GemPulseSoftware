@@ -15,13 +15,21 @@
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
     
-    <p-table [value]="packets" [selectionPageOnly]="true"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['number']">
+    <p-table [value]="packets" [selectionPageOnly]="true"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['kapanNumber']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
-                <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"  (click)="openAddPacketDialg()"></button>
+                <div class="ml-2">
+                    <button pButton type="button" label="Add Record" icon="pi pi-plus" class="custom-button"  (click)="openAddPacketDialg()"></button>
+
+                </div>
+                <div class="ml-2 mr-2">
                 <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" class="custom-button clear"  (click)="clear(dt)"></button>
-                <button pButton type="button" label="Print Selected QR Codes" class="custom-button" (click)="printSelectedQRs()"></button>
+                </div>
+                <div class="ml-2 mr-2">
+
+                    <button pButton type="button" label="Print Selected QR Codes" class="custom-button" (click)="printSelectedQRs()"></button>
+                </div>
 
                 <span class="p-input-icon-right ml-auto">
                     <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
@@ -86,7 +94,7 @@
             
             
                 <td>
-                    <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewEmployee(packet)"></button>
+                    <!-- <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewEmployee(packet)"></button> -->
 
                     <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editPacket(packet)"></button>
                 </td>

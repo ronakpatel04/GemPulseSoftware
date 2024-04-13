@@ -27,7 +27,8 @@ export class DiamondCompletedListComponent implements OnInit {
       this.assignDiamondService.getCompletedDiamond().subscribe((response:any)=>{
             this.diamonds = response.data.map((employee: any) => {
               employee.name = `${employee.employeeId.firstName} ${employee.employeeId.lastName}`
-              employee.number = `${employee.diamondId.number}`
+              employee.code =  `${employee.employeeId.employeeId}`
+              employee.number = `${employee.diamondId.kapanNumber}`
               return employee;
             });
             this.loading = false
