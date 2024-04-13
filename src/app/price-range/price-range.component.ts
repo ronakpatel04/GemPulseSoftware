@@ -50,7 +50,8 @@ export class PriceRangeComponent implements OnInit {
       carat1: ['', Validators.required],
       carat2: ['', Validators.required],
       workerPrice: ['', Validators.required],
-      partyPrice: ['', Validators.required]
+      partyPrice: ['', Validators.required],
+      code:['', Validators.required]
     });
   }
 
@@ -63,7 +64,8 @@ export class PriceRangeComponent implements OnInit {
       carat1: price.caratRange[0],
       carat2: price.caratRange[1],
       workerPrice: price.workerPrice,
-      partyPrice: price.partyPrice
+      partyPrice: price.partyPrice,
+      code : price.code
     });
 
   }
@@ -83,7 +85,8 @@ export class PriceRangeComponent implements OnInit {
         caratRange: [formData.carat1, formData.carat2],
         partyPrice: formData.partyPrice,
         workerPrice: formData.workerPrice,
-        paltyId: formData.paltyId
+        paltyId: formData.paltyId,
+        code : formData.code
       };
 
 

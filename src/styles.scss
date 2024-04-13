@@ -255,7 +255,7 @@ select{
 }
     
     @media print {
-        body {
+        .hello {
           visibility: hidden;
         }
         #printableArea {

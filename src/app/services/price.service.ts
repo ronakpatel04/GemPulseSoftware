@@ -25,4 +25,10 @@ export class PriceService {
     return this.http.put(url, prices)
   }
 
+  getPriceByParty(id:string)
+  {
+    const url = `${this.apiUrl}prices?palty=${id}`
+    return this.http.get(url)  
+  }
+
 }
