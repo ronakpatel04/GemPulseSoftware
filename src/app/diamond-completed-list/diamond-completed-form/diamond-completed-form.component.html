@@ -25,7 +25,9 @@
   
           <div class="mb-4">
             <label for="blockingWeight" class="block text-sm font-medium text-gray-700">Final Weight:</label>
-            <input type="text" id="blockingWeight" name="blockingWeight" [(ngModel)]="finalWeight" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm">
+            <input type="text" id="blockingWeight" name="blockingWeight" [(ngModel)]="finalWeight" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none block w-full shadow-sm sm:text-sm" required>
+            <div *ngIf="!finalWeight" class="text-red-500 text-xs mt-1">Please enter the final weight.</div>
+
           </div>
 
           
@@ -35,6 +37,8 @@
               <option value="" disabled selected>Select</option>
               <option *ngFor="let option of polishTypeOptions" [value]="option">{{ option }}</option>
             </select>
+            <div *ngIf="!givenPolishType" class="text-red-500 text-xs mt-1">Please select a polish type.</div>
+
           </div>
 
           
@@ -44,9 +48,11 @@
           <option value="" disabled selected>select</option>
           <option *ngFor="let option of cutTypeOptins" [value]="option">{{ option }}</option>
         </select>
+        <div *ngIf="!givenCutType" class="text-red-500 text-xs mt-1">Please select a cut type.</div>
       </div>
 
         </div>
+
       </div>
       <!-- Second column for employee dropdown -->
       <div class="bg-white rounded-lg overflow-hidden">
@@ -77,6 +83,8 @@
         <option value="" disabled selected>select</option>
         <option *ngFor="let option of smyOptions" [value]="option">{{ option }}</option>
       </select>
+      <div *ngIf="!givenSmy" class="text-red-500 text-xs mt-1">Please select a Smy.</div>
+
     </div>
 
     <div class="mb-4">
@@ -85,6 +93,8 @@
           <option value="" disabled selected>select</option>
           <option *ngFor="let option of purityOptions" [value]="option">{{ option }}</option>
         </select>
+        <div *ngIf="!givenPurity" class="text-red-500 text-xs mt-1">Please select a Purity.</div>
+
       </div>
 
 

@@ -76,6 +76,7 @@ export class IssueFormComponent implements OnInit {
         this.loading = false;
         this.diamonds = response.data.map.map((employee: any) => {
           employee.name = `${employee.employeeId.firstName} ${employee.employeeId.lastName}`;
+          employee.number = `${employee.diamondId.kapanNumber}`
           return employee;
         })
       })
@@ -84,6 +85,7 @@ export class IssueFormComponent implements OnInit {
       this.assignDiamondService.polishingJobByEmployee().subscribe((response: any) => {
         this.diamonds = response.data.map((employee: any) => {
           employee.name = `${employee.employeeId.firstName} ${employee.employeeId.lastName}`;
+          employee.number = `${employee.diamondId.kapanNumber}`
           return employee;
         });
         this.loading = false

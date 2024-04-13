@@ -61,10 +61,10 @@ export class DiamondCompletedFormComponent implements OnInit {
           {
             this.loading = false ;
             this.carat = response.data[0].carat;
-             this.kapnNumber = response.data[0].number;
+             this.kapnNumber = response.data[0].kapanNumber;
             this.diamondType = response.data[0].diamond_type;
             this.rawWeight = response.data[0].weight.rawWeight;
-            this.selectEmployee = response.data[0].employee.firstName + ' ' + response.data[0].employee.lastName;
+            this.selectEmployee = response.data[0]?.employeeId?.firstName + ' ' + response?.data[0]?.employeeId?.lastName;
               
             this.polishingJobByDiamond(response.data[0]._id)
 
@@ -75,6 +75,7 @@ export class DiamondCompletedFormComponent implements OnInit {
             this.diamondType=''
             this.rawWeight =0.00
             this.diamondValue = null
+            this.toastrService.error(response.message , 'Error')
   
           }
 
@@ -112,6 +113,8 @@ export class DiamondCompletedFormComponent implements OnInit {
   }
 
   assign(){
+    if(this.finalWeight && this.givenPolishType && this.givenSmy && this.givenCutType){
+    
     const payload = {
       status :'Completed',
       finalWeight:this.finalWeight,
@@ -119,6 +122,8 @@ export class DiamondCompletedFormComponent implements OnInit {
       smy_type:this.givenSmy,
       cut_type:this.givenCutType
     }
+
+
 
       if(this.polishingJobId)
       {
@@ -137,5 +142,5 @@ export class DiamondCompletedFormComponent implements OnInit {
             })
       }
   }
-
+  }
 }

@@ -13,13 +13,13 @@
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
     
-    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['name','number']">
+    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['code','number']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
                 <button pButton type="button" label="Issue Return" icon="pi pi-plus" class="custom-button"  (click)="openCompletedDiamondDialog()"></button>
                 <span class="p-input-icon-right ml-auto">
-                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Global Search">
+                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Search Code or Diamond..">
                     <i class="pi pi-search  search-icon"></i>
                 </span>
             </div>
@@ -30,6 +30,7 @@
             <tr>
                 
                 <th>index</th>
+                <th>code</th>
                 <th >Employee Name</th>
                 <th >Diamond Number </th>
                 <th >Comment</th>
@@ -40,9 +41,10 @@
         </ng-template>
         <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
             <tr>
-                <td>{{ i + 1 }}</td>
+                <td>{{ i + 1 }}</td>    
+                <td>{{diamonds.employeeId.employeeId}}</td>
                 <td>{{diamonds.name}} </td>
-                <td>{{diamonds.diamondId.number}}</td>
+                <td>{{diamonds.diamondId.kapanNumber}}</td>
                 <td>{{diamonds.diamondId.comment ?diamonds.diamondId.comment:'--' }}</td>
                 <td class="px-2 py-0.5 ml-auto">
                     <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.status}}</span>
