@@ -15,7 +15,7 @@ export class DiamondCompletedFormComponent implements OnInit {
   rawWeight : number=0.00
   kapnNumber!: string;
   diamondType !: string;
-  carat : number =0.00;
+  markableWeight : number =0.00;
   finalWeight!: number
   selectEmployee: any;
   employeeDropdown: any[] = [];
@@ -60,7 +60,7 @@ export class DiamondCompletedFormComponent implements OnInit {
           if(response && response.status && response.data.length === 1)
           {
             this.loading = false ;
-            this.carat = response.data[0].carat;
+            this.markableWeight = response.data[0].weight.markableWeight;
              this.kapnNumber = response.data[0].kapanNumber;
             this.diamondType = response.data[0].diamond_type;
             this.rawWeight = response.data[0].weight.rawWeight;
@@ -70,7 +70,7 @@ export class DiamondCompletedFormComponent implements OnInit {
 
           }else{
             this.loading = false
-            this.carat = 0.00
+            this.markableWeight = 0.00
             this.kapnNumber =''
             this.diamondType=''
             this.rawWeight =0.00
@@ -82,7 +82,7 @@ export class DiamondCompletedFormComponent implements OnInit {
         }),(error)=>{
           this.toastrService.error('Kapan number is Wrong !' , 'Error');
           this.loading =false
-          this.carat = 0.00
+          this.markableWeight = 0.00
           this.kapnNumber =''
           this.diamondType=''
           this.rawWeight =0.00
