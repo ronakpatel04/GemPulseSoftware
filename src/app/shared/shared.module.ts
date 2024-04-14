@@ -36,11 +36,13 @@ import { DiamondCompletedFormComponent } from '../diamond-completed-list/diamond
 import { DiamondCalculationComponent } from '../diamond-calculation/diamond-calculation.component';
 import { JangadListComponent } from '../jangad-list/jangad-list.component';
 import { PrintJangadComponent } from '../print-jangad/print-jangad.component';
+import { EmployeeSalaryListComponent } from '../employee-salary-list/employee-salary-list.component';
 
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
-  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent , DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent,JangadListComponent, PrintJangadComponent],
+  declarations: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent , DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent,JangadListComponent, PrintJangadComponent ,EmployeeSalaryListComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -55,10 +57,11 @@ import { PrintJangadComponent } from '../print-jangad/print-jangad.component';
     ChipsModule,
     DialogModule,
     NgxPrintModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CalendarModule
 
   ],
-  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent,DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent,JangadListComponent, PrintJangadComponent],
+  exports: [LoginComponent, MainComponent, EmployeeListComponent, EmployeeAddComponent, EmployeeViewComponent, PartyListComponent, PartyAddComponent, PartyViewComponent, PacketListComponent, PacketAddComponent, PriceRangeComponent, IssueFormComponent, IssueReturnComponent, IssueResolveListComponent, IssueResolveFormComponent, DiamondAssignFormComponent,DiamondCompletedListComponent,DiamondCompletedFormComponent,DiamondCalculationComponent,JangadListComponent, PrintJangadComponent, EmployeeSalaryListComponent],
   providers: [DialogService, DatePipe,{
     provide: HTTP_INTERCEPTORS,
     useClass: JwttokenInterceptor,
