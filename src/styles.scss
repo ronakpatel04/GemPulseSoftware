@@ -253,7 +253,16 @@ select{
 .p-checkbox-box.p-component {
     box-shadow: 0px 0px 3px 1px grey;
 }
-    
+
+
+
+.p-inputtext.p-component.ng-star-inserted {
+    border: 1px solid black !important;
+    padding: 3px 4px !important;
+    margin-top: 0px !important;
+}
+
+
     @media print {
         .hello {
           visibility: hidden;
