@@ -32,10 +32,10 @@ export class PacketAddComponent {
 
   textFields = [
     { label: 'kapanNumber', controlName: 'kapanNumber', type: 'text' },
-    { label: 'Carat', controlName: 'carat', type: 'number' },
+    // { label: 'Carat', controlName: 'carat', type: 'number' },
     { label: 'Raw Weight', controlName: 'rawWeight', type: 'number' },
     { label: 'Expected Weight', controlName: 'expectedWeight', type: 'number' },
-    { label: 'Final Weight', controlName: 'finalWeight', type: 'number' },
+    // { label: 'Final Weight', controlName: 'finalWeight', type: 'number' },
     { label: 'Markable Weight', controlName: 'markableWeight', type: 'number' }
   ];
 
@@ -64,7 +64,7 @@ export class PacketAddComponent {
       lab: ['', Validators.required],
       polish_status: ['Not Started'],
       kapanNumber: ['', Validators.required],
-      carat: ['', Validators.required],
+      // carat: ['', Validators.required],
       rawWeight: ['', Validators.required],
       expectedWeight: ['', Validators.required],
       finalWeight: [''],
@@ -86,7 +86,7 @@ export class PacketAddComponent {
       expected_smy_type: packet.expected_smy_type,
       polish_status: packet.polish_status,
       kapanNumber: packet.kapanNumber,
-      carat: packet.carat,
+      // carat: packet.carat,
       lab: packet.lab,
       rawWeight: packet?.weight?.rawWeight,
       expectedWeight: packet?.weight?.expectedWeight,
@@ -123,7 +123,7 @@ export class PacketAddComponent {
           expected_cut_type: formValue.expected_cut_type,
           expected_polish_type: formValue.expected_polish_type,
           expected_smy_type: formValue.expected_smy_type,
-          carat: formValue.carat,
+          // carat: formValue.carat,
           lab: formValue.lab,
           polish_status: 'Not Started',
           weight: {
@@ -160,7 +160,7 @@ export class PacketAddComponent {
           expected_cut_type: formValue.expected_cut_type,
           expected_polish_type: formValue.expected_polish_type,
           expected_smy_type: formValue.expected_smy_type,
-          carat: formValue.carat,
+          // carat: formValue.carat,
           lab: formValue.lab,
           polish_status: 'Not Started',
           weight: {
@@ -208,9 +208,5 @@ export class PacketAddComponent {
       console.log("this.priceOptions =>" , this.priceOptions)
     })
   }
-
-
- 
-
 
 }
