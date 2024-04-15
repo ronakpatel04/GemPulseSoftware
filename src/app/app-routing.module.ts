@@ -14,6 +14,7 @@ import { DiamondCompletedListComponent } from './diamond-completed-list/diamond-
 import { DiamondCalculationComponent } from './diamond-calculation/diamond-calculation.component';
 import { JangadListComponent } from './jangad-list/jangad-list.component';
 import { EmployeeSalaryListComponent } from './employee-salary-list/employee-salary-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
       { path: 'diamondComplted', component: DiamondCompletedListComponent },
       {path:'diamondCalculation' , component : DiamondCalculationComponent},
       {path:'jangadList', component:JangadListComponent},
-      {path:'employeeSalary', component:EmployeeSalaryListComponent}
+      {path:'employeeSalary', component:EmployeeSalaryListComponent},
+      {path:'dashboard', component:DashboardComponent}
 
     ]
   }, { path: '', redirectTo: '/login', pathMatch: 'full' },
