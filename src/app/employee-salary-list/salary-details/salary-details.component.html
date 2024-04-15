@@ -1,59 +1,74 @@
 <div id="printSectionId">
-
     <header class="bg-white p-4">
         <div class="text-center">
-        <h1 class="text-2xl font-bold">BNB Diamonds</h1>
-        <p class="my-2"><strong>Surat, Gujarat</strong></p>   
-         <div class="my-4 border-t border-gray-300"></div>
-         
-    </div>
+            <h1 class="text-2xl font-bold">BNB Diamonds</h1>
+            <p class="my-2"><strong>Surat, Gujarat</strong></p>
+            <div class="my-4 border-t border-gray-300"></div>
+        </div>
         <p class="my-2"><strong>Employee Code:</strong> {{ salarydata.code }}</p>
         <div class="my-2 border-t border-gray-300"></div>
         <p class="my-2 float-right">
-            <strong>Current Date:</strong> {{ currentDate  }}
+            <strong>Current Date:</strong> {{ currentDate }}
         </p>
-        
-    
+
+
         <p class="my-2"><strong>EMPLOYEE NAME:</strong> {{ salarydata.fullName }}</p>
         <div class="my-2 border-t border-gray-300"></div>
-    
+
         <p class="my-2"><strong>EMPLOYEE MO:</strong> {{ salarydata.employeeId.mobileNo }}</p>
         <div class="my-2 border-t border-gray-300"></div>
-    
+
         <p class="my-2"><strong>ADDRESS:</strong> {{ salarydata.employeeId?.address }}</p>
         <div class="my-2 border-t border-gray-300"></div>
-    
+
     </header>
-    
+
     <div class="container mx-auto mt-8">
         <table class="w-full border-collapse border border-gray-300 mb-8">
             <thead>
                 <tr>
-                    <th class="border border-gray-300 px-4 py-2">Index</th>
-                    <th class="border border-gray-300 px-4 py-2">Kapan Number</th>
-                    <th class="border border-gray-300 px-4 py-2">Raw Weight</th>
-                    <th class="border border-gray-300 px-4 py-2">Expacted Weight</th>
-                    <th class="border border-gray-300 px-4 py-2">Final Weight</th>
+                    <th class="border border-gray-300 px-4 py-2">NO</th>
+                    <th class="border border-gray-300 px-4 py-2">DATE</th>
+
+                    <th class="border border-gray-300 px-4 py-2">DIAMOND TYPE</th>
+                    <th class="border border-gray-300 px-4 py-2">EMP Code</th>
+                    <th class="border border-gray-300 px-4 py-2">KAPAN NUMBER</th>
+                    <th class="border border-gray-300 px-4 py-2">MARKABALE CARAT</th>
+                    <th class="border border-gray-300 px-4 py-2">EX CARAT</th>
+                    <th class="border border-gray-300 px-4 py-2">FINAL CARAT</th>
+                    <th class="border border-gray-300 px-4 py-2">CUT</th>
+                    <th class="border border-gray-300 px-4 py-2">POLISH</th>
+                    <th class="border border-gray-300 px-4 py-2">SMY</th>
+                    <th class="border border-gray-300 px-4 py-2">PRICE</th>
+                    <th class="border border-gray-300 px-4 py-2">TOTAL</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let salary of salarydata.taskPrices; let i = index">
                     <td class="border border-gray-300 px-4 py-2">{{ i + 1 }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ salary.kapanNumber }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ salary.weight?.rawWeight }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ salary.weight?.expectedWeight}}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ salary.weight?.finalWeight }}</td>
-                  </tr>
-                  <tr style="font-weight: bold;">
-                    
-                    <td class="border border-gray-300 px-4 py-2" colspan="2">Total</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ totalRawWeight | number:'1.2-2' }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ totalExpactedWeight | number:'1.2-2' }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ totalFinalWeight  | number:'1.2-2'}}</td>
-                  </tr>
-          
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.jobEndedTime | date:'dd/MM/YYYY' }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.diamondType }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.EmployeeCode?.employeeId }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.kapanNumber }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.weight?.markableWeight }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.weight?.expectedWeight}}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.weight?.finalWeight }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.diamondCut }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.diamondPolish }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.diamondSmy }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.WorkerPrice }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.workerSalary }}</td>
+                </tr>
+                <tr style="font-weight: bold;">
+                    <td class="border border-gray-300 px-4 py-2" colspan="4">Total Weight :</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ totalItems }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ totalmarkableWeight | number:'1.2-2' }}</td>
+                </tr>
+                <tr style="font-weight: bold;">
+                    <td class="border border-gray-300 px-4 py-2" colspan="12">Total Salary :</td>
+                    <td class="border border-gray-300 px-4 py-2">{{totalSalary}}</td>
+                </tr>
             </tbody>
         </table>
     </div>
-    </div>
-    
+</div>

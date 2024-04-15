@@ -15,6 +15,8 @@ export class SalaryDetailsComponent  implements OnInit{
   totalRawWeight: number = 0;
   totalFinalWeight: number = 0;
   totalExpactedWeight:number=0;
+  totalmarkableWeight : number = 0;
+  totalSalary : number = 0;
 
 
   constructor( private ref: DynamicDialogRef,private config: DynamicDialogConfig,private datePipe: DatePipe){}
@@ -27,12 +29,9 @@ export class SalaryDetailsComponent  implements OnInit{
        console.log("this.salaryData =>" , this.salarydata )
   }
   calculateTotals(): void {
-    this.totalItems = this.salarydata.diamonds.length;
-    this.totalRawWeight = this.salarydata.diamonds.reduce((total:any, diamond:any) => total + (diamond.weight?.rawWeight || 0), 0);
-
-    this.totalExpactedWeight = this.salarydata.diamonds.reduce((total:any, diamond:any) => total + (diamond.weight?.expectedWeight || 0), 0);
-    
-    this.totalFinalWeight = this.salarydata.diamonds.reduce((total:any, diamond:any) => total + (diamond.weight?.finalWeight || 0), 0);
+    this.totalItems = this.salarydata.taskPrices.length;
+    this.totalmarkableWeight = this.salarydata.taskPrices.reduce((total:any, salary:any) => total + (salary.weight?.markableWeight || 0), 0);
+    this.totalSalary =  this.salarydata.taskPrices.reduce((total:any, salary:any)=>total + (salary.workerSalary || 0),0);
   }
 
 }
