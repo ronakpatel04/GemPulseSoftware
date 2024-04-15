@@ -27,7 +27,8 @@
               <th >Employee Name</th>
               <th >Total Salary </th>
               <th >Date</th>
-          </tr>
+              <th >Action</th>
+            </tr>
       </ng-template>
 
       <ng-template pTemplate="body"   let-salary let-i="rowIndex">
@@ -36,6 +37,10 @@
               <td>{{salary.fullName}} </td>
               <td><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<strong>{{salary.totalJobSalary}}</strong></td>
              <td>{{salary.salaryDate | date}}</td> 
+             <td>
+                <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewDetails(salary)"></button>
+
+             </td>
             </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

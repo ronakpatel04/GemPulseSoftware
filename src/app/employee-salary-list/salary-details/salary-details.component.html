@@ -1,0 +1,59 @@
+<div id="printSectionId">
+
+    <header class="bg-white p-4">
+        <div class="text-center">
+        <h1 class="text-2xl font-bold">BNB Diamonds</h1>
+        <p class="my-2"><strong>Surat, Gujarat</strong></p>   
+         <div class="my-4 border-t border-gray-300"></div>
+         
+    </div>
+        <p class="my-2"><strong>Employee Code:</strong> {{ salarydata.code }}</p>
+        <div class="my-2 border-t border-gray-300"></div>
+        <p class="my-2 float-right">
+            <strong>Current Date:</strong> {{ currentDate  }}
+        </p>
+        
+    
+        <p class="my-2"><strong>EMPLOYEE NAME:</strong> {{ salarydata.fullName }}</p>
+        <div class="my-2 border-t border-gray-300"></div>
+    
+        <p class="my-2"><strong>EMPLOYEE MO:</strong> {{ salarydata.employeeId.mobileNo }}</p>
+        <div class="my-2 border-t border-gray-300"></div>
+    
+        <p class="my-2"><strong>ADDRESS:</strong> {{ salarydata.employeeId?.address }}</p>
+        <div class="my-2 border-t border-gray-300"></div>
+    
+    </header>
+    
+    <div class="container mx-auto mt-8">
+        <table class="w-full border-collapse border border-gray-300 mb-8">
+            <thead>
+                <tr>
+                    <th class="border border-gray-300 px-4 py-2">Index</th>
+                    <th class="border border-gray-300 px-4 py-2">Kapan Number</th>
+                    <th class="border border-gray-300 px-4 py-2">Raw Weight</th>
+                    <th class="border border-gray-300 px-4 py-2">Expacted Weight</th>
+                    <th class="border border-gray-300 px-4 py-2">Final Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let salary of salarydata.taskPrices; let i = index">
+                    <td class="border border-gray-300 px-4 py-2">{{ i + 1 }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary.kapanNumber }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary.weight?.rawWeight }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary.weight?.expectedWeight}}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary.weight?.finalWeight }}</td>
+                  </tr>
+                  <tr style="font-weight: bold;">
+                    
+                    <td class="border border-gray-300 px-4 py-2" colspan="2">Total</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ totalRawWeight | number:'1.2-2' }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ totalExpactedWeight | number:'1.2-2' }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ totalFinalWeight  | number:'1.2-2'}}</td>
+                  </tr>
+          
+            </tbody>
+        </table>
+    </div>
+    </div>
+    

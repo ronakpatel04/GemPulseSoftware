@@ -25,7 +25,6 @@ export class JangadListComponent implements OnInit {
   ngOnInit(): void {
     this.jangadList();
     this.getPaltyOptions();
-    console.log("selectedDiamonds" , this.selectedDiamonds)
   }
 
   jangadList(party?: any) {
