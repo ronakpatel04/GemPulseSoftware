@@ -1,0 +1,42 @@
+i.fas.fa-times {
+    margin-left: -39px;
+    cursor: pointer;
+}
+
+
+.status-cell span {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.not-started {
+    background-color: #F8D7DA; /* Example color for not started */
+    color: #721C24; /* Example color for not started text */
+}
+
+.started {
+    background-color: #D4EDDA; /* Example color for started */
+    color: #155724; /* Example color for started text */
+}
+
+.issue {
+    background-color: #FFF3CD; /* Example color for issue */
+    color: #856404; /* Example color for issue text */
+}
+
+.ended {
+    background-color: #CCE5FF; /* Example color for ended */
+    color: #004085; /* Example color for ended text */
+}
+
+.submitted {
+    background-color: #D1ECF1; /* Example color for submitted */
+    color: #0C5460; /* Example color for submitted text */
+}
+
+.return-to-manager {
+    background-color: #FFE2E5; /* Example color for return to manager */
+    color: #842029; /* Example color for return to manager text */
+}

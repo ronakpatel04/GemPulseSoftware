@@ -8,6 +8,14 @@
     <div class="overflow-y-auto overflow-x-hidden flex-grow">
       <ul class="flex flex-col py-4 space-y-1">
         <li>
+          <a  [routerLink]="['/main/dashboard']" routerLinkActive="router-link-active"  class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-200 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+            <span class="inline-flex justify-center items-center ml-4">
+              <i class="fa-solid fa-home w-5"></i>
+            </span>
+                      <span class="ml-2 text-sm tracking-wide truncate">Main Dashboard</span>
+          </a>
+        </li>
+        <li>
           <a  [routerLink]="['/main/employee']" routerLinkActive="router-link-active"  class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-200 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
             <span class="inline-flex justify-center items-center ml-4">
               <i class="fa-solid fa-user w-5"></i> <!-- Font Awesome icon -->

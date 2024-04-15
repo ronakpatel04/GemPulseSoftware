@@ -25,7 +25,7 @@ export class LoginComponent {
           localStorage.setItem('token', response.access_token);
           this.toastr.success('Login Successfull !', 'Success');
         }
-        this.router.navigate(['/main/employee']);
+        this.router.navigate(['/main/dashboard']);
       },
       (error) => {
         this.loading = false;
