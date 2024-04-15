@@ -13,7 +13,6 @@ export class JangadService {
     getJangadList(partyId?:string)
     {
       return this.http.get<any>(this.apiUrl + `diamonds?polish_status=returntomanager&&palty=${partyId}`);
-
     }
 
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SalaryServiceService } from '../services/salary-service.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { EmployeeAddComponent } from '../employee-list/employee-add/employee-add.component';
+import { SalaryDetailsComponent } from './salary-details/salary-details.component';
 
 @Component({
   selector: 'app-employee-salary-list',
@@ -9,9 +12,11 @@ import { SalaryServiceService } from '../services/salary-service.service';
 export class EmployeeSalaryListComponent  implements OnInit{
   selectedMonthRange:any;
   loading : boolean = false;
-  salaryData : any 
+  salaryData : any;
+  dialogRef!: DynamicDialogRef;
+ 
 
-  constructor(private salaryService : SalaryServiceService){}
+  constructor(private salaryService : SalaryServiceService,private dialogService: DialogService){}
   
   ngOnInit(): void {
       this.getSalaryofEmployee() ; 
@@ -40,13 +45,25 @@ export class EmployeeSalaryListComponent  implements OnInit{
   const month = date.getMonth() + 1; 
   const year = date.getFullYear(); 
   const formattedDate = `${month.toString().padStart(2, '0')}/${year}`; 
-  console.log(formattedDate); 
     if(formattedDate)
     {
       this.getSalaryofEmployee(formattedDate)
     }
+  }
 
+  viewDetails(salary:any)
+  {
+    this.dialogRef = this.dialogService.open(SalaryDetailsComponent, {
+      header: 'Salary Details',
+      width: '80%',
+      data: {
+        salary: salary
+      }
+    });
 
+    this.dialogRef.onClose.subscribe(() => {
+      this.getSalaryofEmployee();
+    });
   }
 
 }
