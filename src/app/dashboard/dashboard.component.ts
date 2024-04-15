@@ -60,8 +60,10 @@ getAllDiamonds() {
       this.loading = false;
       if (response && response.data) {
         this.diamonds = response.data.map((data: any) => {
-          data.name = `${data.employeeId.firstName} ${data.employeeId.lastName}`
-          data.code = `${data.employeeId.employeeId}`
+          data.name = data.employeeId 
+          ? `${data.employeeId.firstName} ${data.employeeId.lastName}`
+          : 'Not Assigned';
+          data.code = `${data?.employeeId?.employeeId}`
           data.number =`${data.kapanNumber}`
           return data;
         })

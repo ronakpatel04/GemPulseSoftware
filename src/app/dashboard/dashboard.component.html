@@ -69,8 +69,8 @@
         <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
             <tr>
                 <td>{{ i + 1 }}</td>    
-                <td>{{diamonds.employeeId.employeeId}}</td>
-                <td>{{diamonds.name}} </td>
+                <td>{{diamonds?.employeeId?.employeeId}}</td>
+                <td>{{ diamonds.name  }}</td>
                 <td>{{diamonds.kapanNumber}}</td>
                 <td class="px-2 py-0.5 ml-auto">
                     <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.polish_status}}</span>

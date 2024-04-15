@@ -44,11 +44,10 @@ export class PacketAddComponent {
   ngOnInit(): void {
     this.initForm();
     this.packetData = this.config.data.packet;
-    
     this.getPaltyOptions();
+    
     if (this.packetData) {
       this.populateForm(this.packetData);
-      this.getPriceOptions(this.packetData.paltyId)
     }
   }
 
@@ -76,6 +75,7 @@ export class PacketAddComponent {
 
 
   populateForm(packet: any) {
+    console.log("packet => ", packet)
     this.diamondForm.patchValue({
       shape: packet.shape,
       color: packet.color,
@@ -92,7 +92,7 @@ export class PacketAddComponent {
       expectedWeight: packet?.weight?.expectedWeight,
       finalWeight: packet?.weight?.finalWeight,
       markableWeight: packet?.weight?.markableWeight,
-      paltyId: packet?.paltyId,
+      paltyId: packet?.paltyId._id,
       priceId:packet?.priceId    
     })
   }
@@ -100,8 +100,14 @@ export class PacketAddComponent {
 
 
   getPaltyOptions(): void {
-    this.paltyService.getParty().subscribe(options => {
-      this.paltyOptions = options.data;
+    this.paltyService.getParty().subscribe(response => {
+      if( response && response.data)
+      this.paltyOptions = response.data;
+    if(this.packetData.paltyId._id)
+      {
+        this.getPriceOptions(this.packetData.paltyId._id)
+      }
+
     });
   }
 
