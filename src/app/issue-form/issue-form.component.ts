@@ -224,7 +224,7 @@ export class IssueFormComponent implements OnInit {
   openAssignDiamondDialog() {
     this.dialogRef = this.dialogService.open(DiamondAssignFormComponent, {
       width: '50%',
-      header: 'Issue Diamonds'
+      header: 'Assign Diamonds'
     })
     this.dialogRef.onClose.subscribe(() => {
       this.polishingJobs()

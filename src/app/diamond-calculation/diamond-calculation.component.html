@@ -44,8 +44,8 @@
 
                     <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
                         <tr>
-                            <td>{{diamonds.employeeId.employeeId }}</td>
-                            <td>{{diamonds.name}} </td>
+                            <td>{{diamonds?.employeeId?.employeeId ?diamonds?.employeeId?.employeeId :'--' }}</td>
+                            <td>{{diamonds?.name ? diamonds?.name :'--'}} </td>
                             <td>{{diamonds.kapanNumber}}</td>
                             <td class="px-2 py-0.5 ml-auto">
                                 <span class="text-md font-medium tracking-wide text-orange-500 bg-orange-50 rounded-full px-2 py-1">{{diamonds.polish_status}}</span>
@@ -82,6 +82,7 @@
 
                     <ng-template pTemplate="caption">
                         <div class="flex toolbar">
+                            <button pButton label="Clear" class="p-button-outlined custom-button clear" icon="pi pi-times" (click)="onClear()"></button>
                             <span class="p-input-icon-right ml-auto">
                                 <input #searchInput pInputText   class="searchBar" type="text" (input)="dt2?.filterGlobal(searchInput.value, 'contains')" placeholder="search code..">
                                 <i class="pi pi-search  search-icon"></i>
@@ -102,8 +103,8 @@
 
                     <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
                         <tr>
-                            <td>{{diamonds.employeeId.employeeId }}</td>
-                            <td>{{diamonds.name}} </td>
+                            <td>{{diamonds?.employeeId?.employeeId }}</td>
+                            <td>{{diamonds?.name}} </td>
                             <td>{{diamonds.kapanNumber}}</td>
                             <td>{{diamonds.createdAt | date}}</td>
             

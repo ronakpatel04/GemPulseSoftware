@@ -39,7 +39,7 @@ export class DiamondCompletedListComponent implements OnInit {
   openCompletedDiamondDialog()
   {
     this.dialogRef = this.dialogService.open(DiamondCompletedFormComponent, {
-      header: 'Issue Diamond',
+      header: 'Diamond Completed',
       width: '70%',
     });
 
