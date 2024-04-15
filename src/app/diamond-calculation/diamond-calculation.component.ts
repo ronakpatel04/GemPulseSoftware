@@ -53,8 +53,8 @@ export class DiamondCalculationComponent implements OnInit {
   {
     this.diamondAssignService.polishingJobByDiamondEnd().subscribe((response:any)=>{
             this.diamonds1 = response.data.map((data:any) =>{
-              data.name =`${data.employeeId.firstName} ${data.employeeId.lastName}`
-              data.code  =  `${data.employeeId.employeeId}`
+              data.name =`${data?.employeeId?.firstName} ${data?.employeeId?.lastName}`
+              data.code  =  `${data?.employeeId?.employeeId}`
               return data;
         })
     })
@@ -72,7 +72,7 @@ export class DiamondCalculationComponent implements OnInit {
             if(id)
             {
               const payload ={
-                polish_status:'Return To Manager'
+                jokham: false
               }
 
               this.diamondAssignService.diamondPolishStatusUpdate(id,payload).subscribe((response:any)=>{
@@ -89,7 +89,7 @@ export class DiamondCalculationComponent implements OnInit {
                   this.formGroup.get('values')?.setValue(null);
                 }
               },(error)=>{
-                this.toastrService.error('','Error')
+                this.toastrService.error(error.error.message,'Error')
                 this.formGroup.get('values')?.setValue(null);
 
               })
@@ -105,4 +105,44 @@ export class DiamondCalculationComponent implements OnInit {
   }
   }
   }
-}
+
+  onClear()
+  {
+    if(this.diamonds2.length>0)
+      {
+      this.diamonds2.forEach((diamond:any) => {
+          if(diamond._id){
+            const id = diamond._id
+              const payload = 
+              {
+                polish_status:'Return To Manager'
+              } 
+              this.loading2 = true;
+              this.diamondAssignService.diamondPolishStatusUpdate(id,payload).subscribe((response:any)=>{
+                if(response && response.status)
+                { 
+                  this.loading2 = false
+                    this.toastrService.success('Diamond Return to manager !','Success')
+                    this.polishingJobCompletedAndReturnTomanager();
+                    this.polishingJobEndedByDiamond();
+                    this.formGroup.get('values')?.setValue(null);
+                }else
+                {
+                  this.loading2 = false;
+                  this.toastrService.error(response.message, 'Error');
+                  this.formGroup.get('values')?.setValue(null);
+                  return;
+                }
+              },(error)=>{
+                this.loading2 = false
+                this.toastrService.error(error.error.message,'Error')
+                this.formGroup.get('values')?.setValue(null);
+                return;
+              })
+            }
+        })
+      }
+    }
+  }
+
+

@@ -82,12 +82,12 @@ export class AssignDiamondService {
 
     polishingJobByDiamondEnd()
     {
-      return this.http.get<any>(this.apiUrl + 'diamonds?polish_status=ended');
+      return this.http.get<any>(this.apiUrl + 'diamonds?jokham=true');
     }
     
     polishingJobByDiamondEndAndReturnManager()
     {
-      return this.http.get<any>(this.apiUrl + 'diamonds?polish_status=returntomanager');
+      return this.http.get<any>(this.apiUrl + 'diamonds?polish_status=ended&jokham=false');
     }
         
     diamondPolishStatusUpdate(id:string, data:any)

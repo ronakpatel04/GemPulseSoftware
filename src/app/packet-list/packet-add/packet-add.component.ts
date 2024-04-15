@@ -23,10 +23,10 @@ export class PacketAddComponent {
     { label: 'Color', controlName: 'color', options: ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'] },
     { label: 'Purity', controlName: 'expected_purity', options: ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'SI3', 'I1', 'I2', 'I3', 'I4', 'I5'] },
     { label: 'Diamond Type', controlName: 'diamond_type', options: ['CVD', 'REAL', 'HPHT'] },
-    { label: 'Cut Type', controlName: 'expected_cut_type', options: ['Good Cut', 'Very Good Cut', 'Excellent Cut'] },
-    { label: 'Polish Type', controlName: 'expected_polish_type', options: ['Good Polish', 'Very Good Polish', 'Excellent Polish'] },
-    { label: 'Smy Type', controlName: 'expected_smy_type', options: ['Good Smy', 'Very Good Smy', 'Excellent Smy'] },
-    { label: 'LAB', controlName: 'lab', options: ['GIA', 'IGA', 'HRD'] }
+    { label: 'Cut Type', controlName: 'expected_cut_type', options: ['Good', 'Very Good', 'Excellent'] },
+    { label: 'Polish Type', controlName: 'expected_polish_type', options: ['Good', 'Very Good', 'Excellent'] },
+    { label: 'Smy Type', controlName: 'expected_smy_type', options: ['Good', 'Very Good', 'Excellent'] },
+    { label: 'LAB', controlName: 'lab', options: ['GIA', 'IGA', 'HRD','LOOSE'] }
 
   ];
 

@@ -31,9 +31,9 @@ export class DiamondCompletedFormComponent implements OnInit {
   polishingJobId!:string
 
   purityOptions: string[] = ['IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'SI3', 'I1', 'I2', 'I3', 'I4', 'I5'];
-  smyOptions: string[] = ['Good Smy', 'Very Good Smy', 'Excellent Smy'];
-  polishTypeOptions: string[] = ['Good Polish', 'Very Good Polish', 'Excellent Polish'];
-  cutTypeOptins: string[]=['Good Cut', 'Very Good Cut', 'Excellent Cut'] 
+  smyOptions: string[] = ['Good', 'Very Good', 'Excellent'];
+  polishTypeOptions: string[] = ['Good', 'Very Good', 'Excellent'];
+  cutTypeOptins: string[]=['Good', 'Very Good', 'Excellent'] 
 
 
   constructor(private employeeService: EmployeeService, private toastrService: ToastrService,private assignDiamondService:AssignDiamondService,private packetService:PacketService,private ref: DynamicDialogRef, private config: DynamicDialogConfig) { }
@@ -76,9 +76,7 @@ export class DiamondCompletedFormComponent implements OnInit {
             this.rawWeight =0.00
             this.diamondValue = null
             this.toastrService.error(response.message , 'Error')
-  
           }
-
         }),(error)=>{
           this.toastrService.error('Kapan number is Wrong !' , 'Error');
           this.loading =false
@@ -87,7 +85,6 @@ export class DiamondCompletedFormComponent implements OnInit {
           this.diamondType=''
           this.rawWeight =0.00
           this.diamondValue = null
-
     })
   }
      },700);  
