@@ -3,7 +3,7 @@
     <div class="relative">
         <select id="paltySelect" class="form-select rounded-md w-full" [(ngModel)]="selectedPalty" (ngModelChange)="selectParty(selectedPalty)">
                 <option value="" disabled selected >Select Party</option> 
-            <option *ngFor="let option of paltyOptions" [value]="option._id">{{ option.name }}</option>
+            <option *ngFor="let option of paltyOptions" [value]="option._id" >{{ option.name }}</option>
 
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -21,9 +21,13 @@
         <!-- Left table content goes here -->
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
-                <button  type="button" label="Print"  class="prnt-btn" (click)="print()"><i class="fa fa-print"></i> Print
-                    
-                </button>                   
+                <div>
+                    <button  type="button" label="Print"  class="custom-button prnt-btn" (click)="print()"><i class="fa fa-print"></i> Print  
+                    </button>                   
+                </div>
+                <div>
+                    <button type="button" class="custom-button prnt-btn submitted-button" (click)="submitted()">Submitted</button>
+                </div>
                 <span class="p-input-icon-right ml-auto">
                      <input #searchInput pInputText   class="searchBar" type="text" (input)="dt1?.filterGlobal(searchInput.value, 'contains')" placeholder="Search Code..">
                     <i class="pi pi-search  search-icon"></i>
@@ -80,4 +84,8 @@
         </ng-template>
        
     </p-table>
+</div>
+
+<div class="loader-overlay" *ngIf="loading">
+    <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
 </div>

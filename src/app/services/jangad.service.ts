@@ -10,10 +10,12 @@ export class JangadService {
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-    getJangadList(partyId?:string)
-    {
+  getJangadList(partyId?: string) {
+    if (partyId) {
+
       return this.http.get<any>(this.apiUrl + `diamonds?polish_status=returntomanager&&palty=${partyId}`);
+    } else {
+      return this.http.get<any>(this.apiUrl + `diamonds?polish_status=returntomanager`)
     }
-
-
+  }
 }

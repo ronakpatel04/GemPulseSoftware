@@ -11,10 +11,20 @@
         margin-bottom: 0;
     }
     .md\:mb-4 {
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 }
 
+.prnt-btn{
+    margin-left: -14px !important;
+    margin-top: 18px !important;
+}
+
+.submitted-button{
+    margin-left: 20px !important;
+    background-color: rgba(12, 202, 12, 0.863) !important;
+    border: 2px solid rgba(12, 202, 12, 0.863) !important;
+}
 /* Dropdown styling */
 .form-select {
     appearance: none;

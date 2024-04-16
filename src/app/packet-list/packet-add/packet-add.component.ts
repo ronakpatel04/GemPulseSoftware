@@ -102,12 +102,13 @@ export class PacketAddComponent {
   getPaltyOptions(): void {
     this.paltyService.getParty().subscribe(response => {
       if( response && response.data)
+      {
       this.paltyOptions = response.data;
-    if(this.packetData.paltyId._id)
+      if(this.packetData?.paltyId?._id)
       {
         this.getPriceOptions(this.packetData.paltyId._id)
       }
-
+    }
     });
   }
 
@@ -208,10 +209,9 @@ export class PacketAddComponent {
   {
     this.priceService.getPriceByParty(id).subscribe((response:any) =>{
       this.priceOptions = response.data.map((price:any)=>{
-        price.fullPrice = `PCode-${price.code} Carat-(${price.caratRange[0]},${price.caratRange[1]}) Price-${price.partyPrice}`
+        price.fullPrice = `${price.code}  [${price.caratRange[0]}  - ${price.caratRange[1]}]`
         return price;
       })
-      console.log("this.priceOptions =>" , this.priceOptions)
     })
   }
 

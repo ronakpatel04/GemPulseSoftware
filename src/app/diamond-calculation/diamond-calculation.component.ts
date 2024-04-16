@@ -53,7 +53,9 @@ export class DiamondCalculationComponent implements OnInit {
   {
     this.diamondAssignService.polishingJobByDiamondEnd().subscribe((response:any)=>{
             this.diamonds1 = response.data.map((data:any) =>{
-              data.name =`${data?.employeeId?.firstName} ${data?.employeeId?.lastName}`
+              data.employeeId 
+          ? `${data.employeeId.firstName} ${data.employeeId.lastName}`
+          : 'Not Assigned';
               data.code  =  `${data?.employeeId?.employeeId}`
               return data;
         })

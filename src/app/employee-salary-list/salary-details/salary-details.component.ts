@@ -25,13 +25,29 @@ export class SalaryDetailsComponent  implements OnInit{
        this.salarydata = this.config.data.salary;
        this.currentDate = this.datePipe.transform(new Date(), 'dd/MM/yyyy');
        this.calculateTotals();
-
-       console.log("this.salaryData =>" , this.salarydata )
+       this.replaceValues(this.salarydata);
   }
   calculateTotals(): void {
     this.totalItems = this.salarydata.taskPrices.length;
     this.totalmarkableWeight = this.salarydata.taskPrices.reduce((total:any, salary:any) => total + (salary.weight?.markableWeight || 0), 0);
     this.totalSalary =  this.salarydata.taskPrices.reduce((total:any, salary:any)=>total + (salary.workerSalary || 0),0);
   }
+  
+
+  replaceValues(obj:any) {
+    for (const key in obj) {
+        if (typeof obj[key] === 'object') {
+            this.replaceValues(obj[key]); // Recursively call for nested objects
+        } else if (obj[key] === 'Good') {
+            obj[key] = 'GD';
+        } else if (obj[key] === 'Very Good') {
+            obj[key] = 'VG';
+        } else if (obj[key] === 'Excellent') {
+            obj[key] = 'EX';
+        }
+    }
+}
 
 }
+
+
