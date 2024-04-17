@@ -20,5 +20,14 @@ export class SalaryServiceService {
       }
   }
 
-
+  getPartyBills(monthRange?:any)
+  {
+    if(monthRange)
+      {
+        return this.http.get<any>(this.apiUrl+`paltybill?monthYear=${monthRange}`)
+      }else
+      {
+        return this.http.get<any>(this.apiUrl +'paltybill')
+      }
+  }
 }

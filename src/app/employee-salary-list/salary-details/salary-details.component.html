@@ -29,9 +29,7 @@
                 <tr>
                     <th class="border border-gray-300 px-4 py-2">NO</th>
                     <th class="border border-gray-300 px-4 py-2">DATE</th>
-
                     <th class="border border-gray-300 px-4 py-2">DIAMOND TYPE</th>
-                    <th class="border border-gray-300 px-4 py-2">EMP Code</th>
                     <th class="border border-gray-300 px-4 py-2">KAPAN NUMBER</th>
                     <th class="border border-gray-300 px-4 py-2">MARKABALE CARAT</th>
                     <th class="border border-gray-300 px-4 py-2">EX CARAT</th>
@@ -48,9 +46,8 @@
                     <td class="border border-gray-300 px-4 py-2">{{ i + 1 }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ salary?.jobEndedTime | date:'dd/MM/YYYY' }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ salary?.diamondType }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ salary?.EmployeeCode?.employeeId }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ salary?.kapanNumber }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ salary?.weight?.markableWeight }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ salary?.weight?.markableWeight ? salary?.weight?.markableWeight : "0.00"}}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ salary?.weight?.expectedWeight}}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ salary?.weight?.finalWeight }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ salary?.diamondCut }}</td>
@@ -60,12 +57,12 @@
                     <td class="border border-gray-300 px-4 py-2">{{ salary?.workerSalary }}</td>
                 </tr>
                 <tr style="font-weight: bold;">
-                    <td class="border border-gray-300 px-4 py-2" colspan="4">Total Weight :</td>
+                    <td class="border border-gray-300 px-4 py-2" colspan="3">Total Weight :</td>
                     <td class="border border-gray-300 px-4 py-2">{{ totalItems }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ totalmarkableWeight | number:'1.2-2' }}</td>
                 </tr>
                 <tr style="font-weight: bold;">
-                    <td class="border border-gray-300 px-4 py-2" colspan="12">Total Salary :</td>
+                    <td class="border border-gray-300 px-4 py-2" colspan="11">Total Salary :</td>
                     <td class="border border-gray-300 px-4 py-2">{{totalSalary}}</td>
                 </tr>
             </tbody>
