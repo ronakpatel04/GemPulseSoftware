@@ -44,12 +44,12 @@
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
     
-    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['code','number']">
+    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['code','number','color','purity','party','newSmyType','newPolishType','newCutType']">
       
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
                 <span class="p-input-icon-right ml-auto">
-                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Search Code or Diamond..">
+                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Search....">
                     <i class="pi pi-search  search-icon"></i>
                 </span>
             </div>
@@ -61,7 +61,17 @@
                 <th>index</th>
                 <th>code</th>
                 <th >Employee Name</th>
+                <th>Party Name</th>
                 <th >Diamond Number </th>
+                <th>Raw Weight </th>
+                <th>Ex Carat </th>
+                <th>Color </th>
+                <th> Purity </th>
+                <th> Cut </th>
+                <th>Polish</th>
+                <th> Smy </th>
+                <th>Markable Carat </th>
+                <th>Final Carat</th>
                 <th>Status</th>
                 <th >Date</th>
             </tr>
@@ -71,7 +81,17 @@
                 <td>{{ i + 1 }}</td>    
                 <td>{{diamonds?.employeeId?.employeeId}}</td>
                 <td>{{ diamonds.name  }}</td>
+                <td>{{diamonds.paltyId.name}}</td>
                 <td>{{diamonds.kapanNumber}}</td>
+                <td>{{diamonds?.weight?.rawWeight}}</td>
+                <td>{{diamonds?.weight?.expectedWeight}}</td>
+                <td>{{diamonds.color}}</td>
+                <td>{{diamonds.expected_purity}}</td>
+                <td>{{diamonds.newCutType}}</td>
+                <td>{{diamonds.newPolishType}}</td>
+                <td>{{diamonds.newSmyType}}</td>
+                <td>{{diamonds.weight?.markableWeight}}</td>
+                <td> {{diamonds.weight?.finalWeight}}</td>
                 <td class="px-2 py-0.5 ml-auto">
                     <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.polish_status}}</span>
                 <td>{{diamonds.createdAt | date}}</td>

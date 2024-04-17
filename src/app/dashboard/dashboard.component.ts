@@ -65,6 +65,12 @@ getAllDiamonds() {
           : 'Not Assigned';
           data.code = `${data?.employeeId?.employeeId}`
           data.number =`${data.kapanNumber}`
+          data.party = `${data.paltyId.name}`
+          data.color = `${data.color}`
+          data.purity = `${data.expected_purity}`
+          data.newCutType = this.getAbbreviation(data.expected_cut_type);
+          data.newPolishType = this.getAbbreviation(data.expected_polish_type);
+          data.newSmyType = this.getAbbreviation(data.expected_smy_type);
           return data;
         })
       }else{    
@@ -106,4 +112,17 @@ getAllDiamonds() {
     }
 
   }
+  getAbbreviation(value: string): string {
+    switch(value) {
+      case 'Excellent':
+        return 'Ex';
+      case 'Very Good':
+        return 'VG';
+      case 'Good':
+        return 'GD';
+      default:
+        return value;
+    }
+  }
+
 }
