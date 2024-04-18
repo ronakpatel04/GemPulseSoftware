@@ -23,7 +23,27 @@ export class DashboardComponent implements OnInit {
   selectEmployee: any;
   selectStatus: any;
   diamonds: any = [];
-  loading: boolean = false
+  loading: boolean = false;
+  cols: any[] = [
+    {field:"index", header:"index"},
+
+    {field:"code", header:"code"},
+    {field:"name", header:"Employee Name"},
+    {field:"party", header:"Party Name"},
+    {field:"number", header:"Diamond Number"},
+    {field:"rawWeight", header:"Raw Weight"},
+    {field:"exCarat", header:"Ex Carat"},
+    {field:"color", header:"Color"},
+    {field:"purity", header:"Purity"},
+    {field:"newCutType", header:"Cut"},
+    {field:"newPolishType", header:"Polish"},
+    {field:"newSmyType", header:"Smy"},
+    {field:"markableCarat", header:"Markable Carat"},
+    {field:"finalCarat", header:"Final Carat"},
+    {field:"polish_status", header:"Status"},
+    {field:"createdAt", header:"Date"},
+  ]; 
+
 
   constructor(private paltyService: PartyService, private employeeService: EmployeeService, private dashboardService: DashboardService, private toastrService: ToastrService) { }
 
@@ -124,5 +144,12 @@ getAllDiamonds() {
         return value;
     }
   }
+
+  excludeFromSearch(field: string): boolean {
+    const excludedFields = ['index', 'rawWeight', 'finalCarat', 'markableCarat', 'exCarat', 'createdAt','polish_status'];
+
+    return excludedFields.includes(field);
+}
+
 
 }

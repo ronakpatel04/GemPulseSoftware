@@ -2,36 +2,42 @@
     <div class="flex-1 px-4 mb-4 md:mb-0">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="paltySelect">Choose Party:</label>
         <div class="relative">
-            <select id="paltySelect" class="form-select rounded-md w-72 p-2" [(ngModel)]="selectedPalty" (ngModelChange)="selectParty(selectedPalty)">
-                    <option value="" disabled selected >Select Party</option> 
+            <select id="paltySelect" class="form-select rounded-md w-72 p-2" [(ngModel)]="selectedPalty"
+                (ngModelChange)="selectParty(selectedPalty)">
+                <option value="" disabled selected>Select Party</option>
                 <option *ngFor="let option of paltyOptions" [value]="option._id">{{ option.name }}</option>
             </select>
-            <span class="clear-icon" *ngIf="selectedPalty" (click)="clearSelection('party')"><i class="fas fa-times"></i></span>
+            <span class="clear-icon" *ngIf="selectedPalty" (click)="clearSelection('party')"><i
+                    class="fas fa-times"></i></span>
 
         </div>
     </div>
 
     <div class="flex-1 px-4 mb-4 md:mb-0">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="paltySelect">Choose Employee:</label>
-    <div class="relative">
-        <select id="paltySelect" class="form-select rounded-md w-72 p-2" [(ngModel)]="selectEmployee" (ngModelChange)="selectedEmployee(selectEmployee)">
-                <option value="" disabled selected >Select Employee</option> 
-            <option *ngFor="let option of employeeDropdown" [value]="option._id">{{ option.name }}</option>
-        </select>
-        <span class="clear-icon" *ngIf="selectEmployee" (click)="clearSelection('employee')"><i class="fas fa-times"></i></span>
+        <div class="relative">
+            <select id="paltySelect" class="form-select rounded-md w-72 p-2" [(ngModel)]="selectEmployee"
+                (ngModelChange)="selectedEmployee(selectEmployee)">
+                <option value="" disabled selected>Select Employee</option>
+                <option *ngFor="let option of employeeDropdown" [value]="option._id">{{ option.name }}</option>
+            </select>
+            <span class="clear-icon" *ngIf="selectEmployee" (click)="clearSelection('employee')"><i
+                    class="fas fa-times"></i></span>
 
-    </div>
+        </div>
     </div>
 
     <div class="flex-1 px-4 mb-4 md:mb-0">
-      
+
         <label class="block text-gray-700 text-sm font-bold mb-2" for="paltySelect">Choose Status:</label>
         <div class="relative">
-            <select id="paltySelect" class="form-select rounded-md w-72 p-2" [(ngModel)]="selectStatus" (ngModelChange)="selectedStatus(selectStatus)">
-                    <option value="" disabled selected >Select Status</option> 
+            <select id="paltySelect" class="form-select rounded-md w-72 p-2" [(ngModel)]="selectStatus"
+                (ngModelChange)="selectedStatus(selectStatus)">
+                <option value="" disabled selected>Select Status</option>
                 <option *ngFor="let option of statusOptions" [value]="option.value">{{ option.label}}</option>
             </select>
-            <span class="clear-icon" *ngIf="selectStatus" (click)="clearSelection('status')"><i class="fas fa-times"></i></span>
+            <span class="clear-icon" *ngIf="selectStatus" (click)="clearSelection('status')"><i
+                    class="fas fa-times"></i></span>
 
         </div>
     </div>
@@ -43,26 +49,29 @@
         <!-- Loader -->
         <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
     </div>
-    
-    <p-table [value]="diamonds"  *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100" [rowsPerPageOptions]="[10, 20,50,100]" [globalFilterFields]="['code','number','color','purity','party','newSmyType','newPolishType','newCutType']">
-      
+
+    <p-table [value]="diamonds" *ngIf="!loading" #dt [paginator]="true" [rows]="10" [totalRecords]="100"
+        [rowsPerPageOptions]="[10, 20,50,100]"
+        [globalFilterFields]="['code','number','color','purity','party','newSmyType','newPolishType','newCutType']">
+
         <ng-template pTemplate="caption">
             <div class="flex toolbar">
                 <span class="p-input-icon-right ml-auto">
-                    <input #searchInput pInputText   class="searchBar" type="text" (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Search....">
+                    <input #searchInput pInputText class="searchBar" type="text"
+                        (input)="dt?.filterGlobal(searchInput.value, 'contains')" placeholder="Search....">
                     <i class="pi pi-search  search-icon"></i>
                 </span>
             </div>
 
         </ng-template>
-        
-        <ng-template pTemplate="header">  
+
+        <ng-template pTemplate="header">
             <tr>
                 <th>index</th>
                 <th>code</th>
-                <th >Employee Name</th>
+                <th>Employee Name</th>
                 <th>Party Name</th>
-                <th >Diamond Number </th>
+                <th>Diamond Number </th>
                 <th>Raw Weight </th>
                 <th>Ex Carat </th>
                 <th>Color </th>
@@ -73,14 +82,25 @@
                 <th>Markable Carat </th>
                 <th>Final Carat</th>
                 <th>Status</th>
-                <th >Date</th>
+                <th>Date</th>
             </tr>
+
+            <tr>
+                <th *ngFor="let col of cols">
+                    <ng-container *ngIf="!excludeFromSearch(col.field)">
+                        <input pInputText type="text" #inputField
+                            (input)="dt.filter(inputField.value, col.field, 'contains')" [ngClass]="col.field" />
+                    </ng-container>
+
+                </th>
+            </tr>
+
         </ng-template>
         <ng-template pTemplate="body" let-diamonds let-i="rowIndex">
             <tr>
-                <td>{{ i + 1 }}</td>    
+                <td>{{ i + 1 }}</td>
                 <td>{{diamonds?.employeeId?.employeeId}}</td>
-                <td>{{ diamonds.name  }}</td>
+                <td>{{ diamonds.name }}</td>
                 <td>{{diamonds.paltyId.name}}</td>
                 <td>{{diamonds.kapanNumber}}</td>
                 <td>{{diamonds?.weight?.rawWeight}}</td>
@@ -93,19 +113,20 @@
                 <td>{{diamonds.weight?.markableWeight}}</td>
                 <td> {{diamonds.weight?.finalWeight}}</td>
                 <td class="px-2 py-0.5 ml-auto">
-                    <span class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.polish_status}}</span>
+                    <span
+                        class="text-md font-medium tracking-wide text-green-500 bg-green-50 rounded-full px-2 py-1">{{diamonds.polish_status}}</span>
                 <td>{{diamonds.createdAt | date}}</td>
 
             </tr>
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="15" class="nodataimg" style="position: relative; height: 500px; width: 100%; text-align: center;">
-                    <img src="../../assets/No data.jpg" alt="No Data Found Image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
+                <td colspan="15" class="nodataimg"
+                    style="position: relative; height: 500px; width: 100%; text-align: center;">
+                    <img src="../../assets/No data.jpg" alt="No Data Found Image"
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-height: 100%; max-width: 100%;">
                 </td>
             </tr>
         </ng-template>
     </p-table>
 </div>
-
-
