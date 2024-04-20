@@ -113,12 +113,11 @@ printQRs(qrCodes: any[]) {
   
   const printableContent = qrImages.map(qrImage => {
     qrImage.children[1].setAttribute('transform', 'translate(200, 0)');
-    qrImage.children[1].setAttribute('transform', 'scale(5)');
+    qrImage.children[1].setAttribute('transform', 'scale(3)');
 
     return `<div>
       <svg>${qrImage.innerHTML}</svg> </div>
-      <br/>
-      <div style="margin: -35px 0 100px 20px; font-size: 27px; font-weight: bold">${qrCodes[qrNo++]}</div>`
+      `
   }).join('')
 
   const printableArea = document.getElementById('printableArea');
