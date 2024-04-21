@@ -120,9 +120,13 @@ export class EmployeeAddComponent {
             (response: any) => {
                 console.log("Response =>", response);
                 this.uploadProfile =  response.Location;
+                this.toastrservice.success('Photo Upload SuccessFully !', 'Success');
+
             },
             (error: any) => {
                 console.error("Error uploading file:", error);
+                this.toastrservice.error('Please Try After Sometimes', 'Error');
+
             }
         );
 
@@ -148,8 +152,12 @@ export class EmployeeAddComponent {
             (response: any) => {
                 console.log("Response =>", response);
                 this.aadharFront =  response.Location;
+                this.toastrservice.success('Photo Upload SuccessFully !', 'Success');
+
             },
             (error: any) => {
+              this.toastrservice.error('Please Try After Sometimes', 'Error');
+
                 console.error("Error uploading file:", error);
             }
         );
@@ -175,9 +183,13 @@ export class EmployeeAddComponent {
             (response: any) => {
                 console.log("Response =>", response);
                 this.aadharBack =  response.Location;
+                this.toastrservice.success('Photo Upload SuccessFully !', 'Success');
+
             },
             (error: any) => {
                 console.error("Error uploading file:", error);
+                this.toastrservice.error('Please Try After Sometimes', 'Error');
+
             }
         );
 
