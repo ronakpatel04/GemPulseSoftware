@@ -25,4 +25,10 @@ export class PacketService {
     return this.http.put<any>(url, packet);
   }
 
+  deletePacket(id:string)
+  {
+    const url = `${this.apiUrl}diamonds/${id}`;
+    return this.http.delete<any>(url);
+  }
+
 }

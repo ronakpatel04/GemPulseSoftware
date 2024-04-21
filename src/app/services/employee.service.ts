@@ -30,4 +30,10 @@ export class EmployeeService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
   }
+
+  uploadProfile(payload:any)
+  {
+    const url = `${this.apiUrl}upload`;
+    return this.http.post(url, payload);
+  }
 }

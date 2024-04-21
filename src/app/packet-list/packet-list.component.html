@@ -95,8 +95,8 @@
             
                 <td>
                     <!-- <button pButton icon="pi pi-eye" class="p-button-rounded view-icon" (click)="viewEmployee(packet)"></button> -->
-
                     <button pButton icon="pi pi-pencil"   class="p-button-rounded edit-icon" (click)="editPacket(packet)"></button>
+                    <button pButton icon="pi pi-trash" class="p-button-rounded delete-icon"  (click)="deletePacket(packet)"></button>
                 </td>
 
             </tr>
@@ -112,3 +112,4 @@
         </ng-template>
     </p-table>
 </div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

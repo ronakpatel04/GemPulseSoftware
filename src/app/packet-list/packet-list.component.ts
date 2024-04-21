@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 import { Table } from 'primeng/table';
 import { EmployeeAddComponent } from '../employee-list/employee-add/employee-add.component';
@@ -7,11 +7,14 @@ import { EmployeeViewComponent } from '../employee-list/employee-view/employee-v
 import { EmployeeService } from '../services/employee.service';
 import { PacketService } from '../services/packet.service';
 import { PacketAddComponent } from './packet-add/packet-add.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-packet-list',
   templateUrl: './packet-list.component.html',
-  styleUrls: ['./packet-list.component.scss']
+  styleUrls: ['./packet-list.component.scss'],
+  providers: [ConfirmationService,MessageService],
+
 })
 export class PacketListComponent {
 
@@ -26,7 +29,7 @@ export class PacketListComponent {
   @ViewChild('dt') table!: Table; 
   globalFilter!: string;
 
-  constructor(private primengConfig: PrimeNGConfig, private dialogService: DialogService, private packetService: PacketService) { }
+  constructor(private primengConfig: PrimeNGConfig, private dialogService: DialogService, private packetService: PacketService,private confirmationService: ConfirmationService, private messageService: MessageService, private toastrService:ToastrService) { }
 
   ngOnInit() {
     // Enable gridlines
@@ -36,10 +39,13 @@ export class PacketListComponent {
   }
 
   getPackets() {
+    this.loading = true
     this.packetService.getPackets().subscribe(response => {
+      this.loading = false;
       if (response && response.statusCode == 200 && response.status) {
-        this.loading = false;
         this.packets = response.data
+      }else{
+        this.packets = []
       }
     }, (error) => {
       this.loading = false;
@@ -91,11 +97,8 @@ export class PacketListComponent {
 
   printSelectedQRs() {
     
-    const selectedPackets = this.table.selection; // Get selected packets
-    console.log("selected", selectedPackets)
-    const qrCodesToPrint = selectedPackets.map((packet:any) => packet.kapanNumber); // Assuming 'kapanNumber' holds QR code data
-
-    // Print the QR codes using ngx-print
+    const selectedPackets = this.table.selection;
+    const qrCodesToPrint = selectedPackets.map((packet:any) => packet.kapanNumber); 
     this.printQRs(qrCodesToPrint);
 }
 
@@ -107,31 +110,52 @@ printQRs(qrCodes: any[]) {
     qrImages.push(document.querySelector(`.${qr}`)?.children[0].children[0].children[0])
   }
 
-  console.log("qr", qrImages)
-
   let qrNo = 0
-  
   const printableContent = qrImages.map(qrImage => {
     qrImage.children[1].setAttribute('transform', 'translate(200, 0)');
-    qrImage.children[1].setAttribute('transform', 'scale(3)');
+    qrImage.children[1].setAttribute('transform', 'scale(5)');
 
     return `<div>
       <svg>${qrImage.innerHTML}</svg> </div>
-      `
+      <br/>
+      <div style="margin: -35px 0 100px 20px; font-size: 27px; font-weight: bold">${qrCodes[qrNo++]}</div>`
   }).join('')
 
   const printableArea = document.getElementById('printableArea');
   if (printableArea) {
-     console.log("PRINT", printableContent)
     printableArea.innerHTML = printableContent;
     window.print();
-
     qrImages.map(qrImage => qrImage.children[1].removeAttribute('transform'))
-    
     printableArea.innerHTML = ""
     printableArea.remove();
   }
 }
+deletePacket(packet:any)
+{
+  this.confirmationService.confirm({
+    message: 'Are you sure you want to delete this packet?',
+    accept: () => {
+        
+      console.log("packet =>" , packet)
+      
 
 
-}
+
+      this.packetService.deletePacket(packet._id).subscribe((response: any) => {
+        if (response && response.status) {
+          this.toastrService.success("Diamond Deleted !", 'Success');
+          // this.ref.close();
+        }
+        this.getPackets()
+      }, (error) => {
+        this.toastrService.error('Unknown Error', 'Error');
+        // this.ref.close();
+        this.getPackets()
+      })
+    },
+    reject: () => {
+      // this.ref.close();
+    }
+  });
+    }
+  }

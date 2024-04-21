@@ -12,11 +12,11 @@ export class EmployeeViewComponent implements OnInit {
   }
 
   employee: any
-
+  profilePhoto:any
   ngOnInit(): void {
 
     this.employee = this.config.data.employee;
-
+    this.profilePhoto =  this.employee.profilePhoto
   }
 
 

@@ -13,6 +13,9 @@ export class EmployeeAddComponent {
   employee: any = {};
   profilePreview!: string | ArrayBuffer | null;
   aadhaarPreview!: string | ArrayBuffer | null;
+  uploadProfile : any;
+  aadharFront : any;
+  aadharBack:any;
 
   employeeForm!: FormGroup;
 
@@ -51,7 +54,7 @@ export class EmployeeAddComponent {
       firstName: employee.firstName,
       lastName: employee.lastName,
       mobileNo: employee.mobileNo,
-      aadhaarNumber: employee.aadhaarNumber,
+      aadhaarNumber: employee.documents.number,
       address: employee.address,
       referenceName: employee.referenceName,
       referenceMobileNo: employee.referenceMobileNo,
@@ -64,6 +67,15 @@ export class EmployeeAddComponent {
     this.employeeForm.markAllAsTouched()
     if (this.employeeForm.valid) {
       const formData = this.employeeForm.value;
+      formData.profilePhoto = this.uploadProfile; 
+      const document = {
+        name:"aadharCard",
+        number: formData.aadhaarNumber,
+        frontPhoto: this.aadharFront, // Assuming you have a variable to store the Aadhaar card front photo URL
+        backPhoto: this.aadharBack    // Assuming you have a variable to store the Aadhaar card back photo URL
+    };
+    formData.document = document;
+
       if (this.config.data.employee) {
         const id = this.config.data.employee._id;
         delete this.config.data.employee['mobileNo']
@@ -100,30 +112,82 @@ export class EmployeeAddComponent {
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
-    console.log(file);
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target && e.target.result) {
-          this.profilePreview = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
+        const formData = new FormData();
+        formData.append('file', file);
+
+        this.employeeService.uploadProfile(formData).subscribe(
+            (response: any) => {
+                console.log("Response =>", response);
+                this.uploadProfile =  response.Location;
+            },
+            (error: any) => {
+                console.error("Error uploading file:", error);
+            }
+        );
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if (e.target && e.target.result) {
+                this.profilePreview = e.target.result;
+            }
+        };
+        reader.readAsDataURL(file);
     }
   }
 
 
 
-  onAadhaarPicSelected(event: any) {
+  onAadhaarPicSelectedFront(event: any) {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target && e.target.result) {
-          this.aadhaarPreview = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
+        const formData = new FormData();
+        formData.append('file', file);
+
+        this.employeeService.uploadProfile(formData).subscribe(
+            (response: any) => {
+                console.log("Response =>", response);
+                this.aadharFront =  response.Location;
+            },
+            (error: any) => {
+                console.error("Error uploading file:", error);
+            }
+        );
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if (e.target && e.target.result) {
+            }
+        };
+        reader.readAsDataURL(file);
     }
+
+  }
+
+  onAadhaarPicSelectedBack(event:any)
+  {
+    const file = event.target.files[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        this.employeeService.uploadProfile(formData).subscribe(
+            (response: any) => {
+                console.log("Response =>", response);
+                this.aadharBack =  response.Location;
+            },
+            (error: any) => {
+                console.error("Error uploading file:", error);
+            }
+        );
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if (e.target && e.target.result) {
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+
   }
 }
