@@ -30,8 +30,8 @@ export class EmployeeSalaryListComponent  implements OnInit{
         if(response && response.status)
         {
             this.salaryData = response.data.map((salary:any)=>{
-              salary.fullName =  `${salary.employeeId.firstName} ${salary.employeeId.lastName}`;
-              salary.code  = `${salary.employeeId.employeeId}`
+              salary.fullName =  `${salary?.employeeId?.firstName} ${salary?.employeeId?.lastName}`;
+              salary.code  = `${salary?.employeeId?.employeeId}`
               return salary
       })
      }       
